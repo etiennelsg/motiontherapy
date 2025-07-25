@@ -24,6 +24,7 @@
       top: 0;
       bottom: 0;
       left: 0;
+      z-index: 10;
     }
 
     .sidebar div {
@@ -31,6 +32,7 @@
       writing-mode: vertical-rl;
       transform: rotate(180deg);
       font-weight: bold;
+      cursor: pointer;
     }
 
     /* Main content */
@@ -73,25 +75,105 @@
       color: #666;
       max-width: 500px;
     }
+
+    /* Popup style */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      padding: 30px;
+      border: 2px solid #999;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      z-index: 999;
+      text-align: center;
+      width: 80%;
+      max-width: 300px;
+    }
+
+    .popup h2 {
+      margin-top: 0;
+    }
+
+    .popup button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: orange;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.3);
+      z-index: 998;
+    }
   </style>
 </head>
 <body>
+
   <div class="sidebar">
-    <div>Strength</div>
-    <div>Endurance</div>
-    <div>Flexibility</div>
-    <div>Mobility</div>
-    <div>Stability</div>
-    <div>Recovery</div>
-    <div>Balance</div>
-    <div>Power</div>
-    <div>Breathing</div>
+    <div onclick="showPopup('Strength')">Strength</div>
+    <div onclick="showPopup('Endurance')">Endurance</div>
+    <div onclick="showPopup('Flexibility')">Flexibility</div>
+    <div onclick="showPopup('Mobility')">Mobility</div>
+    <div onclick="showPopup('Stability')">Stability</div>
+    <div onclick="showPopup('Recovery')">Recovery</div>
+    <div onclick="showPopup('Balance')">Balance</div>
+    <div onclick="showPopup('Power')">Power</div>
+    <div onclick="showPopup('Breathing')">Breathing</div>
   </div>
+
   <div class="main">
     <h1>Motion Therapy</h1>
     <p>My name is Étienne. I help people regain strength and mobility using simple tools.</p>
     <a class="btn" href="https://www.amazon.ca/dp/B07NXDH9RQ?tag=motiontherapy-20" target="_blank">Go on Amazon</a>
     <p class="disclaimer">As an Amazon Associate, I earn from qualifying purchases.</p>
   </div>
+
+  <div class="overlay" id="overlay" onclick="closePopup()"></div>
+  <div class="popup" id="popup">
+    <h2 id="popup-title"></h2>
+    <p id="popup-description"></p>
+    <strong id="popup-motivation"></strong><br>
+    <button onclick="closePopup()">OK</button>
+  </div>
+
+  <script>
+    const descriptions = {
+      Strength: ["Build the foundation that carries you through life.", "Powerful"],
+      Endurance: ["Push your limits — one breath, one step, one rep at a time.", "Relentless"],
+      Flexibility: ["Reclaim space in your body, reduce pain, and move freely.", "Fluid"],
+      Mobility: ["Movement is freedom — unlock your joints, unlock your life.", "Unchained"],
+      Stability: ["Control is strength. Anchor yourself before you leap.", "Grounded"],
+      Recovery: ["Growth happens in rest. Let your body rebuild stronger.", "Rebuild"],
+      Balance: ["Harmony between effort and ease — the body in stillness.", "Centered"],
+      Power: ["Explode with intention. Convert strength into speed.", "Explosive"],
+      Breathing: ["Everything begins with breath. Calm the mind, energize the body.", "Vital"]
+    };
+
+    function showPopup(key) {
+      document.getElementById('popup-title').innerText = key;
+      document.getElementById('popup-description').innerText = descriptions[key][0];
+      document.getElementById('popup-motivation').innerText = descriptions[key][1];
+      document.getElementById('popup').style.display = 'block';
+      document.getElementById('overlay').style.display = 'block';
+    }
+
+    function closePopup() {
+      document.getElementById('popup').style.display = 'none';
+      document.getElementById('overlay').style.display = 'none';
+    }
+  </script>
+
 </body>
 </html>
