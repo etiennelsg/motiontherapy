@@ -12,8 +12,8 @@
       background-color: #f4f4f4;
     }
 
-    /* Vertical banner */
-    .sidebar {
+    /* Vertical banners */
+    .sidebar, .sidebar-right {
       width: 60px;
       background-color: #ddd;
       display: flex;
@@ -23,11 +23,18 @@
       position: fixed;
       top: 0;
       bottom: 0;
-      left: 0;
       z-index: 10;
     }
 
-    .sidebar div {
+    .sidebar {
+      left: 0;
+    }
+
+    .sidebar-right {
+      right: 0;
+    }
+
+    .sidebar div, .sidebar-right div {
       margin: 20px 0;
       writing-mode: vertical-rl;
       transform: rotate(180deg);
@@ -38,7 +45,8 @@
     /* Main content */
     .main {
       margin-left: 60px;
-      width: calc(100% - 60px);
+      margin-right: 60px;
+      width: calc(100% - 120px);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -121,6 +129,7 @@
 </head>
 <body>
 
+  <!-- Left Sidebar -->
   <div class="sidebar">
     <div onclick="showPopup('Strength')">Strength</div>
     <div onclick="showPopup('Endurance')">Endurance</div>
@@ -133,6 +142,20 @@
     <div onclick="showPopup('Breathing')">Breathing</div>
   </div>
 
+  <!-- Right Sidebar -->
+  <div class="sidebar-right">
+    <div onclick="showPopup('Nutrition')">Nutrition</div>
+    <div onclick="showPopup('Sleep')">Sleep</div>
+    <div onclick="showPopup('Hydration')">Hydration</div>
+    <div onclick="showPopup('Mental Focus')">Mental Focus</div>
+    <div onclick="showPopup('Posture')">Posture</div>
+    <div onclick="showPopup('Stress')">Stress</div>
+    <div onclick="showPopup('Digestion')">Digestion</div>
+    <div onclick="showPopup('Daily Movement')">Daily Movement</div>
+    <div onclick="showPopup('Rest')">Rest</div>
+  </div>
+
+  <!-- Main Content -->
   <div class="main">
     <h1>Motion Therapy</h1>
     <p>My name is Étienne. I help people regain strength and mobility using simple tools.</p>
@@ -140,6 +163,7 @@
     <p class="disclaimer">As an Amazon Associate, I earn from qualifying purchases.</p>
   </div>
 
+  <!-- Popup -->
   <div class="overlay" id="overlay" onclick="closePopup()"></div>
   <div class="popup" id="popup">
     <h2 id="popup-title"></h2>
@@ -150,6 +174,7 @@
 
   <script>
     const descriptions = {
+      // Physique
       Strength: ["Build the foundation that carries you through life.", "Powerful"],
       Endurance: ["Push your limits — one breath, one step, one rep at a time.", "Relentless"],
       Flexibility: ["Reclaim space in your body, reduce pain, and move freely.", "Fluid"],
@@ -158,7 +183,17 @@
       Recovery: ["Growth happens in rest. Let your body rebuild stronger.", "Rebuild"],
       Balance: ["Harmony between effort and ease — the body in stillness.", "Centered"],
       Power: ["Explode with intention. Convert strength into speed.", "Explosive"],
-      Breathing: ["Everything begins with breath. Calm the mind, energize the body.", "Vital"]
+      Breathing: ["Everything begins with breath. Calm the mind, energize the body.", "Vital"],
+      // Hygiène de vie
+      Nutrition: ["Fuel your body with quality, not quantity.", "Nourish"],
+      Sleep: ["Deep rest builds sharpness, healing and strength.", "Recover"],
+      Hydration: ["Cells thrive when water flows.", "Replenish"],
+      "Mental Focus": ["Where attention goes, energy flows.", "Sharp"],
+      Posture: ["Align your frame, free your breath.", "Upright"],
+      Stress: ["Learn to shift from fight to flow.", "Calm"],
+      Digestion: ["The core of your energy lies in your gut.", "Absorb"],
+      "Daily Movement": ["A moving body stays young.", "Alive"],
+      Rest: ["Do less to become more.", "Reset"]
     };
 
     function showPopup(key) {
