@@ -2,121 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Motion Therapy</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
       display: flex;
-      background-color: #f8f8f8;
-    }
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 180px;
-      height: 100%;
-      background-color: #333;
-      color: white;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
       padding: 20px;
-    }
-    .sidebar h2 {
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-    .sidebar ul {
-      list-style: none;
-      padding: 0;
-    }
-    .sidebar li {
-      margin: 10px 0;
-    }
-    .content {
-      margin-left: 200px;
-      padding: 20px;
-      max-width: 600px;
-      margin-right: auto;
-      margin-left: auto;
-    }
-    h1, h2 {
       text-align: center;
     }
-    .section {
-      background: white;
-      padding: 20px;
-      margin: 20px auto;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    .cta {
-      display: block;
-      width: fit-content;
-      margin: 20px auto 0;
-      padding: 10px 20px;
+    .button {
       background-color: orange;
       color: white;
-      font-weight: bold;
-      text-decoration: none;
-      border-radius: 5px;
-      text-align: center;
+      border: none;
+      padding: 12px 20px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 20px;
     }
-    footer {
-      text-align: center;
+    .disclaimer {
       font-size: 12px;
-      color: gray;
-      padding: 20px;
+      color: #555;
+      margin-top: 20px;
+      max-width: 300px;
     }
   </style>
 </head>
 <body>
-  <div class="sidebar">
-    <h2>Fitness Keys</h2>
-    <ul>
-      <li>Endurance</li>
-      <li>Strength</li>
-      <li>Flexibility</li>
-      <li>Body Composition</li>
-      <li>Power</li>
-    </ul>
-  </div>
-  <div class="content">
-    <h1>Motion Therapy</h1>
-    <p style="text-align:center;">My name is Étienne. I help people regain strength and mobility using simple tools.</p>
-
-    <div class="section" id="endurance">
-      <h2>Endurance</h2>
-      <p>Cardiovascular endurance is the ability of your heart, lungs, and blood vessels to supply oxygen to your muscles during prolonged activity. It’s the base of your vitality. If you want to climb stairs without getting winded, this is where it starts.</p>
-      <a class="cta" href="https://www.fiverr.com/s/e6jLxkY" target="_blank">Want me to build your endurance?</a>
-    </div>
-
-    <div class="section" id="strength">
-      <h2>Strength</h2>
-      <p>Muscular strength is your ability to generate tension against resistance. It lets you push, pull, lift. When you gain strength, you gain control over your body — and your life.</p>
-      <a class="cta" href="https://www.fiverr.com/s/e6jLxkY" target="_blank">Want help getting stronger?</a>
-    </div>
-
-    <div class="section" id="flexibility">
-      <h2>Flexibility</h2>
-      <p>Flexibility is your ability to move easily through a full range of motion. It lowers your injury risk, improves posture, and makes every movement smoother.</p>
-      <a class="cta" href="https://www.fiverr.com/s/e6jLxkY" target="_blank">Want to improve your mobility with me?</a>
-    </div>
-
-    <div class="section" id="bodycomp">
-      <h2>Body Composition</h2>
-      <p>Body composition is the ratio between your fat mass and lean mass. It’s not about aesthetics — it’s a key marker of your metabolic health.</p>
-      <a class="cta" href="https://www.fiverr.com/s/e6jLxkY" target="_blank">Want to optimize your body composition?</a>
-    </div>
-
-    <div class="section" id="power">
-      <h2>Power</h2>
-      <p>Power is strength applied quickly. It helps you react fast, jump, strike, throw. It’s essential in sports — and for your sharpness in everyday life.</p>
-      <a class="cta" href="https://www.fiverr.com/s/e6jLxkY" target="_blank">Want me to help you develop your power?</a>
-    </div>
-
-    <footer>
-      <p>Some links on this site are affiliate links. As an Amazon Associate, I earn from qualifying purchases.</p>
-    </footer>
-  </div>
+  <h1>Motion Therapy</h1>
+  <p>My name is Étienne. I help people regain strength and mobility using simple tools.</p>
+  <p>I recommend a tool that helps you recover faster and feel better:</p>
+  <a href="https://www.amazon.ca/dp/B07NXDH9RQ?tag=motiontherapy-20" target="_blank">
+    <button class="button">Go on Amazon</button>
+  </a>
+  <p class="disclaimer">As an Amazon Associate, I earn from qualifying purchases.</p>
 </body>
 </html>
