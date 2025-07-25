@@ -5,74 +5,86 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Motion Therapy</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     body {
+      margin: 0;
+      font-family: sans-serif;
       display: flex;
-      height: 100vh;
-      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
     }
 
-    .left-banner {
-      width: 60px;
-      background-color: #e0e0e0; /* Light gray banner */
-      height: 100vh;
-      position: fixed;
-      left: 0;
-      top: 0;
-    }
-
-    .main-content {
-      margin-left: 60px; /* Equal to banner width */
-      width: calc(100% - 60px);
+    /* Vertical banner */
+    .sidebar {
+      width: 80px;
+      background-color: #ddd;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+      padding-top: 20px;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    .sidebar div {
+      margin: 20px 0;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-weight: bold;
+    }
+
+    /* Main content */
+    .main {
+      margin-left: 80px;
+      width: calc(100% - 80px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
       text-align: center;
       padding: 20px;
     }
 
     h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
+      font-size: 2.5em;
+      margin-bottom: 10px;
     }
 
     p {
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
-      color: #333;
+      font-size: 1.2em;
+      max-width: 600px;
     }
 
-    .button {
+    .btn {
       background-color: orange;
       color: white;
-      border: none;
-      padding: 12px 24px;
-      font-size: 1rem;
-      border-radius: 6px;
-      cursor: pointer;
+      padding: 15px 30px;
       text-decoration: none;
-      margin-bottom: 1rem;
+      font-size: 1.1em;
+      border-radius: 8px;
+      margin-top: 30px;
+      display: inline-block;
     }
 
     .disclaimer {
-      font-size: 0.9rem;
-      color: gray;
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #666;
+      max-width: 500px;
     }
   </style>
 </head>
 <body>
-  <div class="left-banner"></div>
-  <div class="main-content">
+  <div class="sidebar">
+    <div>Strength</div>
+    <div>Endurance</div>
+    <div>Flexibility</div>
+  </div>
+  <div class="main">
     <h1>Motion Therapy</h1>
     <p>My name is Étienne. I help people regain strength and mobility using simple tools.</p>
-    <p>I recommend a tool that helps you recover faster and feel better.</p>
-    <a class="button" href="https://www.amazon.ca/dp/B07NXDH9RQ?tag=motiontherapy-20" target="_blank">Go on Amazon</a>
+    <a class="btn" href="https://www.amazon.ca/dp/B07NXDH9RQ?tag=motiontherapy-20" target="_blank">Go on Amazon</a>
     <p class="disclaimer">As an Amazon Associate, I earn from qualifying purchases.</p>
   </div>
 </body>
