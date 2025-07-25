@@ -1,248 +1,226 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Motion Therapy</title>
   <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      background: #fff;
-      font-family: system-ui, Arial, sans-serif;
-      touch-action: manipulation;
-    }
     body {
-      min-height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
+      flex-direction: row;
     }
-    .main-content {
-      width: 100vw;
-      max-width: 100vw;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      margin-top: 26vw;
-      margin-bottom: 24vw;
-    }
-    .amazon-btn {
-      display: block;
-      background: orange;
-      color: #fff;
-      border: none;
-      border-radius: 32px;
-      font-size: 1.22rem;
-      padding: 18px 12vw;
-      cursor: pointer;
-      margin: 0 auto 5vw auto;
-      font-weight: bold;
-      box-shadow: 0 4px 24px rgba(255,140,0,0.12);
-      transition: background 0.2s;
-      width: 80vw;
-      max-width: 400px;
-      min-width: 220px;
-    }
-    .amazon-btn:hover,
-    .amazon-btn:active {
-      background: #ff9900;
-    }
-    .definition-container {
-      background: #f9f9f9;
-      border-radius: 20px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-      padding: 7vw 6vw 5vw 6vw;
-      margin: 0 auto 0 auto;
-      max-width: 480px;
-      min-width: 0;
-      width: 92vw;
-      text-align: left;
-    }
-    .definition-container h2 {
-      margin-top: 0;
-      color: #ff8000;
-      font-size: 1.32rem;
-      letter-spacing: -1px;
-    }
-    .definition-container p {
-      margin: 10px 0;
-      color: #222;
-      font-size: 1.07rem;
-      line-height: 1.56;
-    }
-    .definition-container a {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 11px 22px;
-      background: #23c483;
-      color: #fff;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1.04rem;
-      box-shadow: 0 2px 6px rgba(35,196,131,0.06);
-      transition: background 0.2s;
-      text-align: center;
-    }
-    .definition-container a:active,
-    .definition-container a:hover {
-      background: #179e61;
-    }
-    .sticky-footer {
+
+    .sidebar {
       position: fixed;
       left: 0;
+      top: 0;
       bottom: 0;
-      width: 100vw;
-      background: #f4f4f4;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      padding: 10px 0 7px 0;
-      border-top: 1.2px solid #e0e0e0;
-      z-index: 100;
-      gap: 1vw;
-      box-shadow: 0 -1px 6px #00000010;
+      width: 180px;
+      background-color: #f5f5f5;
+      padding: 20px 10px;
+      overflow-y: auto;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
     }
-    .footer-section {
-      font-size: 1.02rem;
-      color: #222;
-      padding: 8px 2vw;
-      font-weight: 500;
-      text-align: center;
+
+    .sidebar h3 {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 13px;
+    }
+
+    .sidebar li {
+      margin-bottom: 8px;
       cursor: pointer;
-      border-radius: 7px;
-      transition: background 0.15s, color 0.15s;
-      user-select: none;
-      min-width: 5ch;
-      max-width: 19vw;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      color: #0077cc;
     }
-    .footer-section.active, .footer-section:active {
-      background: #ffd8a6;
-      color: #ff8000;
+
+    .sidebar li:hover {
+      text-decoration: underline;
     }
-    @media (max-width: 599px) {
-      .main-content {
-        margin-top: 14vw;
-        margin-bottom: 30vw;
+
+    .content {
+      margin-left: 180px;
+      padding: 30px 20px;
+      width: 100%;
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .mission {
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+
+    .button {
+      background-color: orange;
+      color: white;
+      padding: 15px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .disclaimer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #666;
+      max-width: 300px;
+    }
+
+    .section {
+      margin-top: 40px;
+    }
+
+    .section h2 {
+      font-size: 20px;
+      color: #333;
+    }
+
+    .section p {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .section a {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 14px;
+      color: #0077cc;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        display: none;
       }
-      .definition-container { font-size: 1rem; }
-      .footer-section { font-size: 0.98rem; padding: 7px 1vw;}
-    }
-    @media (max-width: 420px) {
-      .main-content {
-        margin-top: 11vw;
-        margin-bottom: 37vw;
+
+      .content {
+        margin-left: 0;
+        padding: 20px 15px;
       }
-      .amazon-btn { font-size: 0.99rem; }
-      .definition-container { font-size: 0.96rem; }
     }
   </style>
 </head>
 <body>
-  <div class="main-content">
-    <button class="amazon-btn"
-      onclick="window.open('https://www.amazon.ca/dp/B07NXDH9RQ?tag=motiontherapy-20', '_blank')">
-      Go on Amazon
-    </button>
-    <div class="definition-container" id="definition">
-      <!-- Le contenu dynamique s'affiche ici -->
-    </div>
+  <div class="sidebar">
+    <h3>Determinants</h3>
+    <ul>
+      <li onclick="showSection('cardio')">Cardiovascular Endurance</li>
+      <li onclick="showSection('strength')">Muscular Strength</li>
+      <li onclick="showSection('endurance')">Muscular Endurance</li>
+      <li onclick="showSection('flexibility')">Flexibility</li>
+      <li onclick="showSection('body')">Body Composition</li>
+      <li onclick="showSection('balance')">Balance</li>
+      <li onclick="showSection('coordination')">Coordination</li>
+      <li onclick="showSection('agility')">Agility</li>
+      <li onclick="showSection('reaction')">Reaction Time</li>
+      <li onclick="showSection('speed')">Speed</li>
+      <li onclick="showSection('power')">Power</li>
+    </ul>
   </div>
-  <div class="sticky-footer">
-    <div class="footer-section active" onclick="showDef('force')" id="tab-force">Force</div>
-    <div class="footer-section" onclick="showDef('endurance')" id="tab-endurance">Endurance</div>
-    <div class="footer-section" onclick="showDef('flexibilite')" id="tab-flexibilite">Flexibilité</div>
-    <div class="footer-section" onclick="showDef('mobilite')" id="tab-mobilite">Mobilité</div>
-    <div class="footer-section" onclick="showDef('agilite')" id="tab-agilite">Agilité</div>
-    <div class="footer-section" onclick="showDef('dexterite')" id="tab-dexterite">Dextérité</div>
-    <div class="footer-section" onclick="showDef('puissance')" id="tab-puissance">Puissance</div>
+
+  <div class="content">
+    <div class="title">Motion Therapy</div>
+    <div class="mission">
+      My name is Etienne from Motion Therapy. I help people regain strength and mobility using simple tools.
+    </div>
+    <a class="button" href="https://www.amazon.ca/dp/B07NXDH9RQ?tag=motiontherapy-20" target="_blank">
+      Go on Amazon
+    </a>
+    <div class="disclaimer">
+      This website contains affiliate links. As an Amazon Associate, I earn from qualifying purchases, at no extra cost to you.
+    </div>
+
+    <!-- Sections dynamiques -->
+    <div id="cardio" class="section" style="display:none;">
+      <h2>Cardiovascular Endurance</h2>
+      <p>This component reflects the ability of the heart, lungs, and circulatory system to deliver oxygen to working muscles during sustained activity. A well-developed cardiovascular system improves stamina and reduces fatigue during daily activities.</p>
+      <a href="https://www.fiverr.com/s/e6jLxkY" target="_blank">Explore Motion Therapy on Fiverr</a>
+    </div>
+
+    <div id="strength" class="section" style="display:none;">
+      <h2>Muscular Strength</h2>
+      <p>Muscular strength is the maximum amount of force a muscle or group of muscles can exert. It is crucial for tasks that require lifting, pushing, or pulling, and plays a vital role in injury prevention and overall functionality.</p>
+      <a href="https://www.fiverr.com/s/e6jLxkY" target="_blank">Explore Motion Therapy on Fiverr</a>
+    </div>
+
+    <div id="endurance" class="section" style="display:none;">
+      <h2>Muscular Endurance</h2>
+      <p>This refers to the ability of a muscle or muscle group to perform repeated contractions over a period without fatigue. Essential for posture, injury prevention, and daily tasks like carrying groceries or walking up stairs.</p>
+      <a href="https://www.fiverr.com/s/e6jLxkY" target="_blank">Explore Motion Therapy on Fiverr</a>
+    </div>
+
+    <div id="flexibility" class="section" style="display:none;">
+      <h2>Flexibility</h2>
+      <p>Flexibility is the range of motion around a joint. It allows for smooth and efficient movement, reduces the risk of injury, and enhances performance in both daily activities and sports.</p>
+      <a href="https://www.fiverr.com/s/e6jLxkY" target="_blank">Explore Motion Therapy on Fiverr</a>
+    </div>
+
+    <div id="body" class="section" style="display:none;">
+      <h2>Body Composition</h2>
+      <p>This refers to the ratio of fat to lean mass in the body. A healthy body composition enhances energy levels, physical performance, and long-term health.</p>
+      <a href="https://www.fiverr.com/s/e6jLxkY" target="_blank">Explore Motion Therapy on Fiverr</a>
+    </div>
+
+    <div id="balance" class="section" style="display:none;">
+      <h2>Balance</h2>
+      <p>Balance is the ability to maintain the body’s position, whether moving or stationary. It helps prevent falls and improves control and coordination during movement.</p>
+      <a href="https://www.fiverr.com/s/e6jLxkY" target="_blank">Explore Motion Therapy on Fiverr</a>
+    </div>
+
+    <div id="coordination" class="section" style="display:none;">
+      <h2>Coordination</h2>
+      <p>Coordination is the ability to use different parts of the body together smoothly and efficiently. It is essential for functional tasks and complex movements.</p>
+      <a href="https://www.fiverr.com/s/e6jLxkY" target="_blank">Explore Motion Therapy on Fiverr</a>
+    </div>
+
+    <div id="agility" class="section" style="display:none;">
+      <h2>Agility</h2>
+      <p>Agility is the capacity to move and change direction quickly while maintaining control. It’s vital in sports, but also helps prevent injuries in daily life.</p>
+      <a href="https://www.fiverr.com/s/e6jLxkY" target="_blank">Explore Motion Therapy on Fiverr</a>
+    </div>
+
+    <div id="reaction" class="section" style="display:none;">
+      <h2>Reaction Time</h2>
+      <p>Reaction time measures how quickly someone can respond to a stimulus. Improving it boosts safety, especially in dynamic environments like driving or sports.</p>
+      <a href="https://www.fiverr.com/s/e6jLxkY" target="_blank">Explore Motion Therapy on Fiverr</a>
+    </div>
+
+    <div id="speed" class="section" style="display:none;">
+      <h2>Speed</h2>
+      <p>Speed is the ability to perform a movement in a short period of time. It enhances athletic performance and efficiency in tasks requiring rapid execution.</p>
+      <a href="https://www.fiverr.com/s/e6jLxkY" target="_blank">Explore Motion Therapy on Fiverr</a>
+    </div>
+
+    <div id="power" class="section" style="display:none;">
+      <h2>Power</h2>
+      <p>Power combines strength and speed to produce explosive movements. It is essential for sports performance and functional tasks that require sudden force.</p>
+      <a href="https://www.fiverr.com/s/e6jLxkY" target="_blank">Explore Motion Therapy on Fiverr</a>
+    </div>
   </div>
 
   <script>
-    // Définitions vulgarisées avec appel Fiverr personnalisé
-    const definitions = {
-      force: {
-        title: "Force",
-        text: `<p>La force, c’est la capacité de tes muscles à pousser, tirer ou soulever des objets lourds. Plus tu es fort, plus tu peux effectuer des tâches physiques exigeantes, comme porter des sacs ou monter des escaliers sans te fatiguer.</p>
-        <p><em>Physiologie simplifiée :</em><br>
-        Quand tu utilises ta force, ton cerveau envoie un signal à tes muscles pour qu’ils se contractent. Ce travail est effectué par de minuscules fibres musculaires : plus tu t’entraînes, plus elles deviennent nombreuses, épaisses et efficaces, et ton système nerveux apprend à mieux les utiliser.</p>
-        <p><b>Tu souhaites développer ta force et ne sais pas par où commencer ?</b><br>
-        Contacte-moi sur Fiverr pour un accompagnement sur mesure.<br>
-        <a href="https://www.fiverr.com/s/e6jLxkY" target="_blank" rel="noopener noreferrer">Voir mon offre Fiverr</a></p>`
-      },
-      endurance: {
-        title: "Endurance",
-        text: `<p>L’endurance, c’est la capacité de ton corps à soutenir un effort comme marcher, courir ou nager sur une longue période, sans t’arrêter par manque d’énergie.</p>
-        <p><em>Physiologie simplifiée :</em><br>
-        Ton endurance dépend du travail d’équipe entre ton cœur, tes poumons et tes muscles. Plus tu bouges longtemps, plus ton cœur devient efficace, tes poumons absorbent mieux l’oxygène, et tes muscles apprennent à utiliser l’énergie sans s’épuiser vite.</p>
-        <p><b>Tu souhaites développer ton endurance et ne sais pas par où commencer ?</b><br>
-        Contacte-moi sur Fiverr pour un accompagnement sur mesure.<br>
-        <a href="https://www.fiverr.com/s/e6jLxkY" target="_blank" rel="noopener noreferrer">Voir mon offre Fiverr</a></p>`
-      },
-      flexibilite: {
-        title: "Flexibilité",
-        text: `<p>La flexibilité, c’est la capacité de tes muscles et de tes articulations à bouger librement, sans douleur ni raideur, comme toucher tes orteils ou lever les bras bien haut.</p>
-        <p><em>Physiologie simplifiée :</em><br>
-        Ta flexibilité dépend de la souplesse de tes muscles, tendons et ligaments. Quand tu t’étires régulièrement, tes fibres musculaires deviennent plus longues et plus “élastiques”, et tes mouvements sont plus fluides.</p>
-        <p><b>Tu souhaites développer ta flexibilité et ne sais pas par où commencer ?</b><br>
-        Contacte-moi sur Fiverr pour un accompagnement sur mesure.<br>
-        <a href="https://www.fiverr.com/s/e6jLxkY" target="_blank" rel="noopener noreferrer">Voir mon offre Fiverr</a></p>`
-      },
-      mobilite: {
-        title: "Mobilité",
-        text: `<p>La mobilité, c’est la capacité de tes articulations à bouger dans toutes les directions, avec contrôle et aisance.</p>
-        <p><em>Physiologie simplifiée :</em><br>
-        Ta mobilité repose sur la santé de tes articulations, la souplesse de tes muscles et la coordination entre les différentes parties de ton corps. En travaillant ta mobilité, tu renforces les petits muscles stabilisateurs, ce qui rend tes mouvements plus naturels.</p>
-        <p><b>Tu souhaites développer ta mobilité et ne sais pas par où commencer ?</b><br>
-        Contacte-moi sur Fiverr pour un accompagnement sur mesure.<br>
-        <a href="https://www.fiverr.com/s/e6jLxkY" target="_blank" rel="noopener noreferrer">Voir mon offre Fiverr</a></p>`
-      },
-      agilite: {
-        title: "Agilité",
-        text: `<p>L’agilité, c’est la capacité à changer rapidement la position de ton corps, à réagir vite et à bouger avec précision, comme éviter un obstacle ou changer de direction en courant.</p>
-        <p><em>Physiologie simplifiée :</em><br>
-        L’agilité dépend de la rapidité de ton cerveau, de tes nerfs et de tes muscles. Plus tu pratiques des exercices d’agilité, plus ton corps apprend à réagir rapidement et à bouger de façon coordonnée.</p>
-        <p><b>Tu souhaites développer ton agilité et ne sais pas par où commencer ?</b><br>
-        Contacte-moi sur Fiverr pour un accompagnement sur mesure.<br>
-        <a href="https://www.fiverr.com/s/e6jLxkY" target="_blank" rel="noopener noreferrer">Voir mon offre Fiverr</a></p>`
-      },
-      dexterite: {
-        title: "Dextérité",
-        text: `<p>La dextérité, c’est l’habileté à utiliser tes mains et tes doigts de façon précise et rapide, comme pour écrire ou jouer d’un instrument.</p>
-        <p><em>Physiologie simplifiée :</em><br>
-        La dextérité repose sur la connexion entre ton cerveau, tes nerfs et les petits muscles de tes mains. Plus tu utilises tes doigts pour des tâches précises, plus ils deviennent habiles et rapides.</p>
-        <p><b>Tu souhaites développer ta dextérité et ne sais pas par où commencer ?</b><br>
-        Contacte-moi sur Fiverr pour un accompagnement sur mesure.<br>
-        <a href="https://www.fiverr.com/s/e6jLxkY" target="_blank" rel="noopener noreferrer">Voir mon offre Fiverr</a></p>`
-      },
-      puissance: {
-        title: "Puissance",
-        text: `<p>La puissance, c’est la capacité à produire un effort intense très rapidement, comme sauter haut, lancer un objet loin ou sprinter sur une courte distance. C’est la combinaison de la force et de la vitesse : plus tu es capable de générer beaucoup de force en peu de temps, plus ta puissance est grande.</p>
-        <p><em>Physiologie simplifiée :</em><br>
-        La puissance dépend de la rapidité avec laquelle tes muscles se contractent. Ton cerveau doit envoyer des signaux très rapides à tes fibres musculaires pour qu’elles s’activent toutes ensemble. Plus tu t’entraînes à des mouvements explosifs (sauts, sprints, lancers), plus tes fibres musculaires dites « rapides » deviennent efficaces, et plus ton système nerveux apprend à coordonner la force et la vitesse pour produire un mouvement puissant.</p>
-        <p><b>Tu souhaites développer ta puissance et ne sais pas par où commencer ?</b><br>
-        Contacte-moi sur Fiverr pour un accompagnement sur mesure.<br>
-        <a href="https://www.fiverr.com/s/e6jLxkY" target="_blank" rel="noopener noreferrer">Voir mon offre Fiverr</a></p>`
-      }
-    };
-
-    function showDef(type) {
-      document.getElementById("definition").innerHTML =
-        `<h2>${definitions[type].title}</h2>${definitions[type].text}`;
-      document.querySelectorAll('.footer-section').forEach(el => el.classList.remove('active'));
-      document.getElementById('tab-' + type).classList.add('active');
-    }
-    // Affiche par défaut la définition de la force
-    window.onload = function() {
-      showDef('force');
+    function showSection(id) {
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => {
+        section.style.display = 'none';
+      });
+      document.getElementById(id).style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   </script>
 </body>
