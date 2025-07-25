@@ -2,50 +2,45 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MotionTherapy – Recommandation bien-être</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MotionTherapy – Recommandation Bien-Être</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
+      background-color: #f2f2f2;
       margin: 0;
-      padding: 0;
+      padding: 50px;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
+      height: 100vh;
     }
-
-    header {
-      width: 100%;
-      background-color: #222;
-      color: white;
-      padding: 20px 0;
-      text-align: center;
-      font-size: 24px;
-      font-weight: bold;
-    }
-
-    main {
-      padding: 40px 20px;
-      max-width: 600px;
-      text-align: center;
-    }
-
-    h2 {
+    h1 {
       color: #333;
+      font-size: 28px;
+      text-align: center;
     }
-
-    p {
-      font-size: 16px;
-      color: #555;
-      margin-bottom: 20px;
-    }
-
-    .button-link {
-      background-color: #ff9900;
-      color: #000;
+    a.button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 15px 30px;
+      background-color: orange;
+      color: white;
       text-decoration: none;
-      padding: 12px 24px;
-      border-radius: 6px;
+      border-radius: 8px;
+      font-weight: bold;
       font-size: 16px;
-      font
+    }
+    a.button:hover {
+      background-color: darkorange;
+    }
+  </style>
+</head>
+<body>
+  <h1>Découvrez le produit recommandé</h1>
+  <a class="button" href="https://www.amazon.ca/dp/B07NXDH9RQ?tag=motiontherapy-20" target="_blank" rel="noopener noreferrer">
+    Voir le produit sur Amazon
+  </a>
+</body>
+</html>
