@@ -40,6 +40,12 @@
       font-weight: bold;
       cursor: pointer;
       color: #1e3a8a;
+      transition: transform 0.2s ease;
+    }
+
+    .sidebar div:hover,
+    .sidebar-right div:hover {
+      transform: rotate(180deg) scale(1.15);
     }
 
     .main {
@@ -52,7 +58,7 @@
       justify-content: flex-start;
       min-height: 100vh;
       text-align: center;
-      padding: 80px 20px 20px 20px;
+      padding: 80px 20px 40px 20px;
     }
 
     h1 {
@@ -60,15 +66,10 @@
       margin-bottom: 20px;
     }
 
-    .cta {
-      font-size: 0.95em;
-      color: #1e3a8a;
-      margin-bottom: 50px;
-    }
-
     p {
       font-size: 1.2em;
       max-width: 600px;
+      margin: 10px 0;
     }
 
     .btn {
@@ -83,10 +84,16 @@
     }
 
     .disclaimer {
-      margin-top: 40px;
+      margin-top: 30px;
       font-size: 0.9em;
       color: #666;
       max-width: 500px;
+    }
+
+    .call-to-action {
+      font-size: 0.95em;
+      color: #1e3a8a;
+      margin-top: 60px;
     }
 
     .popup {
@@ -162,14 +169,13 @@
   <!-- Main Content -->
   <div class="main">
     <h1>Motion Therapy</h1>
-    <p class="cta">Click the words on the sides to explore</p>
     <p>My name is Étienne. I help people regain strength and mobility using simple tools.</p>
-
-    <!-- 👇 Emoji -->
     <div style="font-size: 1.7rem; margin-top: 20px;">👇</div>
     <a class="btn" href="https://www.amazon.ca/dp/B07NXDH9RQ?tag=motiontherapy-20" target="_blank">Go on Amazon</a>
-
     <p class="disclaimer">As an Amazon Associate, I earn from qualifying purchases.</p>
+
+    <!-- Call to Action Moved Down -->
+    <p class="call-to-action">Click the words on the sides to explore</p>
   </div>
 
   <!-- Popup -->
