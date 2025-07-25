@@ -9,219 +9,114 @@
       margin: 0;
       font-family: Arial, sans-serif;
       display: flex;
-      flex-direction: row;
+      background-color: #f8f8f8;
     }
-
     .sidebar {
       position: fixed;
-      left: 0;
       top: 0;
-      bottom: 0;
+      left: 0;
       width: 180px;
-      background-color: #f5f5f5;
-      padding: 20px 10px;
-      overflow-y: auto;
-      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+      height: 100%;
+      background-color: #333;
+      color: white;
+      padding: 20px;
     }
-
-    .sidebar h3 {
-      font-size: 14px;
+    .sidebar h2 {
+      font-size: 18px;
       margin-bottom: 10px;
     }
-
     .sidebar ul {
       list-style: none;
       padding: 0;
-      margin: 0;
-      font-size: 13px;
     }
-
     .sidebar li {
-      margin-bottom: 8px;
-      cursor: pointer;
-      color: #0077cc;
+      margin: 10px 0;
     }
-
-    .sidebar li:hover {
-      text-decoration: underline;
-    }
-
     .content {
-      margin-left: 180px;
-      padding: 30px 20px;
-      width: 100%;
+      margin-left: 200px;
+      padding: 20px;
+      max-width: 600px;
+      margin-right: auto;
+      margin-left: auto;
     }
-
-    .title {
-      font-size: 24px;
-      font-weight: bold;
-      margin-bottom: 10px;
+    h1, h2 {
+      text-align: center;
     }
-
-    .mission {
-      font-size: 16px;
-      margin-bottom: 30px;
+    .section {
+      background: white;
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-
-    .button {
+    .cta {
+      display: block;
+      width: fit-content;
+      margin: 20px auto 0;
+      padding: 10px 20px;
       background-color: orange;
       color: white;
-      padding: 15px 25px;
-      font-size: 16px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
+      font-weight: bold;
       text-decoration: none;
-      display: inline-block;
+      border-radius: 5px;
+      text-align: center;
     }
-
-    .disclaimer {
-      margin-top: 20px;
+    footer {
+      text-align: center;
       font-size: 12px;
-      color: #666;
-      max-width: 300px;
-    }
-
-    .section {
-      margin-top: 40px;
-    }
-
-    .section h2 {
-      font-size: 20px;
-      color: #333;
-    }
-
-    .section p {
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    .section a {
-      display: inline-block;
-      margin-top: 10px;
-      font-size: 14px;
-      color: #0077cc;
-    }
-
-    @media (max-width: 768px) {
-      .sidebar {
-        display: none;
-      }
-
-      .content {
-        margin-left: 0;
-        padding: 20px 15px;
-      }
+      color: gray;
+      padding: 20px;
     }
   </style>
 </head>
 <body>
   <div class="sidebar">
-    <h3>Determinants</h3>
+    <h2>Fitness Keys</h2>
     <ul>
-      <li onclick="showSection('cardio')">Cardiovascular Endurance</li>
-      <li onclick="showSection('strength')">Muscular Strength</li>
-      <li onclick="showSection('endurance')">Muscular Endurance</li>
-      <li onclick="showSection('flexibility')">Flexibility</li>
-      <li onclick="showSection('body')">Body Composition</li>
-      <li onclick="showSection('balance')">Balance</li>
-      <li onclick="showSection('coordination')">Coordination</li>
-      <li onclick="showSection('agility')">Agility</li>
-      <li onclick="showSection('reaction')">Reaction Time</li>
-      <li onclick="showSection('speed')">Speed</li>
-      <li onclick="showSection('power')">Power</li>
+      <li>Endurance</li>
+      <li>Strength</li>
+      <li>Flexibility</li>
+      <li>Body Composition</li>
+      <li>Power</li>
     </ul>
   </div>
-
   <div class="content">
-    <div class="title">Motion Therapy</div>
-    <div class="mission">
-      My name is Etienne from Motion Therapy. I help people regain strength and mobility using simple tools.
-    </div>
-    <a class="button" href="https://www.amazon.ca/dp/B07NXDH9RQ?tag=motiontherapy-20" target="_blank">
-      Go on Amazon
-    </a>
-    <div class="disclaimer">
-      This website contains affiliate links. As an Amazon Associate, I earn from qualifying purchases, at no extra cost to you.
+    <h1>Motion Therapy</h1>
+    <p style="text-align:center;">My name is Étienne. I help people regain strength and mobility using simple tools.</p>
+
+    <div class="section" id="endurance">
+      <h2>Endurance</h2>
+      <p>Cardiovascular endurance is the ability of your heart, lungs, and blood vessels to supply oxygen to your muscles during prolonged activity. It’s the base of your vitality. If you want to climb stairs without getting winded, this is where it starts.</p>
+      <a class="cta" href="https://www.fiverr.com/s/e6jLxkY" target="_blank">Want me to build your endurance?</a>
     </div>
 
-    <!-- Sections dynamiques -->
-    <div id="cardio" class="section" style="display:none;">
-      <h2>Cardiovascular Endurance</h2>
-      <p>This component reflects the ability of the heart, lungs, and circulatory system to deliver oxygen to working muscles during sustained activity. A well-developed cardiovascular system improves stamina and reduces fatigue during daily activities.</p>
-      <a href="https://www.fiverr.com/s/e6jLxkY" target="_blank">Explore Motion Therapy on Fiverr</a>
+    <div class="section" id="strength">
+      <h2>Strength</h2>
+      <p>Muscular strength is your ability to generate tension against resistance. It lets you push, pull, lift. When you gain strength, you gain control over your body — and your life.</p>
+      <a class="cta" href="https://www.fiverr.com/s/e6jLxkY" target="_blank">Want help getting stronger?</a>
     </div>
 
-    <div id="strength" class="section" style="display:none;">
-      <h2>Muscular Strength</h2>
-      <p>Muscular strength is the maximum amount of force a muscle or group of muscles can exert. It is crucial for tasks that require lifting, pushing, or pulling, and plays a vital role in injury prevention and overall functionality.</p>
-      <a href="https://www.fiverr.com/s/e6jLxkY" target="_blank">Explore Motion Therapy on Fiverr</a>
-    </div>
-
-    <div id="endurance" class="section" style="display:none;">
-      <h2>Muscular Endurance</h2>
-      <p>This refers to the ability of a muscle or muscle group to perform repeated contractions over a period without fatigue. Essential for posture, injury prevention, and daily tasks like carrying groceries or walking up stairs.</p>
-      <a href="https://www.fiverr.com/s/e6jLxkY" target="_blank">Explore Motion Therapy on Fiverr</a>
-    </div>
-
-    <div id="flexibility" class="section" style="display:none;">
+    <div class="section" id="flexibility">
       <h2>Flexibility</h2>
-      <p>Flexibility is the range of motion around a joint. It allows for smooth and efficient movement, reduces the risk of injury, and enhances performance in both daily activities and sports.</p>
-      <a href="https://www.fiverr.com/s/e6jLxkY" target="_blank">Explore Motion Therapy on Fiverr</a>
+      <p>Flexibility is your ability to move easily through a full range of motion. It lowers your injury risk, improves posture, and makes every movement smoother.</p>
+      <a class="cta" href="https://www.fiverr.com/s/e6jLxkY" target="_blank">Want to improve your mobility with me?</a>
     </div>
 
-    <div id="body" class="section" style="display:none;">
+    <div class="section" id="bodycomp">
       <h2>Body Composition</h2>
-      <p>This refers to the ratio of fat to lean mass in the body. A healthy body composition enhances energy levels, physical performance, and long-term health.</p>
-      <a href="https://www.fiverr.com/s/e6jLxkY" target="_blank">Explore Motion Therapy on Fiverr</a>
+      <p>Body composition is the ratio between your fat mass and lean mass. It’s not about aesthetics — it’s a key marker of your metabolic health.</p>
+      <a class="cta" href="https://www.fiverr.com/s/e6jLxkY" target="_blank">Want to optimize your body composition?</a>
     </div>
 
-    <div id="balance" class="section" style="display:none;">
-      <h2>Balance</h2>
-      <p>Balance is the ability to maintain the body’s position, whether moving or stationary. It helps prevent falls and improves control and coordination during movement.</p>
-      <a href="https://www.fiverr.com/s/e6jLxkY" target="_blank">Explore Motion Therapy on Fiverr</a>
-    </div>
-
-    <div id="coordination" class="section" style="display:none;">
-      <h2>Coordination</h2>
-      <p>Coordination is the ability to use different parts of the body together smoothly and efficiently. It is essential for functional tasks and complex movements.</p>
-      <a href="https://www.fiverr.com/s/e6jLxkY" target="_blank">Explore Motion Therapy on Fiverr</a>
-    </div>
-
-    <div id="agility" class="section" style="display:none;">
-      <h2>Agility</h2>
-      <p>Agility is the capacity to move and change direction quickly while maintaining control. It’s vital in sports, but also helps prevent injuries in daily life.</p>
-      <a href="https://www.fiverr.com/s/e6jLxkY" target="_blank">Explore Motion Therapy on Fiverr</a>
-    </div>
-
-    <div id="reaction" class="section" style="display:none;">
-      <h2>Reaction Time</h2>
-      <p>Reaction time measures how quickly someone can respond to a stimulus. Improving it boosts safety, especially in dynamic environments like driving or sports.</p>
-      <a href="https://www.fiverr.com/s/e6jLxkY" target="_blank">Explore Motion Therapy on Fiverr</a>
-    </div>
-
-    <div id="speed" class="section" style="display:none;">
-      <h2>Speed</h2>
-      <p>Speed is the ability to perform a movement in a short period of time. It enhances athletic performance and efficiency in tasks requiring rapid execution.</p>
-      <a href="https://www.fiverr.com/s/e6jLxkY" target="_blank">Explore Motion Therapy on Fiverr</a>
-    </div>
-
-    <div id="power" class="section" style="display:none;">
+    <div class="section" id="power">
       <h2>Power</h2>
-      <p>Power combines strength and speed to produce explosive movements. It is essential for sports performance and functional tasks that require sudden force.</p>
-      <a href="https://www.fiverr.com/s/e6jLxkY" target="_blank">Explore Motion Therapy on Fiverr</a>
+      <p>Power is strength applied quickly. It helps you react fast, jump, strike, throw. It’s essential in sports — and for your sharpness in everyday life.</p>
+      <a class="cta" href="https://www.fiverr.com/s/e6jLxkY" target="_blank">Want me to help you develop your power?</a>
     </div>
-  </div>
 
-  <script>
-    function showSection(id) {
-      const sections = document.querySelectorAll('.section');
-      sections.forEach(section => {
-        section.style.display = 'none';
-      });
-      document.getElementById(id).style.display = 'block';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  </script>
+    <footer>
+      <p>Some links on this site are affiliate links. As an Amazon Associate, I earn from qualifying purchases.</p>
+    </footer>
+  </div>
 </body>
 </html>
