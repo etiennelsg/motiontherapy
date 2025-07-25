@@ -9,219 +9,144 @@
       margin: 0;
       font-family: sans-serif;
       display: flex;
-      background-color: #f4f4f4;
-    }
-
-    .sidebar, .sidebar-right {
-      width: 60px;
-      background-color: #ddd;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-top: 20px;
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      z-index: 10;
     }
 
     .sidebar {
-      left: 0;
-    }
-
-    .sidebar-right {
-      right: 0;
-    }
-
-    .sidebar div, .sidebar-right div {
-      margin: 20px 0;
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-      font-weight: bold;
-      cursor: pointer;
-      color: #1e3a8a;
-      transition: transform 0.2s ease;
-    }
-
-    .sidebar div:hover,
-    .sidebar-right div:hover {
-      transform: rotate(180deg) scale(1.35); /* Bigger zoom */
-    }
-
-    .main {
-      margin-left: 60px;
-      margin-right: 60px;
-      width: calc(100% - 120px);
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      width: 60px; /* Reduced from 70px */
+      background-color: #f4f4f4;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
-      min-height: 100vh;
+      padding-top: 40px;
+      overflow-y: auto;
+      z-index: 10;
+    }
+
+    .sidebar.right {
+      right: 0;
+    }
+
+    .section-button {
+      margin: 12px 0;
+      cursor: pointer;
+      transform: rotate(-90deg);
+      white-space: nowrap;
+      font-weight: bold;
+    }
+
+    .main-content {
+      margin: 0 auto;
+      padding: 120px 40px;
+      max-width: 600px;
       text-align: center;
-      padding: 80px 20px 40px 20px;
     }
 
     h1 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
+      font-size: 40px;
+      margin-bottom: 30px;
     }
 
-    p {
-      font-size: 1.2em;
-      max-width: 600px;
-      margin: 10px 0;
+    .content-section {
+      margin: 60px 0;
     }
 
-    .btn {
-      background-color: orange;
-      color: white;
-      padding: 15px 30px;
-      text-decoration: none;
-      font-size: 1.1em;
-      border-radius: 8px;
+    .fiverr-link {
       margin-top: 10px;
-      display: inline-block;
-    }
-
-    .disclaimer {
-      margin-top: 30px;
-      font-size: 0.9em;
-      color: #666;
-      max-width: 500px;
-    }
-
-    .call-to-action {
-      font-size: 0.95em;
-      color: #1e3a8a;
-      margin-top: 60px;
-    }
-
-    .popup {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: white;
-      padding: 30px;
-      border: 2px solid #999;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      z-index: 999;
-      text-align: center;
-      width: 80%;
-      max-width: 300px;
-    }
-
-    .popup h2 {
-      margin-top: 0;
-    }
-
-    .popup button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      background-color: orange;
-      color: white;
-      border: none;
-      border-radius: 6px;
+      display: block;
       font-weight: bold;
-      cursor: pointer;
+      text-decoration: none;
+      color: #fff;
+      background-color: orange;
+      padding: 10px 15px;
+      border-radius: 5px;
     }
 
-    .overlay {
+    .description-box {
       display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.3);
-      z-index: 998;
+      margin-top: 15px;
+      text-align: left;
+      background: #eaeaea;
+      padding: 15px;
+      border-radius: 8px;
+    }
+
+    .active .description-box {
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 50px;
+      }
+
+      .section-button {
+        font-size: 12px;
+      }
+
+      .main-content {
+        padding: 80px 20px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Left Sidebar -->
   <div class="sidebar">
-    <div onclick="showPopup('Strength')">Strength</div>
-    <div onclick="showPopup('Endurance')">Endurance</div>
-    <div onclick="showPopup('Flexibility')">Flexibility</div>
-    <div onclick="showPopup('Mobility')">Mobility</div>
-    <div onclick="showPopup('Stability')">Stability</div>
-    <div onclick="showPopup('Recovery')">Recovery</div>
-    <div onclick="showPopup('Balance')">Balance</div>
-    <div onclick="showPopup('Power')">Power</div>
-    <div onclick="showPopup('Breathing')">Breathing</div>
+    <div class="section-button" onclick="toggleSection('strength')">Strength</div>
+    <div class="section-button" onclick="toggleSection('endurance')">Endurance</div>
+    <div class="section-button" onclick="toggleSection('flexibility')">Flexibility</div>
+    <div class="section-button" onclick="toggleSection('mobility')">Mobility</div>
   </div>
 
-  <!-- Right Sidebar -->
-  <div class="sidebar-right">
-    <div onclick="showPopup('Nutrition')">Nutrition</div>
-    <div onclick="showPopup('Sleep')">Sleep</div>
-    <div onclick="showPopup('Hydration')">Hydration</div>
-    <div onclick="showPopup('Focus')">Focus</div>
-    <div onclick="showPopup('Posture')">Posture</div>
-    <div onclick="showPopup('Stress')">Stress</div>
-    <div onclick="showPopup('Digestion')">Digestion</div>
-    <div onclick="showPopup('Daily Movement')">Daily Movement</div>
-    <div onclick="showPopup('Rest')">Rest</div>
-  </div>
-
-  <!-- Main Content -->
-  <div class="main">
+  <div class="main-content">
     <h1>Motion Therapy</h1>
     <p>My name is Étienne. I help people regain strength and mobility using simple tools.</p>
-    <div style="font-size: 1.7rem; margin-top: 20px;">👇</div>
-    <a class="btn" href="https://www.amazon.ca/dp/B07NXDH9RQ?tag=motiontherapy-20" target="_blank">Go on Amazon</a>
-    <p class="disclaimer">As an Amazon Associate, I earn from qualifying purchases.</p>
+    <a class="fiverr-link" href="https://www.amazon.ca/dp/B07NXDH9RQ?tag=motiontherapy-20" target="_blank">Go on Amazon</a>
+   
+    <div id="strength" class="content-section">
+      <div class="description-box">
+        <strong>Strength:</strong> Muscle strength helps you perform daily tasks and prevents injury. Resistance bands, weights, and bodyweight exercises build it over time.
+        <br><br><a href="https://www.fiverr.com/s/e6jLxkY" target="_blank">Click here to get your plan</a>
+      </div>
+    </div>
 
-    <!-- Call to Action -->
-    <p class="call-to-action">Click the words on the sides to explore</p>
+    <div id="endurance" class="content-section">
+      <div class="description-box">
+        <strong>Endurance:</strong> Endurance boosts your cardiovascular and muscular ability to sustain activity over time. Walking, cycling, and swimming are great tools.
+        <br><br><a href="https://www.fiverr.com/s/e6jLxkY" target="_blank">Click here to get your plan</a>
+      </div>
+    </div>
+
+    <div id="flexibility" class="content-section">
+      <div class="description-box">
+        <strong>Flexibility:</strong> Stretching improves range of motion, posture, and circulation. Tools like yoga blocks and bands can help enhance your flexibility.
+        <br><br><a href="https://www.fiverr.com/s/e6jLxkY" target="_blank">Click here to get your plan</a>
+      </div>
+    </div>
+
+    <div id="mobility" class="content-section">
+      <div class="description-box">
+        <strong>Mobility:</strong> Joint mobility supports smooth, pain-free movement. Using massage balls, foam rollers, and dynamic stretches improves joint function.
+        <br><br><a href="https://www.fiverr.com/s/e6jLxkY" target="_blank">Click here to get your plan</a>
+      </div>
+    </div>
   </div>
 
-  <!-- Popup -->
-  <div class="overlay" id="overlay" onclick="closePopup()"></div>
-  <div class="popup" id="popup">
-    <h2 id="popup-title"></h2>
-    <p id="popup-description"></p>
-    <strong id="popup-motivation"></strong><br>
-    <button onclick="closePopup()">OK</button>
+  <div class="sidebar right">
+    <div class="section-button" onclick="toggleSection('stability')">Stability</div>
+    <div class="section-button" onclick="toggleSection('recovery')">Recovery</div>
+    <div class="section-button" onclick="toggleSection('balance')">Balance</div>
+    <div class="section-button" onclick="toggleSection('power')">Power</div>
+    <div class="section-button" onclick="toggleSection('breathing')">Breathing</div>
   </div>
 
   <script>
-    const descriptions = {
-      // Physique
-      Strength: ["Build the foundation that carries you through life.", "Powerful"],
-      Endurance: ["Push your limits — one breath, one step, one rep at a time.", "Relentless"],
-      Flexibility: ["Reclaim space in your body, reduce pain, and move freely.", "Fluid"],
-      Mobility: ["Movement is freedom — unlock your joints, unlock your life.", "Unchained"],
-      Stability: ["Control is strength. Anchor yourself before you leap.", "Grounded"],
-      Recovery: ["Growth happens in rest. Let your body rebuild stronger.", "Rebuild"],
-      Balance: ["Harmony between effort and ease — the body in stillness.", "Centered"],
-      Power: ["Explode with intention. Convert strength into speed.", "Explosive"],
-      Breathing: ["Everything begins with breath. Calm the mind, energize the body.", "Vital"],
-      // Hygiène de vie
-      Nutrition: ["Fuel your body with quality, not quantity.", "Nourish"],
-      Sleep: ["Deep rest builds sharpness, healing and strength.", "Recover"],
-      Hydration: ["Cells thrive when water flows.", "Replenish"],
-      Focus: ["Where attention goes, energy flows.", "Sharp"],
-      Posture: ["Align your frame, free your breath.", "Upright"],
-      Stress: ["Learn to shift from fight to flow.", "Calm"],
-      Digestion: ["The core of your energy lies in your gut.", "Absorb"],
-      "Daily Movement": ["A moving body stays young.", "Alive"],
-      Rest: ["Do less to become more.", "Reset"]
-    };
-
-    function showPopup(key) {
-      document.getElementById('popup-title').innerText = key;
-      document.getElementById('popup-description').innerText = descriptions[key][0];
-      document.getElementById('popup-motivation').innerText = descriptions[key][1];
-      document.getElementById('popup').style.display = 'block';
-      document.getElementById('overlay').style.display = 'block';
-    }
-
-    function closePopup() {
-      document.getElementById('popup').style.display = 'none';
-      document.getElementById('overlay').style.display = 'none';
+    function toggleSection(sectionId) {
+      const section = document.getElementById(sectionId);
+      section.classList.toggle('active');
     }
   </script>
 
