@@ -7,37 +7,58 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      padding: 2em;
-      background-color: #f8f8f8;
-      color: #333;
+      padding: 40px;
       text-align: center;
+      background-color: #ffffff;
     }
-    .button {
+
+    h1 {
+      font-size: 2.8rem;
+      color: #222;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #555;
+      max-width: 600px;
+      margin: 0 auto 30px;
+    }
+
+    .amazon-button {
       display: inline-block;
-      margin-top: 2em;
-      padding: 1em 2em;
-      font-size: 1.2em;
-      color: #fff;
-      background-color: #0073bb;
+      background-color: #FF9900;
+      color: white;
+      padding: 14px 28px;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
       text-decoration: none;
-      border-radius: 5px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
     }
-    .disclaimer {
-      margin-top: 1.5em;
-      font-size: 0.9em;
-      color: #777;
+
+    .amazon-button:hover {
+      background-color: #cc7a00;
+    }
+
+    .footer {
+      margin-top: 50px;
+      font-size: 0.9rem;
+      color: #888;
     }
   </style>
 </head>
 <body>
+
   <h1>Motion Therapy</h1>
   <p>My name is Etienne from Motion Therapy. I help people regain strength and mobility using simple tools.</p>
-  <p>One of the tools I recommend for self-massage and recovery is this high-quality massage ball:</p>
-  <a class="button" href="https://www.amazon.ca/dp/B07NXDH9RQ?tag=motiontherapy-20" target="_blank">
-    Buy the Massage Ball on Amazon
-  </a>
-  <p class="disclaimer">
-    As an Amazon Associate, I earn from qualifying purchases. This helps support my work at no extra cost to you.
-  </p>
+
+  <a href="https://www.amazon.ca/dp/B07NXDH9RQ?tag=motiontherapy-20" target="_blank" class="amazon-button">Go on Amazon</a>
+
+  <div class="footer">
+    <p>This page contains an affiliate link. If you make a purchase through it, I may earn a small commission — at no extra cost to you.</p>
+  </div>
+
 </body>
 </html>
