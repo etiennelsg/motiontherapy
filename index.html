@@ -1,51 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Motion Therapy</title>
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
+      display: flex;
+      height: 100vh;
       font-family: Arial, sans-serif;
+    }
+
+    .left-banner {
+      width: 60px;
+      background-color: #e0e0e0; /* Light gray banner */
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+    }
+
+    .main-content {
+      margin-left: 60px; /* Equal to banner width */
+      width: calc(100% - 60px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      padding: 100px 20px;
-      background-color: #f9f9f9;
+      padding: 20px;
     }
+
     h1 {
-      font-size: 2em;
-      margin-bottom: 10px;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
     }
+
     p {
-      font-size: 1em;
-      color: #444;
-      margin: 10px 0;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: #333;
     }
+
     .button {
-      display: inline-block;
-      background-color: #ffa41c;
+      background-color: orange;
       color: white;
+      border: none;
       padding: 12px 24px;
-      margin: 20px 0;
-      text-decoration: none;
-      font-weight: bold;
+      font-size: 1rem;
       border-radius: 6px;
-      transition: background-color 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+      margin-bottom: 1rem;
     }
-    .button:hover {
-      background-color: #cc8400;
-    }
+
     .disclaimer {
-      font-size: 0.8em;
-      color: #777;
-      margin-top: 10px;
+      font-size: 0.9rem;
+      color: gray;
     }
   </style>
 </head>
 <body>
-  <h1>Motion Therapy</h1>
-  <p>My name is Étienne. I help people regain strength and mobility using simple tools.</p>
-  <p>I recommend a tool that helps you recover faster and feel better:</p>
-  <a class="button" href="https://www.amazon.ca/dp/B07NXDH9RQ?tag=motiontherapy-20" target="_blank">Go on Amazon</a>
-  <p class="disclaimer">As an Amazon Associate, I earn from qualifying purchases.</p>
+  <div class="left-banner"></div>
+  <div class="main-content">
+    <h1>Motion Therapy</h1>
+    <p>My name is Étienne. I help people regain strength and mobility using simple tools.</p>
+    <p>I recommend a tool that helps you recover faster and feel better.</p>
+    <a class="button" href="https://www.amazon.ca/dp/B07NXDH9RQ?tag=motiontherapy-20" target="_blank">Go on Amazon</a>
+    <p class="disclaimer">As an Amazon Associate, I earn from qualifying purchases.</p>
+  </div>
 </body>
 </html>
