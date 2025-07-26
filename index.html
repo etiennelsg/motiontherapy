@@ -8,9 +8,6 @@
     body {
       margin: 0;
       font-family: sans-serif;
-      display: flex;
-      height: 100vh;
-      overflow: hidden;
       background-color: #f9f9f9;
     }
     .sidebar {
@@ -21,18 +18,15 @@
       align-items: center;
       padding-top: 10px;
       gap: 10px;
+      position: fixed;
+      top: 0;
+      bottom: 0;
     }
     .left {
-      position: fixed;
       left: 0;
-      top: 0;
-      bottom: 0;
     }
     .right {
-      position: fixed;
       right: 0;
-      top: 0;
-      bottom: 0;
     }
     .sidebar button {
       writing-mode: vertical-rl;
@@ -53,14 +47,10 @@
       background-color: #cce0ff;
     }
     .content {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 40px 20px 20px;
+      max-width: 500px;
+      margin: 40px auto 60px;
+      padding: 20px;
       text-align: center;
-      margin: 0 60px;
     }
     .content > * {
       margin-bottom: 16px;
@@ -157,7 +147,6 @@
     <p class="link-note">As an Amazon Associate, I earn from qualifying purchases.</p>
     <p class="explore-text">Click the words on the sides to explore</p>
 
-    <!-- Texte personnalisé ajouté -->
     <div style="margin-top: 20px; max-width: 400px; font-size: 14px; color: #333;">
       <p>
         I’m a certified kinesiologist based in Montreal. This massage ball is one of my go-to tools to help people relieve muscle tension, improve joint mobility, and reconnect with their body.
