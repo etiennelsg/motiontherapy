@@ -186,10 +186,12 @@
     document.getElementById("popup-text").innerText = text;
     document.getElementById("popup").style.display = "block";
     const boop = document.getElementById("boop-sound");
-    if (boop) {
-      boop.pause();
-      boop.currentTime = 0;
-      boop.play().catch(err => console.log("Audio error:", err));
+if (boop) {
+  boop.pause();
+  boop.currentTime = 0;
+  boop.play().catch(err => console.log("Erreur audio:", err));
+}
+
     }
   }
   function closePopup() {
