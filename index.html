@@ -2,189 +2,183 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Motion Therapy</title>
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
+      font-family: sans-serif;
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      background-color: #f9f9f9;
     }
-
-    .container {
-      text-align: center;
-      padding: 20px;
-      padding-bottom: 0;
-      max-width: 400px;
-    }
-
-    h1 {
-      font-size: 2em;
-      margin: 20px 0 10px 0;
-    }
-
-    .btn {
-      background-color: #ffa41c;
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 8px;
-      margin: 16px 0;
-    }
-
-    .btn:hover {
-      background-color: #ffb74d;
-      box-shadow: 0 0 10px #ffe680;
-    }
-
-    .side {
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      width: 40px;
+    .sidebar {
+      width: 60px;
       background-color: #e6f0ff;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      z-index: 1;
+      padding-top: 10px;
+      gap: 10px;
     }
-
     .left {
+      position: fixed;
       left: 0;
+      top: 0;
+      bottom: 0;
     }
-
     .right {
+      position: fixed;
       right: 0;
+      top: 0;
+      bottom: 0;
     }
-
-    .side span {
+    .sidebar button {
       writing-mode: vertical-rl;
       transform: rotate(180deg);
-      margin: 6px 0;
+      border: none;
+      background: none;
+      cursor: pointer;
       color: #0033cc;
       font-weight: bold;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-
-    .side span:hover {
-      color: #000066;
-      transform: scale(1.1) rotate(180deg);
-      background-color: #cce0ff;
-      padding: 2px;
-    }
-
-    .popup {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: white;
-      border: 2px solid #0033cc;
-      padding: 20px;
-      z-index: 10;
-      display: none;
-      animation: fadeIn 0.3s ease;
-    }
-
-    .popup button {
-      margin-top: 10px;
-      padding: 6px 14px;
       font-size: 14px;
-      background-color: #0033cc;
+      transition: transform 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+      border-radius: 6px;
+      padding: 2px 4px;
+    }
+    .sidebar button:hover {
+      transform: rotate(180deg) scale(1.2);
+      color: #000066;
+      background-color: #cce0ff;
+    }
+    .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 40px 20px 20px;
+      text-align: center;
+      margin: 0 60px;
+    }
+    .content > * {
+      margin-bottom: 16px;
+    }
+    .amazon-button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #ffa41c;
       color: white;
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      transition: background-color 0.2s ease, box-shadow 0.2s ease;
     }
-
+    .amazon-button:hover {
+      background-color: #ffb74d;
+      box-shadow: 0 0 10px #ffe680;
+    }
+    .link-note {
+      font-size: 14px;
+      color: #333;
+    }
+    .explore-text {
+      color: #0033cc;
+      font-weight: bold;
+    }
+    .popup {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #ffffff;
+      padding: 15px 20px;
+      border: 2px solid #0033cc;
+      border-radius: 6px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      display: none;
+      z-index: 100;
+      max-width: 80%;
+      font-size: 14px;
+      animation: fadeIn 0.3s ease-in-out;
+      text-align: center;
+    }
+    .popup button {
+      margin-top: 10px;
+      padding: 6px 14px;
+      border: none;
+      background-color: #0033cc;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .popup button:hover {
+      background-color: #000066;
+    }
     @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
+      from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+      to { opacity: 1; transform: translateX(-50%) translateY(0); }
     }
   </style>
 </head>
 <body>
-
-  <div class="side left">
-    <span onclick="showPopup('Strength')">Strength</span>
-    <span onclick="showPopup('Endurance')">Endurance</span>
-    <span onclick="showPopup('Flexibility')">Flexibility</span>
-    <span onclick="showPopup('Mobility')">Mobility</span>
-    <span onclick="showPopup('Stability')">Stability</span>
-    <span onclick="showPopup('Recovery')">Recovery</span>
-    <span onclick="showPopup('Balance')">Balance</span>
-    <span onclick="showPopup('Power')">Power</span>
-    <span onclick="showPopup('Breathing')">Breathing</span>
+  <div class="sidebar left">
+    <button onclick="showPopup('Strength is the foundation of movement. Build it wisely. Without a strong base, everything else collapses.')">Strength</button>
+    <button onclick="showPopup('Endurance keeps you going. It fuels resilience, stamina, and long-term performance.')">Endurance</button>
+    <button onclick="showPopup('Flexibility unlocks motion. It reduces injury and expands your movement potential.')">Flexibility</button>
+    <button onclick="showPopup('Mobility is controlled freedom. Strength and range combined.')">Mobility</button>
+    <button onclick="showPopup('Stability anchors motion. It protects your joints and posture.')">Stability</button>
+    <button onclick="showPopup('Recovery is where growth hides. Rest is not optional — it’s essential.')">Recovery</button>
+    <button onclick="showPopup('Balance integrates the whole system. Mind, body, and reflexes in sync.')">Balance</button>
+    <button onclick="showPopup('Power is speed plus strength. Explosiveness with control.')">Power</button>
+    <button onclick="showPopup('Breathing is your anchor. Master it to master your state.')">Breathing</button>
   </div>
 
-  <div class="side right">
-    <span onclick="showPopup('Posture')">Posture</span>
-    <span onclick="showPopup('Stress')">Stress</span>
-    <span onclick="showPopup('Digestion')">Digestion</span>
-    <span onclick="showPopup('Daily Movement')">Daily Movement</span>
-    <span onclick="showPopup('Rest')">Rest</span>
-    <span onclick="showPopup('Sleep')">Sleep</span>
-    <span onclick="showPopup('Hydration')">Hydration</span>
-    <span onclick="showPopup('Focus')">Focus</span>
-    <span onclick="showPopup('Nutrition')">Nutrition</span>
+  <div class="sidebar right">
+    <button onclick="showPopup('Nutrition fuels your system. Choose what builds you, not breaks you.')">Nutrition</button>
+    <button onclick="showPopup('Sleep resets everything. Brain, body, and recovery need it.')">Sleep</button>
+    <button onclick="showPopup('Hydration is invisible fuel. Every cell, every move needs it.')">Hydration</button>
+    <button onclick="showPopup('Focus directs energy. Point it with intention.')">Focus</button>
+    <button onclick="showPopup('Posture reveals your story. Stand like you matter.')">Posture</button>
+    <button onclick="showPopup('Stress is pressure. Learn to release, not accumulate.')">Stress</button>
+    <button onclick="showPopup('Digestion begins in the mind. Eat calm, eat slow.')">Digestion</button>
+    <button onclick="showPopup('Daily movement is life. Stagnation is the enemy.')">Daily Movement</button>
+    <button onclick="showPopup('Rest is strategic stillness. It makes action sustainable.')">Rest</button>
   </div>
 
-  <div class="container">
+  <div class="content">
     <h1>Motion Therapy</h1>
     <p>My name is Étienne. I help people regain strength and mobility using simple tools.</p>
-    <div style="font-size: 24px;">👇</div>
-    <a href="https://www.amazon.ca/dp/B08DKX37KR?tag=etiennekin01-20" target="_blank">
-      <button class="btn">Go on Amazon</button>
+    <div style="font-size: 30px;">👇</div>
+    <a href="https://www.amazon.ca/dp/B07NXDH9RQ?tag=tonID-20" target="_blank">
+      <button class="amazon-button">Go on Amazon</button>
     </a>
-    <p style="margin: 12px 0;">As an Amazon Associate, I earn from qualifying purchases.</p>
-    <p style="font-weight: bold; color: #0033cc;">Click the words on the sides to explore</p>
+    <p class="link-note">As an Amazon Associate, I earn from qualifying purchases.</p>
+    <p class="explore-text">Click the words on the sides to explore</p>
 
-    <p style="margin-top: 20px;">I’m a certified kinesiologist based in Montreal. This massage ball is one of my go-to tools to help people relieve muscle tension, improve joint mobility, and reconnect with their body.</p>
-    <p style="margin-bottom: 30px;">It’s small, easy to use, and doesn’t require any complicated technique — just targeted pressure where your body needs it most. Whether it’s for stiff shoulders, sore feet, or a tight back, this ball helps restore balance and comfort through simple, mindful movement.</p>
+    <!-- Texte personnalisé ajouté -->
+    <div style="margin-top: 20px; max-width: 400px; font-size: 14px; color: #333;">
+      <p>
+        I’m a certified kinesiologist based in Montreal. This massage ball is one of my go-to tools to help people relieve muscle tension, improve joint mobility, and reconnect with their body.
+      </p>
+      <p>
+        It’s small, easy to use, and doesn’t require any complicated technique — just targeted pressure where your body needs it most. Whether it's for stiff shoulders, sore feet, or a tight back, this ball helps restore balance and comfort through simple, mindful movement.
+      </p>
+    </div>
   </div>
 
-  <div id="popup" class="popup">
-    <div id="popup-content"></div>
-    <button onclick="hidePopup()">OK</button>
+  <div class="popup" id="popup">
+    <p id="popup-text"></p>
+    <button onclick="closePopup()">OK</button>
   </div>
 
   <script>
-    const popupDescriptions = {
-      "Strength": "Muscular strength allows you to lift, push, and carry loads efficiently. It builds confidence and physical autonomy.",
-      "Endurance": "Muscular and cardiovascular endurance help you sustain effort over time — from long walks to daily tasks.",
-      "Flexibility": "Flexibility lets your joints move freely and prevents injuries. A body that moves fully ages more gracefully.",
-      "Mobility": "Mobility is the combination of flexibility and control. It allows smooth, efficient, pain-free motion.",
-      "Stability": "Stability protects your joints and posture. It’s the foundation of safe and powerful movement.",
-      "Recovery": "Recovery includes rest, nutrition, and breath. It’s what allows your body to grow and stay resilient.",
-      "Balance": "Balance gives you control in motion and stillness. It’s essential for agility and fall prevention.",
-      "Power": "Power combines strength and speed. It’s what lets you jump, sprint, and react explosively.",
-      "Breathing": "Breathing well supports every other system. It fuels endurance, calm, and proper biomechanics.",
-      "Posture": "Posture reflects how you carry yourself. Improving it reduces pain and builds presence.",
-      "Stress": "Stress management is key to healing and performance. Learn to reset your nervous system.",
-      "Digestion": "Good digestion supports nutrient absorption and overall energy levels. The gut and brain are connected.",
-      "Daily Movement": "Regular movement counters sedentary effects. It’s more vital than the gym.",
-      "Rest": "Rest allows your systems to reset and your mind to integrate. It’s productive, not lazy.",
-      "Sleep": "Sleep is the master regulator. Deep rest supports repair, learning, hormones, and memory.",
-      "Hydration": "Hydration affects energy, joints, and cognition. Even 2% dehydration can reduce performance.",
-      "Focus": "Focus determines how well you learn, train, and recover. Remove clutter, regain clarity.",
-      "Nutrition": "Nutrition is your building block. Eat whole foods, colorful plants, and quality protein."
-    };
-
-    function showPopup(key) {
-      const popup = document.getElementById("popup");
-      const content = document.getElementById("popup-content");
-      content.innerHTML = "<strong>" + key + "</strong><br>" + popupDescriptions[key];
-      popup.style.display = "block";
+    function showPopup(text) {
+      document.getElementById("popup-text").innerText = text;
+      document.getElementById("popup").style.display = "block";
     }
-
-    function hidePopup() {
+    function closePopup() {
       document.getElementById("popup").style.display = "none";
     }
   </script>
