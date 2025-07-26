@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head> 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Motion Therapy</title>
@@ -11,32 +11,16 @@
       display: flex;
       height: 100vh;
       overflow: hidden;
-      background-color: #f9f9f9;
-    }
-    .letter {
-      position: absolute;
-      font-size: 20px;
-      opacity: 0;
-      animation: dropIn 1s ease forwards;
-    }
-    @keyframes dropIn {
-      0% {
-        transform: translateY(-100px);
-        opacity: 0;
-      }
-      100% {
-        transform: translateY(0);
-        opacity: 1;
-      }
+      background-color: #f4fafd;
     }
     .sidebar {
       width: 60px;
-      background-color: #e6f0ff;
+      background-color: #d9eaf7;
       display: flex;
       flex-direction: column;
       align-items: center;
       padding-top: 10px;
-      gap: 22px;
+      gap: 30px;
     }
     .left {
       position: fixed;
@@ -56,7 +40,7 @@
       border: none;
       background: none;
       cursor: pointer;
-      color: #0033cc;
+      color: #336699;
       font-weight: bold;
       font-size: 14px;
       transition: transform 0.2s ease, color 0.2s ease, background-color 0.2s ease;
@@ -64,9 +48,9 @@
       padding: 2px 4px;
     }
     .sidebar button:hover {
-      transform: rotate(180deg) scale(1.2);
+      transform: rotate(180deg) scale(1.4);
       color: #000066;
-      background-color: #cce0ff;
+      background-color: #b3d9ff;
     }
     .content {
       flex: 1;
@@ -100,7 +84,7 @@
       color: #333;
     }
     .explore-text {
-      color: #0033cc;
+      color: #336699;
       font-weight: bold;
       margin-bottom: 30px;
     }
@@ -111,7 +95,7 @@
       transform: translateX(-50%);
       background: #ffffff;
       padding: 15px 20px;
-      border: 2px solid #0033cc;
+      border: 2px solid #80bfff;
       border-radius: 6px;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
       display: none;
@@ -125,19 +109,13 @@
       margin-top: 10px;
       padding: 6px 14px;
       border: none;
-      background-color: #0033cc;
+      background-color: #336699;
       color: white;
       border-radius: 4px;
       cursor: pointer;
     }
     .popup button:hover {
       background-color: #000066;
-    }
-    .popup img {
-      width: 100%;
-      max-height: 200px;
-      margin-bottom: 10px;
-      border-radius: 4px;
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
@@ -146,13 +124,30 @@
   </style>
 </head>
 <body>
-  <div id="letterContainer"></div>
-  <div class="popup" id="popup">
-    <img id="popup-gif" src="" alt="exercise animation" />
-    <p id="popup-text"></p>
-    <button onclick="closePopup()">OK</button>
+  <div class="sidebar left">
+    <button onclick="showPopup('Strength is your ability to produce force. It’s the base of all movement — from lifting objects to getting up from a chair. Strong muscles protect your joints and support your posture.')">Strength</button>
+    <button onclick="showPopup('Endurance is your capacity to sustain effort over time. It helps you walk longer, recover faster, and go through your day without exhaustion.')">Endurance</button>
+    <button onclick="showPopup('Flexibility is how far your muscles can stretch. It prevents injuries, reduces stiffness, and helps you move freely and comfortably.')">Flexibility</button>
+    <button onclick="showPopup('Mobility combines strength and flexibility. It’s how well your joints move with control — like squatting, reaching, or twisting smoothly.')">Mobility</button>
+    <button onclick="showPopup('Stability keeps you steady during movement. It protects your spine and joints, especially when you change direction or balance.')">Stability</button>
+    <button onclick="showPopup('Recovery is the time your body uses to rebuild and grow. Quality rest, hydration, and active recovery help prevent injury and improve results.')">Recovery</button>
+    <button onclick="showPopup('Balance is your ability to stay upright and coordinated. It’s essential for walking, turning, and avoiding falls.')">Balance</button>
+    <button onclick="showPopup('Power is how quickly you can apply force. It’s used in jumping, sprinting, and reacting fast with strength and control.')">Power</button>
+    <button onclick="showPopup('Breathing affects your energy, focus, and calm. Deep, steady breaths help control your nervous system and support better movement.')">Breathing</button>
   </div>
-  <audio id="boop-sound" src="https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg" preload="auto"></audio>
+
+  <div class="sidebar right">
+    <button onclick="showPopup('Nutrition provides the fuel and building blocks your body needs. Eating well supports energy, healing, and long-term health.')">Nutrition</button>
+    <button onclick="showPopup('Sleep is when your body and brain recover. It helps your muscles rebuild, your mind stay clear, and your mood stay balanced.')">Sleep</button>
+    <button onclick="showPopup('Hydration keeps your cells working, joints lubricated, and temperature regulated. Drink water regularly to feel and perform better.')">Hydration</button>
+    <button onclick="showPopup('Focus is your ability to stay mentally present. It helps with learning, performance, and mindful movement.')">Focus</button>
+    <button onclick="showPopup('Posture is how you hold your body when sitting or standing. Good posture protects your spine, improves breathing, and boosts confidence.')">Posture</button>
+    <button onclick="showPopup('Stress becomes harmful when constant. Learning to manage tension through breath, movement, or rest protects your physical and mental health.')">Stress</button>
+    <button onclick="showPopup('Digestion starts with how you eat, not just what. Eating calmly and chewing well helps your body absorb nutrients and avoid discomfort.')">Digestion</button>
+    <button onclick="showPopup('Daily movement keeps your body alive and responsive. Even short walks or stretches help reduce pain, improve energy, and keep you mobile.To feel better, move more — health experts suggest aiming for at least 150 minutes of moderate activity each week.')">Daily Movement</button>
+    <button onclick="showPopup('Rest is planned pause. It allows the body and mind to integrate effort, avoid burnout, and maintain long-term progress.')">Rest</button>
+  </div>
+
   <div class="content">
     <h1>Motion Therapy</h1>
     <p>My name is Étienne. I help people regain strength and mobility using simple tools.</p>
@@ -162,67 +157,35 @@
     </a>
     <p class="link-note">As an Amazon Associate, I earn from qualifying purchases.</p>
     <p class="explore-text">Click the words on the sides to explore</p>
+
     <div style="margin-top: 110px; max-width: 400px; font-size: 14px; color: #333;">
-      <p>I'm a certified kinesiologist based in Montreal. I use simple, effective tools to help people reduce pain, improve mobility, and move with confidence.</p>
-      <p>This massage ball is compact and easy to use. With just a bit of targeted pressure, it helps release tension and restore natural movement in key areas like the back, shoulders, or feet.</p>
+      <p>
+        I’m a certified kinesiologist based in Montreal with a degree in kinesiology from the University of Montreal. This massage ball is one of my go-to tools to help people relieve muscle tension, improve joint mobility, and reconnect with their body.
+      </p>
+      <p>
+        It’s small, easy to use, and doesn’t require any complicated technique — just targeted pressure where your body needs it most. Whether it's for stiff shoulders, sore feet, or a tight back, this ball helps restore balance and comfort through simple, mindful movement.
+      </p>
     </div>
   </div>
-  <script>
-    const gifMap = {
-      "Strength": "https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif",
-      "Endurance": "https://media.giphy.com/media/3o6Zt481isNVuQI1l6/giphy.gif",
-      "Flexibility": "https://media.giphy.com/media/QBd2kLB5qDmysEXre9/giphy.gif",
-      "Mobility": "https://media.giphy.com/media/U7zvGByI4a1te/giphy.gif",
-      "Stability": "https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif",
-      "Recovery": "https://media.giphy.com/media/YTbZzCkRQCEJa/giphy.gif",
-      "Balance": "https://media.giphy.com/media/3o7TKMt1VVNkHV2PaE/giphy.gif",
-      "Power": "https://media.giphy.com/media/3oKIPtjElfqwMOTbH2/giphy.gif",
-      "Breathing": "https://media.giphy.com/media/3oEjHGrVGrqgFFknfO/giphy.gif",
-      "Nutrition": "https://media.giphy.com/media/LHZyixOnHwDDy/giphy.gif",
-      "Sleep": "https://media.giphy.com/media/3oEjHP8ELRNNlnlLGM/giphy.gif",
-      "Hydration": "https://media.giphy.com/media/l4FGuhL4U2WyjdkaY/giphy.gif",
-      "Focus": "https://media.giphy.com/media/3oKIPsx2VAYAgEHC12/giphy.gif",
-      "Posture": "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif",
-      "Stress": "https://media.giphy.com/media/5GoVLqeAOo6PK/giphy.gif",
-      "Digestion": "https://media.giphy.com/media/l41lGtw1YlzebJhtG/giphy.gif",
-      "Daily Movement": "https://media.giphy.com/media/3oEduSbSGpGaRX2Vri/giphy.gif",
-      "Rest": "https://media.giphy.com/media/3oKIPtjElfqwMOTbH2/giphy.gif"
-    };
 
+  <div class="popup" id="popup">
+    <p id="popup-text"></p>
+    <button onclick="closePopup()">OK</button>
+  </div>
+
+  <audio id="boop-sound" src="https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg" preload="auto"></audio>
+
+  <script>
     function showPopup(text) {
-      const word = Object.keys(gifMap).find(key => text.includes(key));
       document.getElementById("popup-text").innerText = text;
-      document.getElementById("popup-gif").src = gifMap[word] || "";
       document.getElementById("popup").style.display = "block";
       const boop = document.getElementById("boop-sound");
       boop.currentTime = 0;
       boop.play();
     }
-
     function closePopup() {
       document.getElementById("popup").style.display = "none";
     }
-
-    function animateTextRain(text, delay = 50) {
-      const container = document.getElementById("letterContainer");
-      container.innerHTML = "";
-      [...text].forEach((char, index) => {
-        const span = document.createElement("span");
-        span.textContent = char;
-        span.className = "letter";
-        span.style.left = `${10 + index * 14}px`;
-        span.style.top = `10px`;
-        span.style.animationDelay = `${index * delay}ms`;
-        container.appendChild(span);
-      });
-      setTimeout(() => {
-        container.style.display = 'none';
-      }, text.length * delay + 1000);
-    }
-
-    window.onload = () => {
-      animateTextRain("Motion Therapy");
-    };
   </script>
 </body>
 </html>
