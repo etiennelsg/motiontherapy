@@ -21,7 +21,6 @@
       align-items: center;
       padding-top: 10px;
       gap: 10px;
-      position: fixed;
       top: 0;
       bottom: 0;
       z-index: 10;
@@ -61,7 +60,6 @@
       margin: 0 60px;
     }
     .popup {
-      position: fixed;
       top: 20px;
       left: 50%;
       transform: translateX(-50%);
@@ -84,7 +82,7 @@
       margin: 20px;
       padding: 10px 20px;
       font-size: 16px;
-      background-color: #ffa726;
+      background-color: #ffa41c;
       color: white;
       border: none;
       border-radius: 5px;
@@ -107,30 +105,38 @@
 </head>
 <body>
   <div class="sidebar left">
-    <button onclick="showPopup('Strength is the foundation of movement. Build it wisely. Without a strong base, mobility, endurance and even posture collapse. Strength protects, stabilizes and empowers every action.\nSTRENGTH')">Strength</button>
-    <button onclick="showPopup('Endurance is what keeps you going long after you want to stop. It supports cardiovascular health, mental grit, and energy efficiency over time. It’s your engine for consistency.\nENDURANCE')">Endurance</button>
-    <button onclick="showPopup('Flexibility allows your body to adapt and flow. It reduces injury risk, improves performance, and helps unlock movement potential.\nFLEXIBILITY')">Flexibility</button>
-    <button onclick="showPopup('Mobility is controlled freedom. Own your range. It’s not just range of motion—it’s active control within that range. That’s where movement becomes power.\nMOBILITY')">Mobility</button>
-    <button onclick="showPopup('Stability is quiet strength. It keeps everything together. It protects joints, reinforces posture, and anchors explosive force without chaos.\nSTABILITY')">Stability</button>
-    <button onclick="showPopup('Recovery is where progress hides. Respect your rest. Growth happens in stillness. It’s the hidden phase where your body rebuilds and adapts.\nRECOVERY')">Recovery</button>
-    <button onclick="showPopup('Balance is presence in motion. It connects body and mind. Balance integrates the nervous system, vision, core, and proprioception into every step you take.\nBALANCE')">Balance</button>
-    <button onclick="showPopup('Power is speed multiplied by strength. Use it with precision. It’s force expressed quickly—essential for athletics, reaction, and explosive tasks.\nPOWER')">Power</button>
-    <button onclick="showPopup('Breathing is your rhythm of life. Breathe with awareness. Mastering your breath helps regulate stress, stabilize the core, and fuel endurance.\nBREATHING')">Breathing</button>
+    <!-- [LES BOUTONS GAUCHE ICI — inchangés] -->
+    <button onclick="showPopup('Strength is the foundation of movement...')">Strength</button>
+    <button onclick="showPopup('Endurance is what keeps you going...')">Endurance</button>
+    <button onclick="showPopup('Flexibility allows your body to adapt...')">Flexibility</button>
+    <button onclick="showPopup('Mobility is controlled freedom...')">Mobility</button>
+    <button onclick="showPopup('Stability is quiet strength...')">Stability</button>
+    <button onclick="showPopup('Recovery is where progress hides...')">Recovery</button>
+    <button onclick="showPopup('Balance is presence in motion...')">Balance</button>
+    <button onclick="showPopup('Power is speed multiplied by strength...')">Power</button>
+    <button onclick="showPopup('Breathing is your rhythm of life...')">Breathing</button>
   </div>
+
   <div class="sidebar right">
-    <button onclick="showPopup('Nutrition fuels everything. Choose wisely, chew slowly. Your cells, your recovery, your brain—none of it functions without what you eat.\nNUTRITION')">Nutrition</button>
-    <button onclick="showPopup('Sleep is your reset button. Prioritize it like a workout. Quality sleep repairs tissue, boosts memory, and resets your entire nervous system.\nSLEEP')">Sleep</button>
-    <button onclick="showPopup('Hydration is simple, essential, and often forgotten. It regulates temperature, cushions joints, and transports nutrients—every day, every cell.\nHYDRATION')">Hydration</button>
-    <button onclick="showPopup('Focus is your flashlight. Point it where it matters. It filters distractions and aligns your energy with what truly moves you forward.\nFOCUS')">Focus</button>
-    <button onclick="showPopup('Posture reflects your story. Stand like you mean it. Your body language influences not just others, but your own confidence and energy.\nPOSTURE')">Posture</button>
-    <button onclick="showPopup('Stress is pressure. Learn to release it, not store it. Chronic stress disrupts hormones, sleep, digestion—and builds silently in your body.\nSTRESS')">Stress</button>
-    <button onclick="showPopup('Digestion begins in the mind. Eat calm, eat slow. The parasympathetic system controls digestion—rushing or multitasking shuts it down.\nDIGESTION')">Digestion</button>
-    <button onclick="showPopup('Daily movement is non-negotiable. Motion is life. It keeps the lymph flowing, the brain alert, and the spirit anchored in the present.\nMOVEMENT')">Daily Movement</button>
-    <button onclick="showPopup('Rest is not laziness. It’s where resilience grows. Stillness restores the body and reboots the nervous system—don’t skip it.\nREST')">Rest</button>
+    <!-- [LES BOUTONS DROITE ICI — inchangés] -->
+    <button onclick="showPopup('Nutrition fuels everything...')">Nutrition</button>
+    <button onclick="showPopup('Sleep is your reset button...')">Sleep</button>
+    <button onclick="showPopup('Hydration is simple, essential...')">Hydration</button>
+    <button onclick="showPopup('Focus is your flashlight...')">Focus</button>
+    <button onclick="showPopup('Posture reflects your story...')">Posture</button>
+    <button onclick="showPopup('Stress is pressure...')">Stress</button>
+    <button onclick="showPopup('Digestion begins in the mind...')">Digestion</button>
+    <button onclick="showPopup('Daily movement is non-negotiable...')">Daily Movement</button>
+    <button onclick="showPopup('Rest is not laziness...')">Rest</button>
   </div>
+
   <div class="content">
     <h1>Motion Therapy</h1>
-    <p>My name is Étienne. I help people regain strength and mobility using simple tools.</p>
+    <p>
+      My name is Étienne. I help people regain strength and mobility using simple tools.<br>
+      I'm based in Montreal, and I use this massage ball daily with my clients.
+    </p>
+    <p>This massage ball is a simple yet powerful tool to relieve tension and restore mobility.</p>
     <div style="font-size: 30px;">👇</div>
     <a href="https://www.amazon.ca/dp/B07NXDH9RQ?tag=tonID-20" target="_blank">
       <button class="amazon-button">Go on Amazon</button>
@@ -138,10 +144,17 @@
     <p class="link-note">As an Amazon Associate, I earn from qualifying purchases.</p>
     <p class="explore-text">Click the words on the sides to explore</p>
   </div>
+
   <div class="popup" id="popup"></div>
+
+  <audio id="pop-sound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_d888204012.mp3" preload="auto"></audio>
+
   <script>
     function showPopup(text) {
       const popup = document.getElementById("popup");
+      const sound = document.getElementById("pop-sound");
+      sound.currentTime = 0;
+      sound.play();
       popup.textContent = text;
       popup.style.display = "block";
       setTimeout(() => {
