@@ -11,85 +11,76 @@
       background-color: #f9f9f9;
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
+      align-items: center;
     }
 
     .container {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 40px 20px 20px 20px;
       text-align: center;
-    }
-
-    .main-content {
-      max-width: 500px;
+      padding: 20px;
+      padding-bottom: 0;
+      max-width: 400px;
     }
 
     h1 {
-      margin-bottom: 10px;
+      font-size: 2em;
+      margin: 20px 0 10px 0;
     }
 
-    .amazon-button {
-      display: inline-block;
-      margin: 20px 0;
-      padding: 12px 24px;
+    .btn {
       background-color: #ffa41c;
       color: white;
-      font-weight: bold;
+      border: none;
+      padding: 12px 24px;
       font-size: 16px;
-      text-decoration: none;
-      border-radius: 6px;
-      transition: transform 0.2s ease, background-color 0.3s ease;
+      cursor: pointer;
+      border-radius: 8px;
+      margin: 16px 0;
     }
 
-    .amazon-button:hover {
+    .btn:hover {
       background-color: #ffb74d;
       box-shadow: 0 0 10px #ffe680;
-      transform: scale(1.05);
     }
 
-    .side-banner {
+    .side {
       position: fixed;
       top: 0;
       bottom: 0;
-      width: 60px;
+      width: 40px;
       background-color: #e6f0ff;
-      color: #0033cc;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      z-index: 10;
+      z-index: 1;
     }
 
-    .side-banner.left {
+    .left {
       left: 0;
     }
 
-    .side-banner.right {
+    .right {
       right: 0;
     }
 
-    .side-banner div {
+    .side span {
       writing-mode: vertical-rl;
       transform: rotate(180deg);
-      margin: 10px 0;
+      margin: 6px 0;
+      color: #0033cc;
+      font-weight: bold;
       cursor: pointer;
       transition: transform 0.2s;
     }
 
-    .side-banner div:hover {
+    .side span:hover {
       color: #000066;
-      transform: rotate(180deg) scale(1.1);
+      transform: scale(1.1) rotate(180deg);
       background-color: #cce0ff;
-      padding: 2px 6px;
-      border-radius: 4px;
+      padding: 2px;
     }
 
     .popup {
-      display: none;
       position: fixed;
       top: 50%;
       left: 50%;
@@ -97,83 +88,104 @@
       background: white;
       border: 2px solid #0033cc;
       padding: 20px;
-      max-width: 300px;
-      z-index: 100;
-      text-align: center;
+      z-index: 10;
+      display: none;
       animation: fadeIn 0.3s ease;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    .popup strong {
-      display: block;
-      margin-bottom: 10px;
-    }
-
-    .footer {
-      text-align: center;
+    .popup button {
+      margin-top: 10px;
+      padding: 6px 14px;
       font-size: 14px;
-      color: #444;
-      padding: 20px 10px;
+      background-color: #0033cc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
     }
   </style>
 </head>
 <body>
-  <audio id="click-sound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_1d247d76e1.mp3?filename=pop-94319.mp3" preload="auto"></audio>
 
-  <div class="side-banner left">
-    <div onclick="showPopup('Strength', 'Build foundational power for everyday movement.')">Strength</div>
-    <div onclick="showPopup('Endurance', 'Sustain your efforts longer with efficient energy systems.')">Endurance</div>
-    <div onclick="showPopup('Flexibility', 'Improve your range of motion and prevent injury.')">Flexibility</div>
-    <div onclick="showPopup('Mobility', 'Move freely with better joint control and coordination.')">Mobility</div>
-    <div onclick="showPopup('Stability', 'Control your posture and protect your spine.')">Stability</div>
+  <div class="side left">
+    <span onclick="showPopup('Strength')">Strength</span>
+    <span onclick="showPopup('Endurance')">Endurance</span>
+    <span onclick="showPopup('Flexibility')">Flexibility</span>
+    <span onclick="showPopup('Mobility')">Mobility</span>
+    <span onclick="showPopup('Stability')">Stability</span>
+    <span onclick="showPopup('Recovery')">Recovery</span>
+    <span onclick="showPopup('Balance')">Balance</span>
+    <span onclick="showPopup('Power')">Power</span>
+    <span onclick="showPopup('Breathing')">Breathing</span>
   </div>
 
-  <div class="side-banner right">
-    <div onclick="showPopup('Recovery', 'Accelerate healing and reduce soreness.')">Recovery</div>
-    <div onclick="showPopup('Balance', 'Enhance body control and spatial awareness.')">Balance</div>
-    <div onclick="showPopup('Power', 'Develop explosive strength for fast actions.')">Power</div>
-    <div onclick="showPopup('Breathing', 'Master your breath to improve performance and calm.')">Breathing</div>
+  <div class="side right">
+    <span onclick="showPopup('Posture')">Posture</span>
+    <span onclick="showPopup('Stress')">Stress</span>
+    <span onclick="showPopup('Digestion')">Digestion</span>
+    <span onclick="showPopup('Daily Movement')">Daily Movement</span>
+    <span onclick="showPopup('Rest')">Rest</span>
+    <span onclick="showPopup('Sleep')">Sleep</span>
+    <span onclick="showPopup('Hydration')">Hydration</span>
+    <span onclick="showPopup('Focus')">Focus</span>
+    <span onclick="showPopup('Nutrition')">Nutrition</span>
   </div>
 
   <div class="container">
-    <div class="main-content">
-      <h1>Motion Therapy</h1>
-      <p>My name is Étienne. I help people regain strength and mobility using simple tools.</p>
-      <p style="font-size: 24px;">👇</p>
-      <a class="amazon-button" href="https://www.amazon.ca/dp/B07NXDH9RQ?tag=tonID-20" target="_blank">Go on Amazon</a>
-      <p style="font-size: 13px; color: #333; margin-top: 10px;">
-        As an Amazon Associate, I earn from qualifying purchases.
-      </p>
-    </div>
+    <h1>Motion Therapy</h1>
+    <p>My name is Étienne. I help people regain strength and mobility using simple tools.</p>
+    <div style="font-size: 24px;">👇</div>
+    <a href="https://www.amazon.ca/dp/B08DKX37KR?tag=etiennekin01-20" target="_blank">
+      <button class="btn">Go on Amazon</button>
+    </a>
+    <p style="margin: 12px 0;">As an Amazon Associate, I earn from qualifying purchases.</p>
+    <p style="font-weight: bold; color: #0033cc;">Click the words on the sides to explore</p>
+
+    <p style="margin-top: 20px;">I’m a certified kinesiologist based in Montreal. This massage ball is one of my go-to tools to help people relieve muscle tension, improve joint mobility, and reconnect with their body.</p>
+    <p style="margin-bottom: 30px;">It’s small, easy to use, and doesn’t require any complicated technique — just targeted pressure where your body needs it most. Whether it’s for stiff shoulders, sore feet, or a tight back, this ball helps restore balance and comfort through simple, mindful movement.</p>
   </div>
 
-  <div class="footer">
-    As a certified kinesiologist based in Montreal, I recommend this massage ball as a simple tool to relieve muscle tension, release deep knots, and restore mobility—anywhere, anytime. According to Canadian guidelines, adults should get at least 150 minutes of moderate-to-vigorous aerobic activity each week, along with muscle-strengthening exercises on two or more days. Staying active and taking care of your recovery go hand in hand. 
-    <a href="https://csepguidelines.ca/" target="_blank" style="color: #0033cc;">(Source)</a>
-  </div>
-
-  <div id="popup" class="popup" onclick="hidePopup()">
-    <strong id="popup-title"></strong>
-    <span id="popup-text"></span>
+  <div id="popup" class="popup">
+    <div id="popup-content"></div>
+    <button onclick="hidePopup()">OK</button>
   </div>
 
   <script>
-    const sound = document.getElementById('click-sound');
+    const popupDescriptions = {
+      "Strength": "Muscular strength allows you to lift, push, and carry loads efficiently. It builds confidence and physical autonomy.",
+      "Endurance": "Muscular and cardiovascular endurance help you sustain effort over time — from long walks to daily tasks.",
+      "Flexibility": "Flexibility lets your joints move freely and prevents injuries. A body that moves fully ages more gracefully.",
+      "Mobility": "Mobility is the combination of flexibility and control. It allows smooth, efficient, pain-free motion.",
+      "Stability": "Stability protects your joints and posture. It’s the foundation of safe and powerful movement.",
+      "Recovery": "Recovery includes rest, nutrition, and breath. It’s what allows your body to grow and stay resilient.",
+      "Balance": "Balance gives you control in motion and stillness. It’s essential for agility and fall prevention.",
+      "Power": "Power combines strength and speed. It’s what lets you jump, sprint, and react explosively.",
+      "Breathing": "Breathing well supports every other system. It fuels endurance, calm, and proper biomechanics.",
+      "Posture": "Posture reflects how you carry yourself. Improving it reduces pain and builds presence.",
+      "Stress": "Stress management is key to healing and performance. Learn to reset your nervous system.",
+      "Digestion": "Good digestion supports nutrient absorption and overall energy levels. The gut and brain are connected.",
+      "Daily Movement": "Regular movement counters sedentary effects. It’s more vital than the gym.",
+      "Rest": "Rest allows your systems to reset and your mind to integrate. It’s productive, not lazy.",
+      "Sleep": "Sleep is the master regulator. Deep rest supports repair, learning, hormones, and memory.",
+      "Hydration": "Hydration affects energy, joints, and cognition. Even 2% dehydration can reduce performance.",
+      "Focus": "Focus determines how well you learn, train, and recover. Remove clutter, regain clarity.",
+      "Nutrition": "Nutrition is your building block. Eat whole foods, colorful plants, and quality protein."
+    };
 
-    function showPopup(title, text) {
-      document.getElementById('popup-title').innerText = title;
-      document.getElementById('popup-text').innerText = text;
-      document.getElementById('popup').style.display = 'block';
-      sound.currentTime = 0;
-      sound.play();
+    function showPopup(key) {
+      const popup = document.getElementById("popup");
+      const content = document.getElementById("popup-content");
+      content.innerHTML = "<strong>" + key + "</strong><br>" + popupDescriptions[key];
+      popup.style.display = "block";
     }
 
     function hidePopup() {
-      document.getElementById('popup').style.display = 'none';
+      document.getElementById("popup").style.display = "none";
     }
   </script>
 </body>
