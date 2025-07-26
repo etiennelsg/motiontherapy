@@ -173,31 +173,20 @@
     <button onclick="closePopup()">OK</button>
   </div>
 
- 
- <audio id="boop-sound" src="https://cdn.pixabay.com/download/audio/2022/10/31/audio_f8c17f9fbe.mp3?filename=water-drop-126203.mp3" preload="auto"></audio>
-
-
-
-
-
+  <!-- Boop sound -->
+  <audio id="boop-sound" src="https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg" preload="auto"></audio>
 
   <script>
-  function showPopup(text) {
-    document.getElementById("popup-text").innerText = text;
-    document.getElementById("popup").style.display = "block";
-    const boop = document.getElementById("boop-sound");
-if (boop) {
-  boop.pause();
-  boop.currentTime = 0;
-  boop.play().catch(err => console.log("Erreur audio:", err));
-}
-
+    function showPopup(text) {
+      document.getElementById("popup-text").innerText = text;
+      document.getElementById("popup").style.display = "block";
+      const boop = document.getElementById("boop-sound");
+      boop.currentTime = 0;
+      boop.play();
     }
-  }
-  function closePopup() {
-    document.getElementById("popup").style.display = "none";
-  }
-</script>
-
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+  </script>
 </body>
 </html>
