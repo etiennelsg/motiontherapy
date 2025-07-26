@@ -5,179 +5,171 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Motion Therapy</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-    body {
+    html, body {
       margin: 0;
-      font-family: sans-serif;
-      background-color: #f9f9f9;
+      padding: 0;
+      height: 100dvh;
       overflow: hidden;
+      background-color: #f9f9f9;
+      font-family: Arial, sans-serif;
     }
-    .sidebar {
-      width: 60px;
-      background-color: #e6f0ff;
+
+    .container {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-top: 10px;
-      gap: 10px;
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      z-index: 10;
+      height: 100%;
     }
-    .left {
-      left: 0;
-    }
-    .right {
-      right: 0;
-    }
-    .sidebar button {
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-      border: none;
-      background: none;
-      cursor: pointer;
+
+    .side-banner {
+      width: 48px;
+      background-color: #e6f0ff;
       color: #0033cc;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
       font-weight: bold;
-      font-size: 14px;
-      transition: transform 0.2s ease, color 0.2s ease, background-color 0.2s ease;
-      border-radius: 6px;
-      padding: 2px 4px;
-    }
-    .sidebar button:hover {
-      transform: rotate(180deg) scale(1.2);
-      color: #000066;
-      background-color: #cce0ff;
-    }
-    .content {
-      height: 100vh;
+      font-size: 13px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 20px;
-      text-align: center;
-      margin: 0 60px;
-      gap: 10px;
+      gap: 8px;
+      cursor: pointer;
     }
+
+    .side-banner:hover {
+      background-color: #cce0ff;
+    }
+
+    .main-section {
+      flex: 1;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin: 0;
+    }
+
+    p {
+      max-width: 320px;
+      margin: 10px 0;
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
     .amazon-button {
+      margin: 10px 0;
       padding: 10px 20px;
       font-size: 16px;
+      color: #fff;
       background-color: #ffa41c;
-      color: white;
       border: none;
-      border-radius: 5px;
+      border-radius: 6px;
       cursor: pointer;
-      transition: background-color 0.2s ease, box-shadow 0.2s ease;
     }
+
     .amazon-button:hover {
       background-color: #ffb74d;
       box-shadow: 0 0 10px #ffe680;
     }
-    .link-note {
-      font-size: 13px;
-      color: #333;
+
+    .description-section {
+      margin-top: 10px;
     }
-    .explore-text {
-      color: #0033cc;
-      font-weight: bold;
-      font-size: 14px;
-    }
-    .bio-text {
-      font-size: 13px;
-      max-width: 400px;
-      color: #333;
-      line-height: 1.4;
-    }
+
     .popup {
       position: fixed;
       top: 20px;
       left: 50%;
       transform: translateX(-50%);
       background: #ffffff;
-      padding: 15px 20px;
-      border: 2px solid #0033cc;
+      padding: 12px 18px;
+      border: 1px solid #0033cc;
       border-radius: 6px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-      display: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       z-index: 100;
-      max-width: 80%;
-      font-size: 14px;
-      animation: fadeIn 0.3s ease-in-out;
-      text-align: center;
+      max-width: 85%;
+      display: none;
     }
+
+    .popup.show {
+      display: block;
+    }
+
     .popup button {
-      margin-top: 10px;
-      padding: 6px 14px;
+      margin-top: 8px;
+      padding: 4px 12px;
       border: none;
       background-color: #0033cc;
       color: white;
       border-radius: 4px;
       cursor: pointer;
     }
+
     .popup button:hover {
       background-color: #000066;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
-      to { opacity: 1; transform: translateX(-50%) translateY(0); }
     }
   </style>
 </head>
 <body>
-  <div class="sidebar left">
-    <button onclick="showPopup('Strength is the foundation of movement. Build it wisely.')">Strength</button>
-    <button onclick="showPopup('Endurance keeps you going. Fuel it.')">Endurance</button>
-    <button onclick="showPopup('Flexibility unlocks motion. Flow with ease.')">Flexibility</button>
-    <button onclick="showPopup('Mobility is active range. Own it.')">Mobility</button>
-    <button onclick="showPopup('Stability protects. It’s your silent anchor.')">Stability</button>
-    <button onclick="showPopup('Recovery is when you grow. Respect it.')">Recovery</button>
-    <button onclick="showPopup('Balance connects everything. Train it.')">Balance</button>
-    <button onclick="showPopup('Power is strength in motion.')">Power</button>
-    <button onclick="showPopup('Breathing sets the rhythm.')">Breathing</button>
-  </div>
+  <div class="container">
+    <div class="side-banner">
+      <span onclick="showPopup('Strength is the foundation of movement. Build it wisely.')">Strength</span>
+      <span onclick="showPopup('Endurance sustains you. It’s your energy over time.')">Endurance</span>
+      <span onclick="showPopup('Flexibility prevents injury. It’s your freedom.')">Flexibility</span>
+      <span onclick="showPopup('Mobility is control within range. Own it.')">Mobility</span>
+      <span onclick="showPopup('Stability protects joints and posture.')">Stability</span>
+      <span onclick="showPopup('Recovery is where growth happens.')">Recovery</span>
+      <span onclick="showPopup('Balance integrates body and mind.')">Balance</span>
+      <span onclick="showPopup('Power is speed plus strength.')">Power</span>
+      <span onclick="showPopup('Breathing fuels endurance and calm.')">Breathing</span>
+    </div>
 
-  <div class="sidebar right">
-    <button onclick="showPopup('Nutrition fuels the system.')">Nutrition</button>
-    <button onclick="showPopup('Sleep resets the body.')">Sleep</button>
-    <button onclick="showPopup('Hydration keeps you alive.')">Hydration</button>
-    <button onclick="showPopup('Focus channels energy.')">Focus</button>
-    <button onclick="showPopup('Posture reflects mindset.')">Posture</button>
-    <button onclick="showPopup('Stress must be released.')">Stress</button>
-    <button onclick="showPopup('Digestion starts in calm.')">Digestion</button>
-    <button onclick="showPopup('Daily movement is non-negotiable.')">Daily Movement</button>
-    <button onclick="showPopup('Rest is powerful stillness.')">Rest</button>
-  </div>
+    <div class="main-section">
+      <h1>Motion Therapy</h1>
+      <p>My name is Étienne. I help people regain strength and mobility using simple tools.</p>
+      <div style="font-size: 24px;">👇</div>
+      <button class="amazon-button" onclick="window.open('https://www.amazon.ca/dp/B07T33KQG3', '_blank')">Go on Amazon</button>
+      <p style="color: #666; font-size: 14px;">As an Amazon Associate, I earn from qualifying purchases.</p>
+      <p style="color: #0033cc; font-weight: bold;">Click the words on the sides to explore</p>
+      <div class="description-section">
+        <p>I’m a certified kinesiologist based in Montreal. This massage ball is one of my go-to tools to help people relieve muscle tension, improve joint mobility, and reconnect with their body.</p>
+        <p>It’s small, easy to use, and doesn’t require any complicated technique — just targeted pressure where your body needs it most. Whether it's for stiff shoulders, sore feet, or a tight back, this ball helps restore balance and comfort through simple, mindful movement.</p>
+      </div>
+    </div>
 
-  <div class="content">
-    <h1>Motion Therapy</h1>
-    <p>My name is Étienne. I help people regain strength and mobility using simple tools.</p>
-    <div style="font-size: 30px;">👇</div>
-    <a href="https://www.amazon.ca/dp/B07NXDH9RQ?tag=tonID-20" target="_blank">
-      <button class="amazon-button">Go on Amazon</button>
-    </a>
-    <p class="link-note">As an Amazon Associate, I earn from qualifying purchases.</p>
-    <p class="explore-text">Click the words on the sides to explore</p>
-    <div class="bio-text">
-      <p>I’m a certified kinesiologist based in Montreal. This massage ball is one of my go-to tools to help people relieve muscle tension, improve joint mobility, and reconnect with their body.</p>
-      <p>It’s small, easy to use, and doesn’t require any complicated technique — just targeted pressure where your body needs it most. Whether it's for stiff shoulders, sore feet, or a tight back, this ball helps restore balance and comfort through simple, mindful movement.</p>
+    <div class="side-banner">
+      <span onclick="showPopup('Nutrition fuels every cell. Choose wisely.')">Nutrition</span>
+      <span onclick="showPopup('Sleep resets your entire system.')">Sleep</span>
+      <span onclick="showPopup('Hydration supports every function.')">Hydration</span>
+      <span onclick="showPopup('Focus drives results. Point it.')">Focus</span>
+      <span onclick="showPopup('Posture reflects your strength and intent.')">Posture</span>
+      <span onclick="showPopup('Stress accumulates. Learn to release.')">Stress</span>
+      <span onclick="showPopup('Digestion starts with calm eating.')">Digestion</span>
+      <span onclick="showPopup('Daily movement keeps you alive.')">Daily Movement</span>
+      <span onclick="showPopup('Rest is restoration. Never skip it.')">Rest</span>
     </div>
   </div>
 
   <div class="popup" id="popup">
-    <p id="popup-text"></p>
+    <div id="popup-text"></div>
     <button onclick="closePopup()">OK</button>
   </div>
 
   <script>
     function showPopup(text) {
-      document.getElementById("popup-text").innerText = text;
-      document.getElementById("popup").style.display = "block";
+      const popup = document.getElementById('popup');
+      const textBox = document.getElementById('popup-text');
+      textBox.innerText = text;
+      popup.classList.add('show');
     }
+
     function closePopup() {
-      document.getElementById("popup").style.display = "none";
+      document.getElementById('popup').classList.remove('show');
     }
   </script>
 </body>
