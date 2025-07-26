@@ -173,10 +173,16 @@
     <button onclick="closePopup()">OK</button>
   </div>
 
+  <!-- Boop sound -->
+  <audio id="boop-sound" src="https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg" preload="auto"></audio>
+
   <script>
     function showPopup(text) {
       document.getElementById("popup-text").innerText = text;
       document.getElementById("popup").style.display = "block";
+      const boop = document.getElementById("boop-sound");
+      boop.currentTime = 0;
+      boop.play();
     }
     function closePopup() {
       document.getElementById("popup").style.display = "none";
