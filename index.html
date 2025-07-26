@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Motion Therapy</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
       font-family: sans-serif;
-      display: flex;
-      height: 100vh;
-      overflow: hidden;
       background-color: #f9f9f9;
+      overflow: hidden;
     }
     .sidebar {
       width: 60px;
@@ -21,18 +22,16 @@
       align-items: center;
       padding-top: 10px;
       gap: 10px;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      z-index: 10;
     }
     .left {
-      position: fixed;
       left: 0;
-      top: 0;
-      bottom: 0;
     }
     .right {
-      position: fixed;
       right: 0;
-      top: 0;
-      bottom: 0;
     }
     .sidebar button {
       writing-mode: vertical-rl;
@@ -53,17 +52,15 @@
       background-color: #cce0ff;
     }
     .content {
-      flex: 1;
+      height: 100vh;
       display: flex;
       flex-direction: column;
+      justify-content: center;
       align-items: center;
-      justify-content: flex-start;
-      padding: 40px 20px 20px;
+      padding: 20px;
       text-align: center;
       margin: 0 60px;
-    }
-    .content > * {
-      margin-bottom: 16px;
+      gap: 10px;
     }
     .amazon-button {
       padding: 10px 20px;
@@ -80,12 +77,19 @@
       box-shadow: 0 0 10px #ffe680;
     }
     .link-note {
-      font-size: 14px;
+      font-size: 13px;
       color: #333;
     }
     .explore-text {
       color: #0033cc;
       font-weight: bold;
+      font-size: 14px;
+    }
+    .bio-text {
+      font-size: 13px;
+      max-width: 400px;
+      color: #333;
+      line-height: 1.4;
     }
     .popup {
       position: fixed;
@@ -124,27 +128,27 @@
 </head>
 <body>
   <div class="sidebar left">
-    <button onclick="showPopup('Strength is the foundation of movement. Build it wisely. Without a strong base, everything else collapses.')">Strength</button>
-    <button onclick="showPopup('Endurance keeps you going. It fuels resilience, stamina, and long-term performance.')">Endurance</button>
-    <button onclick="showPopup('Flexibility unlocks motion. It reduces injury and expands your movement potential.')">Flexibility</button>
-    <button onclick="showPopup('Mobility is controlled freedom. Strength and range combined.')">Mobility</button>
-    <button onclick="showPopup('Stability anchors motion. It protects your joints and posture.')">Stability</button>
-    <button onclick="showPopup('Recovery is where growth hides. Rest is not optional — it’s essential.')">Recovery</button>
-    <button onclick="showPopup('Balance integrates the whole system. Mind, body, and reflexes in sync.')">Balance</button>
-    <button onclick="showPopup('Power is speed plus strength. Explosiveness with control.')">Power</button>
-    <button onclick="showPopup('Breathing is your anchor. Master it to master your state.')">Breathing</button>
+    <button onclick="showPopup('Strength is the foundation of movement. Build it wisely.')">Strength</button>
+    <button onclick="showPopup('Endurance keeps you going. Fuel it.')">Endurance</button>
+    <button onclick="showPopup('Flexibility unlocks motion. Flow with ease.')">Flexibility</button>
+    <button onclick="showPopup('Mobility is active range. Own it.')">Mobility</button>
+    <button onclick="showPopup('Stability protects. It’s your silent anchor.')">Stability</button>
+    <button onclick="showPopup('Recovery is when you grow. Respect it.')">Recovery</button>
+    <button onclick="showPopup('Balance connects everything. Train it.')">Balance</button>
+    <button onclick="showPopup('Power is strength in motion.')">Power</button>
+    <button onclick="showPopup('Breathing sets the rhythm.')">Breathing</button>
   </div>
 
   <div class="sidebar right">
-    <button onclick="showPopup('Nutrition fuels your system. Choose what builds you, not breaks you.')">Nutrition</button>
-    <button onclick="showPopup('Sleep resets everything. Brain, body, and recovery need it.')">Sleep</button>
-    <button onclick="showPopup('Hydration is invisible fuel. Every cell, every move needs it.')">Hydration</button>
-    <button onclick="showPopup('Focus directs energy. Point it with intention.')">Focus</button>
-    <button onclick="showPopup('Posture reveals your story. Stand like you matter.')">Posture</button>
-    <button onclick="showPopup('Stress is pressure. Learn to release, not accumulate.')">Stress</button>
-    <button onclick="showPopup('Digestion begins in the mind. Eat calm, eat slow.')">Digestion</button>
-    <button onclick="showPopup('Daily movement is life. Stagnation is the enemy.')">Daily Movement</button>
-    <button onclick="showPopup('Rest is strategic stillness. It makes action sustainable.')">Rest</button>
+    <button onclick="showPopup('Nutrition fuels the system.')">Nutrition</button>
+    <button onclick="showPopup('Sleep resets the body.')">Sleep</button>
+    <button onclick="showPopup('Hydration keeps you alive.')">Hydration</button>
+    <button onclick="showPopup('Focus channels energy.')">Focus</button>
+    <button onclick="showPopup('Posture reflects mindset.')">Posture</button>
+    <button onclick="showPopup('Stress must be released.')">Stress</button>
+    <button onclick="showPopup('Digestion starts in calm.')">Digestion</button>
+    <button onclick="showPopup('Daily movement is non-negotiable.')">Daily Movement</button>
+    <button onclick="showPopup('Rest is powerful stillness.')">Rest</button>
   </div>
 
   <div class="content">
@@ -156,15 +160,9 @@
     </a>
     <p class="link-note">As an Amazon Associate, I earn from qualifying purchases.</p>
     <p class="explore-text">Click the words on the sides to explore</p>
-
-    <!-- Texte personnalisé ajouté -->
-    <div style="margin-top: 20px; max-width: 400px; font-size: 14px; color: #333;">
-      <p>
-        I’m a certified kinesiologist based in Montreal. This massage ball is one of my go-to tools to help people relieve muscle tension, improve joint mobility, and reconnect with their body.
-      </p>
-      <p>
-        It’s small, easy to use, and doesn’t require any complicated technique — just targeted pressure where your body needs it most. Whether it's for stiff shoulders, sore feet, or a tight back, this ball helps restore balance and comfort through simple, mindful movement.
-      </p>
+    <div class="bio-text">
+      <p>I’m a certified kinesiologist based in Montreal. This massage ball is one of my go-to tools to help people relieve muscle tension, improve joint mobility, and reconnect with their body.</p>
+      <p>It’s small, easy to use, and doesn’t require any complicated technique — just targeted pressure where your body needs it most. Whether it's for stiff shoulders, sore feet, or a tight back, this ball helps restore balance and comfort through simple, mindful movement.</p>
     </div>
   </div>
 
