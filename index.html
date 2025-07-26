@@ -125,11 +125,27 @@
 </head>
 <body>
   <div class="sidebar left">
-    <!-- Left sidebar buttons here -->
+    <button onclick="showPopup('Strength is your ability to produce force. It’s the base of all movement — from lifting objects to getting up from a chair. Strong muscles protect your joints and support your posture.')">Strength</button>
+    <button onclick="showPopup('Endurance is your capacity to sustain effort over time. It helps you walk longer, recover faster, and go through your day without exhaustion.')">Endurance</button>
+    <button onclick="showPopup('Flexibility is how far your muscles can stretch. It prevents injuries, reduces stiffness, and helps you move freely and comfortably.')">Flexibility</button>
+    <button onclick="showPopup('Mobility combines strength and flexibility. It’s how well your joints move with control — like squatting, reaching, or twisting smoothly.')">Mobility</button>
+    <button onclick="showPopup('Stability keeps you steady during movement. It protects your spine and joints, especially when you change direction or balance.')">Stability</button>
+    <button onclick="showPopup('Recovery is the time your body uses to rebuild and grow. Quality rest, hydration, and active recovery help prevent injury and improve results.')">Recovery</button>
+    <button onclick="showPopup('Balance is your ability to stay upright and coordinated. It’s essential for walking, turning, and avoiding falls.')">Balance</button>
+    <button onclick="showPopup('Power is how quickly you can apply force. It’s used in jumping, sprinting, and reacting fast with strength and control.')">Power</button>
+    <button onclick="showPopup('Breathing affects your energy, focus, and calm. Deep, steady breaths help control your nervous system and support better movement.')">Breathing</button>
   </div>
 
   <div class="sidebar right">
-    <!-- Right sidebar buttons here -->
+    <button onclick="showPopup('Nutrition provides the fuel and building blocks your body needs. Eating well supports energy, healing, and long-term health.')">Nutrition</button>
+    <button onclick="showPopup('Sleep is when your body and brain recover. It helps your muscles rebuild, your mind stay clear, and your mood stay balanced.')">Sleep</button>
+    <button onclick="showPopup('Hydration keeps your cells working, joints lubricated, and temperature regulated. Drink water regularly to feel and perform better.')">Hydration</button>
+    <button onclick="showPopup('Focus is your ability to stay mentally present. It helps with learning, performance, and mindful movement.')">Focus</button>
+    <button onclick="showPopup('Posture is how you hold your body when sitting or standing. Good posture protects your spine, improves breathing, and boosts confidence.')">Posture</button>
+    <button onclick="showPopup('Stress becomes harmful when constant. Learning to manage tension through breath, movement, or rest protects your physical and mental health.')">Stress</button>
+    <button onclick="showPopup('Digestion starts with how you eat, not just what. Eating calmly and chewing well helps your body absorb nutrients and avoid discomfort.')">Digestion</button>
+    <button onclick="showPopup('Daily movement keeps your body alive and responsive. Even short walks or stretches help reduce pain, improve energy, and keep you mobile.')">Daily Movement</button>
+    <button onclick="showPopup('Rest is planned pause. It allows the body and mind to integrate effort, avoid burnout, and maintain long-term progress.')">Rest</button>
   </div>
 
   <div class="content">
@@ -141,12 +157,13 @@
     </a>
     <p class="link-note">As an Amazon Associate, I earn from qualifying purchases.</p>
     <p class="explore-text">Click the words on the sides to explore</p>
+
     <div style="margin-top: 140px; max-width: 400px; font-size: 14px; color: #333;">
       <p>
         I’m a certified kinesiologist based in Montreal. This massage ball is one of my go-to tools to help people relieve muscle tension, improve joint mobility, and reconnect with their body.
       </p>
       <p>
-        It’s small, easy to use, and doesn’t require any complicated technique — just targeted pressure where your body needs it most.
+        It’s small, easy to use, and doesn’t require any complicated technique — just targeted pressure where your body needs it most. Whether it's for stiff shoulders, sore feet, or a tight back, this ball helps restore balance and comfort through simple, mindful movement.
       </p>
     </div>
   </div>
@@ -156,18 +173,16 @@
     <button onclick="closePopup()">OK</button>
   </div>
 
-  <audio id="boop-sound" src="https://cdn.pixabay.com/download/audio/2022/10/31/audio_f8c17f9fbe.mp3?filename=water-drop-126203.mp3" preload="auto"></audio>
+  <!-- Boop sound -->
+  <audio id="boop-sound" src="https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg" preload="auto"></audio>
 
   <script>
     function showPopup(text) {
       document.getElementById("popup-text").innerText = text;
       document.getElementById("popup").style.display = "block";
       const boop = document.getElementById("boop-sound");
-      if (boop) {
-        boop.pause();
-        boop.currentTime = 0;
-        boop.play().catch(err => console.log("Erreur audio :", err));
-      }
+      boop.currentTime = 0;
+      boop.play();
     }
     function closePopup() {
       document.getElementById("popup").style.display = "none";
