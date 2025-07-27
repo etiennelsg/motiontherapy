@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Motion Therapy</title>
   <style>
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      display: flex;
-      height: 100vh;
-      overflow: hidden;
-      background-color: #f4fafd;
-    }
+    body { 
+  margin: 0;
+  font-family: sans-serif;
+  display: block; /* ✅ Remplace "flex" pour laisser le contenu défiler naturellement */
+  background-color: #f4fafd;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
     .sidebar {
       width: 40px;
       background-color: #d9eaf7;
