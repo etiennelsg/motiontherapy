@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Motion Therapy</title>
   <style>
+    .content * {
+  white-space: nowrap;
+  font-size: clamp(8px, 2.5vw, 22px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
     body { 
       margin: 0;
       font-family: sans-serif;
@@ -51,16 +58,24 @@
     }
 
     .content {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 40px 20px 20px;
-      text-align: center;
-      margin: 0 20px;
-    }
-
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 40px 20px 20px;
+  text-align: center;
+  margin: 0 20px;
+  max-width: calc(100% - 80px); /* pour tenir entre les 2 sidebars */
+  box-sizing: border-box;
+}
+.content * {
+  white-space: nowrap;
+  font-size: clamp(8px, 2.5vw, 22px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
     .content > * {
       margin-bottom: 16px;
     }
