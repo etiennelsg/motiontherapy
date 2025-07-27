@@ -6,13 +6,14 @@
   <title>Motion Therapy</title>
   <style>
     body { 
-  margin: 0;
-  font-family: sans-serif;
-  display: block; /* ✅ Remplace "flex" pour laisser le contenu défiler naturellement */
-  background-color: #f4fafd;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #f4fafd;
+      overflow-x: hidden;
+      overflow-y: auto;
+      display: flex;
+    }
+
     .sidebar {
       width: 40px;
       background-color: #d9eaf7;
@@ -21,19 +22,9 @@
       align-items: center;
       padding-top: 10px;
       gap: 30px;
+      flex-shrink: 0;
     }
-    .left {
-      position: fixed;
-      left: 0;
-      top: 0;
-      bottom: 0;
-    }
-    .right {
-      position: fixed;
-      right: 0;
-      top: 0;
-      bottom: 0;
-    }
+
     .sidebar button {
       writing-mode: vertical-rl;
       transform: rotate(180deg);
@@ -47,11 +38,13 @@
       border-radius: 6px;
       padding: 2px 4px;
     }
+
     .sidebar button:hover {
       transform: rotate(180deg) scale(1.4);
       color: #000066;
       background-color: #b3d9ff;
     }
+
     .content {
       flex: 1;
       display: flex;
@@ -60,11 +53,13 @@
       justify-content: flex-start;
       padding: 40px 20px 20px;
       text-align: center;
-      margin: 0 60px;
+      margin: 0 20px;
     }
+
     .content > * {
       margin-bottom: 16px;
     }
+
     .amazon-button {
       padding: 10px 20px;
       font-size: 16px;
@@ -75,19 +70,23 @@
       cursor: pointer;
       transition: background-color 0.2s ease, box-shadow 0.2s ease;
     }
+
     .amazon-button:hover {
       background-color: #ffb74d;
       box-shadow: 0 0 10px #ffe680;
     }
+
     .link-note {
       font-size: 9px;
       color: #333;
     }
+
     .explore-text {
       color: #336699;
       font-weight: bold;
       margin-bottom: 30px;
     }
+
     .popup {
       position: fixed;
       top: 20px;
@@ -105,6 +104,7 @@
       animation: fadeIn 0.3s ease-in-out;
       text-align: center;
     }
+
     .popup button {
       margin-top: 10px;
       padding: 6px 14px;
@@ -114,9 +114,11 @@
       border-radius: 4px;
       cursor: pointer;
     }
+
     .popup button:hover {
       background-color: #000066;
     }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
       to { opacity: 1; transform: translateX(-50%) translateY(0); }
@@ -124,7 +126,7 @@
   </style>
 </head>
 <body>
-  <div class="sidebar left">
+  <div class="sidebar">
     <button onclick="showPopup('Strength is your ability to produce force. It’s the base of all movement — from lifting objects to getting up from a chair. Strong muscles protect your joints and support your posture.')">Strength</button>
     <button onclick="showPopup('Endurance is your capacity to sustain effort over time. It helps you walk longer, recover faster, and go through your day without exhaustion.')">Endurance</button>
     <button onclick="showPopup('Flexibility is how far your muscles can stretch. It prevents injuries, reduces stiffness, and helps you move freely and comfortably.')">Flexibility</button>
@@ -136,18 +138,6 @@
     <button onclick="showPopup('Breathing affects your energy, focus, and calm. Deep, steady breaths help control your nervous system and support better movement.')">Breathing</button>
   </div>
 
-  <div class="sidebar right">
-    <button onclick="showPopup('Nutrition provides the fuel and building blocks your body needs. Eating well supports energy, healing, and long-term health.')">Nutrition</button>
-    <button onclick="showPopup('Sleep is when your body and brain recover. It helps your muscles rebuild, your mind stay clear, and your mood stay balanced.')">Sleep</button>
-    <button onclick="showPopup('Hydration keeps your cells working, joints lubricated, and temperature regulated. Drink water regularly to feel and perform better.')">Hydration</button>
-    <button onclick="showPopup('Focus is your ability to stay mentally present. It helps with learning, performance, and mindful movement.')">Focus</button>
-    <button onclick="showPopup('Posture is how you hold your body when sitting or standing. Good posture protects your spine, improves breathing, and boosts confidence.')">Posture</button>
-    <button onclick="showPopup('Stress becomes harmful when constant. Learning to manage tension through breath, movement, or rest protects your physical and mental health.')">Stress</button>
-    <button onclick="showPopup('Digestion starts with how you eat, not just what. Eating calmly and chewing well helps your body absorb nutrients and avoid discomfort.')">Digestion</button>
-    <button onclick="showPopup('Daily movement keeps your body alive and responsive. Even short walks or stretches help reduce pain, improve energy, and keep you mobile.To feel better, move more — health experts suggest aiming for at least 150 minutes of moderate activity each week.')">Daily Movement</button>
-    <button onclick="showPopup('Rest is planned pause. It allows the body and mind to integrate effort, avoid burnout, and maintain long-term progress.')">Rest</button>
-  </div>
-
   <div class="content">
     <h1>Motion Therapy</h1>
     <p>My name is Étienne. I help people regain strength and mobility using simple tools.</p>
@@ -156,18 +146,29 @@
       <button class="amazon-button">Go on Amazon</button>
     </a>
     <p class="link-note">As an Amazon Associate, I earn from qualifying purchases.</p>
-   <div style="margin-top: 110px; max-width: 400px; font-size: 14px; color: #333;">
-  <p class="explore-text">
-    <span style="color: #0033cc;">&#8592;</span> Click the words on the sides to explore <span style="color: #0033cc;">&#8594;</span>
-  </p>
-  <p>
-    I’m a certified kinesiologist based in Montreal with a degree in kinesiology from the University of Montreal. This massage ball is one of my go-to tools to help people relieve muscle tension, improve joint mobility and reconnect with their body.
-  </p>
-
+    <div style="margin-top: 110px; max-width: 400px; font-size: 14px; color: #333;">
+      <p class="explore-text">
+        <span style="color: #0033cc;">&#8592;</span> Click the words on the sides to explore <span style="color: #0033cc;">&#8594;</span>
+      </p>
+      <p>
+        I’m a certified kinesiologist based in Montreal with a degree in kinesiology from the University of Montreal. This massage ball is one of my go-to tools to help people relieve muscle tension, improve joint mobility and reconnect with their body.
+      </p>
       <p>
         It’s small, easy to use, and doesn’t require any complicated technique — just targeted pressure where your body needs it most. Whether it's for stiff shoulders, sore feet, or a tight back, this ball helps restore balance and comfort through simple, mindful movement.
       </p>
     </div>
+  </div>
+
+  <div class="sidebar">
+    <button onclick="showPopup('Nutrition provides the fuel and building blocks your body needs. Eating well supports energy, healing, and long-term health.')">Nutrition</button>
+    <button onclick="showPopup('Sleep is when your body and brain recover. It helps your muscles rebuild, your mind stay clear, and your mood stay balanced.')">Sleep</button>
+    <button onclick="showPopup('Hydration keeps your cells working, joints lubricated, and temperature regulated. Drink water regularly to feel and perform better.')">Hydration</button>
+    <button onclick="showPopup('Focus is your ability to stay mentally present. It helps with learning, performance, and mindful movement.')">Focus</button>
+    <button onclick="showPopup('Posture is how you hold your body when sitting or standing. Good posture protects your spine, improves breathing, and boosts confidence.')">Posture</button>
+    <button onclick="showPopup('Stress becomes harmful when constant. Learning to manage tension through breath, movement, or rest protects your physical and mental health.')">Stress</button>
+    <button onclick="showPopup('Digestion starts with how you eat, not just what. Eating calmly and chewing well helps your body absorb nutrients and avoid discomfort.')">Digestion</button>
+    <button onclick="showPopup('Daily movement keeps your body alive and responsive. Even short walks or stretches help reduce pain, improve energy, and keep you mobile. To feel better, move more — health experts suggest aiming for at least 150 minutes of moderate activity each week.')">Daily Movement</button>
+    <button onclick="showPopup('Rest is planned pause. It allows the body and mind to integrate effort, avoid burnout, and maintain long-term progress.')">Rest</button>
   </div>
 
   <div class="popup" id="popup">
