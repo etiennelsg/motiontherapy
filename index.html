@@ -232,9 +232,8 @@
 </script>
 
 <footer style="
-  position: fixed;
+  position: relative;
   bottom: 0;
-  left: 0;
   width: 100%;
   background-color: #e6f0ff;
   text-align: center;
@@ -242,7 +241,7 @@
   font-size: 13px;
   color: #333;
   border-top: 1px solid #0033cc;
-  z-index: 999;">
+  z-index: 1;">
   
   <div>
     <a href="#" onclick="showContactForm(); return false;" style="color: #0033cc; margin: 0 10px;">Contact Me</a> | 
@@ -250,11 +249,11 @@
     <a href="#" onclick="showProductPopup(); return false;" style="color: #0033cc; margin: 0 10px;">Other Products</a> | 
 
     <a href="#" onclick="showPopup('About Me section coming soon.'); return false;" style="color: #0033cc; margin: 0 10px;">About Me</a>
-
   </div>
 
   <div style="margin-top: 5px;">&copy; 2025</div>
 </footer>
+
 
 <!-- POPUP POUR OTHER PRODUCTS AVEC X -->
 <div id="product-popup" style="
