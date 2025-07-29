@@ -36,18 +36,27 @@
     }
 
     .sidebar button {
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-      border: none;
-      background: none;
-      cursor: pointer;
-      color: #336699;
-      font-weight: bold;
-      font-size: 14px;
-      transition: transform 0.2s ease, color 0.2s ease, background-color 0.2s ease;
-      border-radius: 6px;
-      padding: 2px 4px;
-      word-spacing: 8px;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #336699;
+  font-weight: bold;
+  font-size: 16px;
+  transition: all 0.2s ease-in-out;
+  border-radius: 6px;
+  padding: 10px 6px;
+  word-spacing: 8px;
+}
+
+.sidebar button:hover {
+  transform: rotate(180deg) scale(1.1);
+  color: #000066;
+  background-color: #d0e7ff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
     
     }
 
