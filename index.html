@@ -293,8 +293,12 @@
 
 <script>
   function showProductPopup() {
-    document.getElementById("product-popup").style.display = "block";
-  }
+  document.getElementById("product-popup").style.display = "block";
+  const boop = document.getElementById("boop-sound");
+  boop.currentTime = 0;
+  boop.play();
+}
+
   function closeProductPopup() {
     document.getElementById("product-popup").style.display = "none";
   }
@@ -304,8 +308,12 @@
   }
 
   function showContactForm() {
-    document.getElementById("contact-form-popup").style.display = "block";
-  }
+  document.getElementById("contact-form-popup").style.display = "block";
+  const boop = document.getElementById("boop-sound");
+  boop.currentTime = 0;
+  boop.play();
+}
+
 </script>
 
 
