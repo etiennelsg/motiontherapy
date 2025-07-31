@@ -173,6 +173,11 @@
       from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
       to { opacity: 1; transform: translateX(-50%) translateY(0); }
     }
+
+    .menu button.active {
+      background-color: #f0f0f0;
+      font-weight: bold;
+    }
   </style>
 <body>
 <header>
@@ -195,23 +200,22 @@
 </header>
 
 <div class="menu" id="menu">
-  <button class="close-menu-button" onclick="toggleMenu()">×</button>
-  <button onclick="showPopup('Strength')">Strength</button>
-  <button onclick="showPopup('Endurance')">Endurance</button>
-  <button onclick="showPopup('Flexibility')">Flexibility</button>
-  <button onclick="showPopup('Mobility')">Mobility</button>
-  <button onclick="showPopup('Stability')">Stability</button>
-  <button onclick="showPopup('Recovery')">Recovery</button>
-  <button onclick="showPopup('Balance')">Balance</button>
-  <button onclick="showPopup('Power')">Power</button>
-  <button onclick="showPopup('Breathing')">Breathing</button>
-  <button onclick="showPopup('Daily Movement')">Daily Movement</button>
+  <button class="close-menu-button" onclick="toggleMenu()">◀</button>
+  <button onclick="highlight(this); showPopup('Strength')">Strength</button>
+  <button onclick="highlight(this); showPopup('Endurance')">Endurance</button>
+  <button onclick="highlight(this); showPopup('Flexibility')">Flexibility</button>
+  <button onclick="highlight(this); showPopup('Mobility')">Mobility</button>
+  <button onclick="highlight(this); showPopup('Stability')">Stability</button>
+  <button onclick="highlight(this); showPopup('Recovery')">Recovery</button>
+  <button onclick="highlight(this); showPopup('Balance')">Balance</button>
+  <button onclick="highlight(this); showPopup('Power')">Power</button>
+  <button onclick="highlight(this); showPopup('Breathing')">Breathing</button>
+  <button onclick="highlight(this); showPopup('Daily Movement')">Daily Movement</button>
 </div>
 
 <div class="content">
   <p class="description" style="margin-bottom: 60px;">Built by certified kinesiologists, Motion Therapy brings together simple tools and expert insights to help you move better and recover faster.</p>
   <p style="font-size: 1.1rem; color: #333; margin-bottom: 18px; font-weight: 600;">🔥 See our top pick of the week</p>
-
   <button class="amazon-button" onclick="window.open('https://www.amazon.ca/', '_blank')">Go on Amazon</button>
   <p style="margin-top: 8px; font-size: 0.75rem; color: #999;">
     As an Amazon Associate, we earn from qualifying purchases.
@@ -246,6 +250,11 @@
       const boop = document.getElementById("boop-sound");
       boop.currentTime = 0;
       boop.play();
+    };
+
+    window.highlight = function (el) {
+      document.querySelectorAll(".menu button").forEach(btn => btn.classList.remove("active"));
+      el.classList.add("active");
     };
   });
 </script>
