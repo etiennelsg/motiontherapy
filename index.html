@@ -218,19 +218,24 @@
 <audio id="boop-sound" src="https://cdn.pixabay.com/download/audio/2023/03/15/audio_d0b5cd8370.mp3?filename=ui-button-click-2-183602.mp3" preload="auto"></audio>
 
 <script>
-  function toggleMenu() {
-    document.getElementById("menu").classList.toggle("open");
-  }
+  document.addEventListener("DOMContentLoaded", function () {
+    const menu = document.getElementById("menu");
+    const toggle = document.querySelector(".menu-toggle");
+    toggle.addEventListener("click", function () {
+      menu.classList.toggle("open");
+    });
 
-  function showPopup(text) {
-    const popupText = document.getElementById("popup-text");
     const popup = document.getElementById("popup");
-    popupText.innerHTML = text;
-    popup.style.display = "block";
+    const popupText = document.getElementById("popup-text");
     const boop = document.getElementById("boop-sound");
-    boop.currentTime = 0;
-    boop.play();
-  }
+
+    window.showPopup = function (text) {
+      popupText.innerHTML = text;
+      popup.style.display = "block";
+      boop.currentTime = 0;
+      boop.play();
+    };
+  });
 </script>
 </body>
 </html>
