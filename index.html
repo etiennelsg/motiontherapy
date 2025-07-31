@@ -124,6 +124,28 @@
       background-color: #000;
     }
 
+    footer {
+      background-color: #ffffff;
+      padding: 20px;
+      text-align: center;
+      border-top: 1px solid #e0e0e0;
+    }
+
+    .footer-button {
+      margin: 0 10px;
+      padding: 10px 20px;
+      background-color: #1a1a1a;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .footer-button:hover {
+      background-color: #333;
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
       to { opacity: 1; transform: translateX(-50%) translateY(0); }
@@ -158,6 +180,11 @@
   <div id="popup-text"></div>
   <button onclick="document.getElementById('popup').style.display='none'">Close</button>
 </div>
+
+<footer>
+  <button class="footer-button" onclick="alert('Contact page coming soon.')">Contact Me</button>
+  <button class="footer-button" onclick="alert('About us content coming soon.')">About Us</button>
+</footer>
 
 <audio id="boop-sound" src="https://cdn.pixabay.com/download/audio/2023/03/15/audio_d0b5cd8370.mp3?filename=ui-button-click-2-183602.mp3" preload="auto"></audio>
 
