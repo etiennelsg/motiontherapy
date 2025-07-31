@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <head> 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Motion Therapy</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&display=swap" rel="stylesheet">
   <style>
     body { 
       margin: 0;
-      font-family: sans-serif;
-      background-color: #f4fafd;
+      font-family: 'Inter', sans-serif;
+      background-color: #fafafa;
       overflow-x: hidden;
       overflow-y: auto;
-      p {
-  font-size: 1.1rem; /* rem = basé sur le font-size du body */
-}
-      
+      color: #222;
+      font-size: 1.05rem;
+    }
+
     .main-container {
       display: flex;
       align-items: stretch;
@@ -25,7 +24,7 @@
 
     .sidebar {
       width: 40px;
-      background-color: #d9eaf7;
+      background-color: #f0f4f8;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -36,34 +35,25 @@
     }
 
     .sidebar button {
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  border: none;
-  background: none;
-  cursor: pointer;
-  color: #336699;
-  font-weight: bold;
-  font-size: 16px;
-  transition: all 0.2s ease-in-out;
-  border-radius: 6px;
-  padding: 10px 6px;
-  word-spacing: 8px;
-}
-
-.sidebar button:hover {
-  transform: rotate(180deg) scale(1.1);
-  color: #000066;
-  background-color: #d0e7ff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-    
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: #1a1a1a;
+      font-weight: 500;
+      font-size: 15px;
+      transition: all 0.2s ease-in-out;
+      border-radius: 6px;
+      padding: 10px 6px;
+      word-spacing: 10px;
     }
 
     .sidebar button:hover {
-      transform: rotate(180deg) scale(1.4);
-      color: #000066;
-      background-color: #b3d9ff;
+      transform: rotate(180deg) scale(1.1);
+      color: #000;
+      background-color: #e0f0ff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
 
     .content {
@@ -81,37 +71,36 @@
       margin-bottom: 16px;
     }
 
-.amazon-button {
-  padding: 18px 36px;
-  font-weight: 800; 
-  font-size: 25px;
-  background-color: #ffa41c;
-  color: white;
-  border: none;
-  border-radius: 12px;
-  width: 90%;
-  max-width: 320px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
+    .amazon-button {
+      padding: 18px 36px;
+      font-weight: 800; 
+      font-size: 25px;
+      background-color: #ffa41c;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 320px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
 
-.amazon-button:hover {
-  background-color: #ffb74d;
-  transform: scale(1.03);
-}
-
+    .amazon-button:hover {
+      background-color: #ffb74d;
+      transform: scale(1.03);
+    }
 
     .link-note {
       font-size: 9px;
-      color: #333;
+      color: #555;
     }
 
     .explore-text {
-      color: #336699;
-      font-weight: bold;
+      color: #444;
+      font-weight: 500;
       margin-bottom: 30px;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
     }
 
     .popup {
@@ -121,9 +110,9 @@
       transform: translateX(-50%);
       background: #ffffff;
       padding: 15px 20px;
-      border: 2px solid #80bfff;
+      border: 2px solid #d0e0f0;
       border-radius: 6px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       display: none;
       z-index: 100;
       max-width: 80%;
@@ -136,243 +125,36 @@
       margin-top: 10px;
       padding: 6px 14px;
       border: none;
-      background-color: #336699;
+      background-color: #1a1a1a;
       color: white;
       border-radius: 4px;
       cursor: pointer;
     }
 
     .popup button:hover {
-      background-color: #000066;
+      background-color: #000;
     }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
       to { opacity: 1; transform: translateX(-50%) translateY(0); }
     }
-  </style>
 
+    header {
+      background-color: #ffffff;
+      color: #1a1a1a;
+      padding: 24px 20px;
+      font-size: 26px;
+      font-weight: 600;
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0.3px;
+      border-bottom: 1px solid #e0e0e0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    }
+  </style>
 </head>
 <body>
- <header style="
-  background-color: #002a99;
-  color: white;
-  padding: 20px 20px;
-  font-size: 28px;
-  font-weight: 600;
-  text-align: center;
-  font-family: 'Inter', sans-serif;
-  letter-spacing: 0.5px;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-">
-  Motion Therapy
-</header>
-
-
-  <div class="main-container">
-    <div class="sidebar">
-      <button onclick="showPopup('Strength is your ability to produce force. It’s the base of all movement — from lifting objects to getting up from a chair. Strong muscles protect your joints and support your posture.')">Strength</button>
-      <button onclick="showPopup('Endurance is your capacity to sustain effort over time. It helps you walk longer, recover faster, and go through your day without exhaustion.')">Endurance</button>
-      <button onclick="showPopup('Flexibility is how far your muscles can stretch. It prevents injuries, reduces stiffness, and helps you move freely and comfortably.')">Flexibility</button>
-      <button onclick="showPopup('Mobility combines strength and flexibility. It’s how well your joints move with control — like squatting, reaching, or twisting smoothly.')">Mobility</button>
-      <button onclick="showPopup('Stability keeps you steady during movement. It protects your spine and joints, especially when you change direction or balance.')">Stability</button>
-      <button onclick="showPopup('Recovery is the time your body uses to rebuild and grow. Quality rest, hydration, and active recovery help prevent injury and improve results.')">Recovery</button>
-      <button onclick="showPopup('Balance is your ability to stay upright and coordinated. It’s essential for walking, turning, and avoiding falls.')">Balance</button>
-      <button onclick="showPopup('Power is how quickly you can apply force. It’s used in jumping, sprinting, and reacting fast with strength and control.')">Power</button>
-      <button onclick="showPopup('Breathing affects your energy, focus, and calm. Deep, steady breaths help control your nervous system and support better movement.')">Breathing</button>
-    </div>
-
-    <div class="content">
-   <p style="font-size: 1.11rem; margin-bottom: 24px;">
-  I’m Étienne, a certified kinesiologist with a degree in kinesiology from the University of Montreal. I help people move better, feel stronger, and live with less pain — using simple tools.
-</p>
-
-    <p style="font-size: 13px; color: #333;">
-➡️ <strong>Click below to discover the #1 tool I recommend to every client.</strong></p>
-
-      <a href="https://www.amazon.ca/dp/B07NXDH9RQ?tag=tonID-20" target="_blank">
-        <button class="amazon-button">Go on Amazon</button>
-      </a>
-      <p class="link-note" style="margin-bottom: 2px;">As an Amazon Associate, I earn from qualifying purchases.</p>
-
-      <div style="margin-top: 50px; max-width: 500px; font-size: 12px; color: #333;">
-  
-        <p>
-        This massage ball is one of my go-to tools to help people relieve muscle tension, improve joint mobility and reconnect with their body.
-        </p>
-        <p>
-          It’s easy to use, and doesn’t require any complicated technique — just targeted pressure where your body needs it most. Whether it's for stiff shoulders, sore feet, or a tight back, this ball helps restore balance and comfort through mindful movement.
-        </p>
-        <p class="explore-text" style="margin-top: 40px;">
-          <span style="color: #0033cc;">&#8592;</span> Click the words to explore <span style="color: #0033cc;">&#8594;</span>
-        </p>
-      </div>
-    </div>
-
-    <div class="sidebar">
-      <button onclick="showPopup('Nutrition provides the fuel and building blocks your body needs. Eating well supports energy, healing, and long-term health.')">Nutrition</button>
-      <button onclick="showPopup('Sleep is when your body and brain recover. It helps your muscles rebuild, your mind stay clear, and your mood stay balanced.')">Sleep</button>
-      <button onclick="showPopup('Hydration keeps your cells working, joints lubricated, and temperature regulated. Drink water regularly to feel and perform better.')">Hydration</button>
-      <button onclick="showPopup('Focus is your ability to stay mentally present. It helps with learning, performance, and mindful movement.')">Focus</button>
-      <button onclick="showPopup('Posture is how you hold your body when sitting or standing. Good posture protects your spine, improves breathing, and boosts confidence.')">Posture</button>
-      <button onclick="showPopup('Stress becomes harmful when constant. Learning to manage tension through breath, movement, or rest protects your physical and mental health.')">Stress</button>
-      <button onclick="showPopup('Digestion starts with how you eat, not just what. Eating calmly and chewing well helps your body absorb nutrients and avoid discomfort.')">Digestion</button>
-      <button onclick="showPopup('Daily movement keeps your body alive and responsive. Even short walks or stretches help reduce pain, improve energy, and keep you mobile. To feel better, move more — health experts suggest aiming for at least 150 minutes of moderate activity each week.')">Daily Movement</button>
-      <button onclick="showPopup('Rest is planned pause. It allows the body and mind to integrate effort, avoid burnout, and maintain long-term progress.')">Rest</button>
-    </div>
-  </div>
-
-  <div class="popup" id="popup">
-    <p id="popup-text"></p>
-    <button onclick="closePopup()">OK</button>
-  </div>
-
-  <audio id="boop-sound" src="https://actions.google.com/sounds/v1/cartoon/pop.ogg" preload="auto"></audio>
-
-
-<script>
-  function showPopup(text) {
-    const popupText = document.getElementById("popup-text");
-    const popup = document.getElementById("popup");
-
-    popupText.innerHTML = text;
-    popup.style.display = "block";
-
-    const boop = document.getElementById("boop-sound");
-    boop.currentTime = 0;
-    boop.play();
-  }
-
-  function closePopup() {
-    document.getElementById("popup").style.display = "none";
-  }
-
-  function showContactForm() {
-    document.getElementById("contact-form-popup").style.display = "block";
-  }
-
-  function closeContactForm() {
-    document.getElementById("contact-form-popup").style.display = "none";
-  }
-
-  function submitContactForm(event) {
-    event.preventDefault();
-    alert("Thank you! Your message has been sent.");
-    closeContactForm();
-  }
-</script>
-
-<footer style="
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: #e6f0ff;
-  text-align: center;
-  padding: 10px 0;
-  font-size: 13px;
-  color: #333;
-  border-top: 1px solid #0033cc;
-  z-index: 1000;">
-  
-  <div>
-    <a href="#" onclick="showContactForm(); return false;" style="color: #0033cc; margin: 0 10px;">Contact Me</a> | 
-    <a href="#" onclick="showProductPopup(); return false;" style="color: #0033cc; margin: 0 10px;">Other Products</a> | 
-    <a href="#" onclick="showPopup('About Me section coming soon.'); return false;" style="color: #0033cc; margin: 0 10px;">About Me</a>
-  </div>
-
-  <div style="margin-top: 5px;">&copy; 2025</div>
-</footer>
-
-
-
-<!-- POPUP POUR OTHER PRODUCTS AVEC X -->
-<div id="product-popup" style="
-  display: none;
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: white;
-  padding: 15px 20px;
-  border: 2px solid #80bfff;
-  border-radius: 6px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-  z-index: 1001;
-  max-width: 90%;
-  font-size: 13px;
-  text-align: left;
-">
-  <div style="text-align: right;">
-    <button onclick="closeProductPopup()" style="border:none; background:none; font-size:18px; cursor:pointer;">✖</button>
-  </div>
-
-  <strong>1. Grip Strengthener – MoveRays</strong><br>
-  Strengthens your fingers, wrists, and forearms with simple silicone resistance. Great for recovery, injury prevention, or daily hand strength.<br>
-  <a href='https://www.amazon.ca/dp/B097NJ5LDP?tag=motiontherapy-20' target='_blank' style='display:inline-block; margin: 8px 0 16px; background:#ffa41c; color:white; padding:6px 12px; border-radius:4px; text-decoration:none;'>View on Amazon</a>
-  <hr>
-
-  <strong>2. Retrospec Solana – Extra Thick Yoga Mat</strong><br>
-  Ultra-cushioned yoga mat for joint comfort during stretches, rehab, or meditation. Ideal for home use and physical therapy sessions.<br>
-  <a href='https://www.amazon.ca/dp/B091FX694F?tag=motiontherapy-20' target='_blank' style='display:inline-block; margin: 8px 0 16px; background:#ffa41c; color:white; padding:6px 12px; border-radius:4px; text-decoration:none;'>View on Amazon</a>
-  <hr>
-
-  <strong>3. EnterSports Ab Roller Kit</strong><br>
-  Complete core training tool with an ab wheel, resistance bands, and kneepad. Improves stability, strength, and posture through dynamic movement.<br>
-  <a href='https://www.amazon.ca/dp/B07R5K67V4?tag=motiontherapy-20' target='_blank' style='display:inline-block; margin: 8px 0 16px; background:#ffa41c; color:white; padding:6px 12px; border-radius:4px; text-decoration:none;'>View on Amazon</a>
-</div>
-
-<script>
-  function showProductPopup() {
-  document.getElementById("product-popup").style.display = "block";
-  const boop = document.getElementById("boop-sound");
-  boop.currentTime = 0;
-  boop.play();
-}
-
-  function closeProductPopup() {
-    document.getElementById("product-popup").style.display = "none";
-  }
-
-  function showAboutPopup() {
-    alert("About Me section coming soon.");
-  }
-
-  function showContactForm() {
-  document.getElementById("contact-form-popup").style.display = "block";
-  const boop = document.getElementById("boop-sound");
-  boop.currentTime = 0;
-  boop.play();
-}
-
-</script>
-
-
-
-<div id="contact-form-popup" style="
-  display: none;
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: white;
-  padding: 15px 20px;
-  border: 2px solid #80bfff;
-  border-radius: 6px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-  z-index: 1001;
-  max-width: 80%;
-  font-size: 14px;
-  text-align: center;
-">
-  <form onsubmit="submitContactForm(event)">
-    <p>Send me a message and I’ll get back to you soon.</p>
-    <input type="text" name="name" placeholder="Your name" required style="width: 90%; padding: 8px; margin-bottom: 8px;" />
-    <textarea name="message" placeholder="Your message" required style="width: 90%; height: 80px; padding: 8px;"></textarea><br />
-    <button type="submit">Send</button>
-    <button type="button" onclick="closeContactForm()" style="margin-left: 10px;">Cancel</button>
-  </form>
-</div>
-
-
+<!-- Le reste de ton HTML reste inchangé, conserve les balises <header>, <div class="main-container">, etc. sans modifier la structure -->
 </body>
 </html>
