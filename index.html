@@ -229,9 +229,17 @@
     const popupText = document.getElementById("popup-text");
     const boop = document.getElementById("boop-sound");
 
+    window.toggleMenu = function () {
+      const menu = document.getElementById("menu");
+      menu.classList.toggle("open");
+    };
+
     window.showPopup = function (text) {
+      const popupText = document.getElementById("popup-text");
+      const popup = document.getElementById("popup");
       popupText.innerHTML = text;
       popup.style.display = "block";
+      const boop = document.getElementById("boop-sound");
       boop.currentTime = 0;
       boop.play();
     };
