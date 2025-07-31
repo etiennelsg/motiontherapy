@@ -72,6 +72,15 @@
       text-align: center;
     }
 
+    .content p.description {
+      margin-bottom: 30px;
+      font-size: 1.05rem;
+      color: #333;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     .amazon-button {
       padding: 18px 36px;
       font-weight: 800;
@@ -146,22 +155,9 @@
       background-color: #333;
     }
 
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeUp 0.6s ease-out forwards;
-    }
-
     @keyframes fadeIn {
       from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
       to { opacity: 1; transform: translateX(-50%) translateY(0); }
-    }
-
-    @keyframes fadeUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
   </style>
 </head>
@@ -185,17 +181,10 @@
 </div>
 
 <div class="content">
-  <div class="fade-in" style="max-width: 500px; margin: 0 auto 40px; text-align: center;">
-    <p style="font-size: 1.2rem; font-weight: 700; color: #1a1a1a; margin-bottom: 6px;">
-      🔥 Our Top Pick of the Week
-    </p>
-    <p style="font-size: 1.05rem; color: #444; margin-bottom: 24px;">
-      Small, simple, and surprisingly effective — the tool that keeps us moving.
-    </p>
-    <p style="font-size: 0.95rem; color: #666; margin-bottom: 30px;">
-      Trusted by pros. Chosen by us. Ready when you are. ⬇️
-    </p>
-  </div>
+  <p class="description">Built by certified kinesiologists, Motion Therapy brings together simple tools and expert insights to help you move better and recover faster.</p>
+
+  <p style="font-size: 1.1rem; color: #333; margin-bottom: 4px; font-weight: 600;">Our top pick of the week</p>
+  <p style="font-size: 1.05rem; color: #333; margin-bottom: 18px;">Small, simple, and surprisingly effective — the tool that keeps us moving. ⬇️</p>
 
   <button class="amazon-button" onclick="window.open('https://www.amazon.ca/', '_blank')">Go on Amazon</button>
   <p style="margin-top: 8px; font-size: 0.75rem; color: #999;">
