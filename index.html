@@ -47,7 +47,7 @@
       transform: translateX(-100%);
       transition: transform 0.3s ease;
       padding: 20px 20px 60px;
-      z-index: 100;
+      z-index: 1000;
     }
 
     .menu.open {
@@ -66,6 +66,18 @@
       text-align: left;
       cursor: pointer;
       border-bottom: 1px solid #eee;
+    }
+
+    .close-menu-button {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: #666;
+      cursor: pointer;
+      z-index: 1001;
     }
 
     .content {
@@ -182,7 +194,7 @@
 </header>
 
 <div class="menu" id="menu">
-  <button onclick="toggleMenu()" style="position: absolute; top: 20px; right: 16px; background: none; border: none; font-size: 24px; color: #666; cursor: pointer;">&lt;</button>
+  <button class="close-menu-button" onclick="toggleMenu()">&lt;</button>
   <button onclick="showPopup('Strength')">Strength</button>
   <button onclick="showPopup('Endurance')">Endurance</button>
   <button onclick="showPopup('Flexibility')">Flexibility</button>
@@ -220,10 +232,8 @@
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const menu = document.getElementById("menu");
-    
 
     window.toggleMenu = function () {
-      const menu = document.getElementById("menu");
       menu.classList.toggle("open");
     };
 
