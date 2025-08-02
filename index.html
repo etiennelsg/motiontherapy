@@ -29,6 +29,7 @@
       background-color: #f9f9f9;
       padding: 16px 12px;
       border-bottom: 1px solid #ddd;
+      flex-wrap: wrap;
     }
 
     nav a {
@@ -40,7 +41,9 @@
       height: 64px;
       text-decoration: none;
       color: #1a1a1a;
-      background-color: #ffffff;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 0, 0, 0.05);
       border-radius: 50%;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -50,8 +53,8 @@
     }
 
     nav a:hover {
-      transform: scale(1.1);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
     }
 
     section {
