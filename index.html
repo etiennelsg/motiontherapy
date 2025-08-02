@@ -36,19 +36,21 @@
       background: none;
     }
 
-    .menu {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 240px;
-      height: 100vh;
-      background-color: #ffffff;
-      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-      transform: translateX(-100%);
-      transition: transform 0.3s ease;
-      padding: 60px 20px 60px;
-      z-index: 1000;
-    }
+    $1
+  position: relative;
+  z-index: 1001;
+}
+
+.menu.open::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
 
     .menu.open {
       transform: translateX(0);
