@@ -96,15 +96,23 @@
 
     .button {
       display: inline-block;
-      padding: 12px 24px;
+      padding: 16px 28px;
       background-color: #ffa41c;
       color: white;
       border: none;
-      border-radius: 8px;
-      font-weight: 600;
+      border-radius: 32px;
+      font-weight: 700;
+      font-size: 1.1rem;
       cursor: pointer;
       text-decoration: none;
-      margin-top: 20px;
+      margin-top: 28px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .button:hover {
+      background-color: #ffb74d;
+      transform: scale(1.04);
     }
 
     footer {
@@ -130,7 +138,7 @@
     <a href="#home"><i data-lucide="home"></i><span>Home</span></a>
     <a href="#about"><i data-lucide="book-open"></i><span>About</span></a>
     <a href="#articles"><i data-lucide="file-text"></i><span>Articles</span></a>
-    <a href="#products"><i data-lucide="tool"></i><span>Tools</span></a>
+    <a href="#products"><i data-lucide="hammer"></i><span>Tools</span></a>
     <a href="#services"><i data-lucide="briefcase"></i><span>Services</span></a>
     <a href="#contact"><i data-lucide="mail"></i><span>Contact</span></a>
   </nav>
@@ -138,7 +146,7 @@
   <section id="home">
     <h2>Optimize your physical health, simply.</h2>
     <p>Certified kinesiologist offering practical tools to help you move better, recover faster, and prevent pain with ease.</p>
-    <a class="button" href="#products">See My Amazon Picks</a>
+    <a class="button" href="#products">🛒 Discover Our Top Amazon Pick</a>
   </section>
 
   <section id="about">
