@@ -1,20 +1,17 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <head> 
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Motion Therapy</title>
   <style>
-    html, body {
+    body {
       margin: 0;
-      padding: 0;
       font-family: 'Inter', sans-serif;
       background-color: #f9f9f9;
       color: #1a1a1a;
       font-size: 1.05rem;
-      height: auto;
-      overflow-x: hidden;
     }
 
     header {
@@ -51,7 +48,6 @@
       transition: transform 0.3s ease;
       padding: 60px 20px 60px;
       z-index: 1000;
-      overflow-y: auto;
     }
 
     .menu.open {
@@ -70,6 +66,7 @@
       text-align: left;
       cursor: pointer;
       border-bottom: 1px solid #eee;
+      text-decoration: none;
     }
 
     .close-menu-button {
@@ -180,13 +177,27 @@
     .menu button.active {
       background-color: #f0f0f0;
       font-weight: bold;
+      text-decoration: none;
     }
   </style>
-</head>
 <body>
 <header>
   <button class="menu-toggle" onclick="toggleMenu()">☰</button>
   Motion Therapy
+  <div style="margin-top: 32px; display: flex; justify-content: center; gap: 24px;">
+  <div onclick="alert('Articles coming soon.')" style="display: flex; flex-direction: column; align-items: center; background-color: #fafafa; box-shadow: 0 1px 3px rgba(0,0,0,0.06); border-radius: 50%; width: 64px; height: 64px; justify-content: center; cursor: pointer;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 8h16"/><path d="M8 4v16"/></svg>
+    <span style="font-size: 0.6rem; margin-top: 4px; color: #1a1a1a;">Articles</span>
+  </div>
+  <div onclick="alert('Explore Fitness coming soon.')" style="display: flex; flex-direction: column; align-items: center; background-color: #f2f2f2; border-radius: 50%; width: 64px; height: 64px; justify-content: center; cursor: pointer;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12h12"/><path d="M4 10v4"/><path d="M20 10v4"/><path d="M2 9v6"/><path d="M22 9v6"/></svg>
+    <span style="font-size: 0.6rem; margin-top: 4px; color: #1a1a1a;">Explore</span>
+  </div>
+  <div onclick="alert('Catalog coming soon.')" style="display: flex; flex-direction: column; align-items: center; background-color: #f2f2f2; border-radius: 50%; width: 64px; height: 64px; justify-content: center; cursor: pointer;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h5l2 2h11v9H3z"/></svg>
+    <span style="font-size: 0.6rem; margin-top: 4px; color: #1a1a1a;">Catalog</span>
+  </div>
+</div>
 </header>
 
 <div class="menu" id="menu">
@@ -204,10 +215,12 @@
 </div>
 
 <div class="content">
-  <p class="description">Built by certified kinesiologists, Motion Therapy brings together simple tools and expert insights to help you move better and recover faster.</p>
+  <p class="description" style="margin-bottom: 60px;">Built by certified kinesiologists, Motion Therapy brings together simple tools and expert insights to help you move better and recover faster.</p>
   <p style="font-size: 1.1rem; color: #333; margin-bottom: 18px; font-weight: 600;">🔥 See our top pick of the week</p>
   <button class="amazon-button" onclick="window.open('https://www.amazon.ca/', '_blank')">Go on Amazon</button>
-  <p style="margin-top: 8px; font-size: 0.75rem; color: #999;">As an Amazon Associate, we earn from qualifying purchases.</p>
+  <p style="margin-top: 8px; font-size: 0.75rem; color: #999;">
+    As an Amazon Associate, we earn from qualifying purchases.
+  </p>
 </div>
 
 <div class="popup" id="popup">
