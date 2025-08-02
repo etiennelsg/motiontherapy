@@ -94,6 +94,14 @@
       padding-left: 20px;
     }
 
+    #cta-text {
+      opacity: 0;
+      transition: opacity 0.5s;
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
     .button {
       display: inline-block;
       padding: 16px 28px;
@@ -108,11 +116,38 @@
       margin-top: 28px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       transition: background-color 0.3s ease, transform 0.2s ease;
+      position: relative;
+      z-index: 1;
     }
 
     .button:hover {
       background-color: #ffb74d;
       transform: scale(1.04);
+    }
+
+    .button::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 140%;
+      height: 140%;
+      background: rgba(255, 164, 28, 0.3);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      animation: pulse 2.4s infinite;
+      z-index: -1;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0;
+      }
     }
 
     footer {
@@ -144,8 +179,7 @@
   </nav>
 
   <section id="home">
-    <h2>Optimize your physical health, simply.</h2>
-    <p>Certified kinesiologist offering practical tools to help you move better, recover faster, and prevent pain with ease.</p>
+    <div id="cta-text">Tap to see what we picked this week 👀</div>
     <a class="button" href="#products">🛒 Discover Our Top Amazon Pick</a>
   </section>
 
@@ -196,6 +230,9 @@
   </footer>
   <script>
     lucide.createIcons();
+    setTimeout(() => {
+      document.getElementById('cta-text').style.opacity = 1;
+    }, 2000);
   </script>
 </body>
 </html>
