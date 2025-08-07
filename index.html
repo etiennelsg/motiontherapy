@@ -6,6 +6,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
 
+    .burger-menu {
+  display: none;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 80%;
+  height: 100%;
+  background-color: #fff5e6;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+  padding: 20px;
+  z-index: 1000;
+}
+
+.burger-menu a {
+  padding: 12px 0;
+  font-size: 18px;
+  color: #333;
+  text-decoration: none;
+  border-bottom: 1px solid #ddd;
+}
+
+.close-btn {
+  align-self: flex-end;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+
 
     .featured-product {
   background: #fff3e6;
@@ -231,6 +263,18 @@ header h1 {
     Approuvé par ton dos.
   </span>
 </h1>
+    <!-- Menu Burger -->
+<div style="position: absolute; top: 20px; left: 20px; z-index: 999;">
+  <button onclick="openMenu()" style="background: none; border: none; font-size: 28px; cursor: pointer;">☰</button>
+</div>
+
+<nav id="burgerMenu" class="burger-menu">
+  <button class="close-btn" onclick="closeMenu()">✕</button>
+  <a href="#vedette">Produit vedette</a>
+  <a href="#categories">Catégories</a>
+  <a href="#contact">Contact</a>
+</nav>
+
 
   </header>
   <section class="featured-product">
@@ -288,6 +332,24 @@ header h1 {
   <footer>
     En tant que partenaire Amazon, je réalise un bénéfice sur les achats remplissant les conditions requises.
   </footer>
+<script>
+  function openMenu() {
+    document.getElementById("burgerMenu").style.display = "flex";
+  }
+
+  function closeMenu() {
+    document.getElementById("burgerMenu").style.display = "none";
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const links = document.querySelectorAll(".burger-menu a");
+    links.forEach(link => {
+      link.addEventListener("click", () => {
+        closeMenu();
+      });
+    });
+  });
+</script>
 
 </body>
 </html>
