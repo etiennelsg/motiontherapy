@@ -5,6 +5,66 @@
   <title>Motiontherapy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+
+    .featured-product {
+  background: #fff3e6;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.featured-product h2 {
+  font-size: 20px;
+  color: #ff6b00;
+  margin-bottom: 20px;
+}
+
+.featured-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.featured-card img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 8px;
+}
+
+.featured-info h3 {
+  margin: 10px 0 6px;
+  font-size: 18px;
+  color: #333;
+}
+
+.featured-info p {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+.featured-info a {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 16px;
+  background-color: #ffa41c;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background 0.2s ease;
+}
+
+.featured-info a:hover {
+  background-color: #ff8c00;
+}
+
     
 header h1 {
   font-size: 26px;
@@ -172,6 +232,18 @@ header h1 {
 </h1>
 
   </header>
+  <section class="featured-product">
+  <h2>⭐ Produit vedette de la semaine</h2>
+  <div class="featured-card">
+    <img src="https://via.placeholder.com/300x180?text=Nom+du+Produit" alt="Produit vedette">
+    <div class="featured-info">
+      <h3>Nom du produit</h3>
+      <p>Un petit texte accrocheur pour dire pourquoi ce produit est top cette semaine. Ça peut parler d’un bénéfice concret, ou d’un conseil kiné.</p>
+      <a href="#" target="_blank">Voir sur Amazon</a>
+    </div>
+  </div>
+</section>
+
  <div class="category-bubbles">
   <div class="bubble"><div class="emoji">🔥</div><div class="label">Perte de poids</div></div>
   <div class="bubble"><div class="emoji">🦴</div><div class="label">Douleurs</div></div>
