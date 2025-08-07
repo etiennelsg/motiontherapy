@@ -5,6 +5,51 @@
   <title>Motiontherapy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+
+    .category-bubbles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  background: #fff5e6;
+}
+
+.bubble {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.bubble:hover {
+  transform: scale(1.1);
+}
+
+.emoji {
+  width: 60px;
+  height: 60px;
+  background: #ffa41c;
+  color: white;
+  border-radius: 50%;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.label {
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #333;
+}
+
+    
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -82,15 +127,37 @@
   <header>
     <h1>Le choix du kiné - approuvé par ton dos</h1>
   </header>
-  <nav class="category-bar">
-  <button>🔥 Perte de poids</button>
-  <button>🦴 Douleurs & tensions</button>
-  <button>🧘 Posture & ergonomie</button>
-  <button>💆 Récupération & relaxation</button>
-  <button>🏋️ Entraînement à la maison</button>
-  <button>🧠 Concentration & productivité</button>
-  <button>🌙 Sommeil & récupération</button>
-</nav>
+ <div class="category-bubbles">
+  <div class="bubble">
+    <div class="emoji">🔥</div>
+    <div class="label">Perte de poids</div>
+  </div>
+  <div class="bubble">
+    <div class="emoji">🦴</div>
+    <div class="label">Douleurs</div>
+  </div>
+  <div class="bubble">
+    <div class="emoji">🧘</div>
+    <div class="label">Posture</div>
+  </div>
+  <div class="bubble">
+    <div class="emoji">💆</div>
+    <div class="label">Récupération</div>
+  </div>
+  <div class="bubble">
+    <div class="emoji">🏋️</div>
+    <div class="label">Entraînement</div>
+  </div>
+  <div class="bubble">
+    <div class="emoji">🧠</div>
+    <div class="label">Concentration</div>
+  </div>
+  <div class="bubble">
+    <div class="emoji">🌙</div>
+    <div class="label">Sommeil</div>
+  </div>
+</div>
+
 
   <section class="product-grid">
     <div class="product">
