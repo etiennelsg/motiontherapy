@@ -6,6 +6,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
 
+    header {
+  position: relative;
+}
+
+    
+    .header-icons {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.burger, .search-icon {
+  font-size: 20px;
+  cursor: pointer;
+  padding: 6px;
+}
+
+
     .search-icon {
   position: absolute;
   top: 18px;
@@ -286,10 +308,11 @@ header h1 {
     Approuvé par ton dos.
   </span>
 </h1>
-    <div class="search-icon" onclick="toggleSearch()">🔍</div>
-<div id="searchBar" class="search-bar">
-  <input type="text" placeholder="Rechercher un produit..." oninput="filterProducts(this.value)">
+    <div class="header-icons">
+  <div class="burger" onclick="toggleMenu()">☰</div>
+  <div class="search-icon" onclick="toggleSearch()">🔍</div>
 </div>
+
 
     <!-- Menu Burger -->
 <div style="position: absolute; top: 20px; left: 20px; z-index: 999;">
