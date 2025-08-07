@@ -263,6 +263,11 @@ header h1 {
     Approuvé par ton dos.
   </span>
 </h1>
+    <div class="search-icon" onclick="toggleSearch()">🔍</div>
+<div id="searchBar" class="search-bar">
+  <input type="text" placeholder="Rechercher un produit..." oninput="filterProducts(this.value)">
+</div>
+
     <!-- Menu Burger -->
 <div style="position: absolute; top: 20px; left: 20px; z-index: 999;">
   <button onclick="openMenu()" style="background: none; border: none; font-size: 28px; cursor: pointer;">☰</button>
