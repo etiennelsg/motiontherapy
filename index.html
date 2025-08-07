@@ -6,6 +6,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
 
+    .search-icon {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.search-bar {
+  display: none;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.search-bar input {
+  width: 80%;
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+}
+
+
     .burger-menu {
   display: none;
   flex-direction: column;
@@ -354,6 +377,22 @@ header h1 {
       });
     });
   });
+</script>
+<script>
+  function toggleSearch() {
+    const bar = document.getElementById("searchBar");
+    bar.style.display = (bar.style.display === "block") ? "none" : "block";
+  }
+
+  function filterProducts(query) {
+    const cards = document.querySelectorAll(".product");
+    query = query.toLowerCase();
+
+    cards.forEach(card => {
+      const text = card.innerText.toLowerCase();
+      card.style.display = text.includes(query) ? "block" : "none";
+    });
+  }
 </script>
 
 </body>
