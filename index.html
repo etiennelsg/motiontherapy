@@ -375,6 +375,39 @@
     });
   }
 </script>
+<script>
+  // MENU BURGER
+  const burger = document.querySelector('.burger');
+  const menu = document.querySelector('.burger-menu');
+  const closeBtn = document.querySelector('.close-btn');
+  const menuLinks = document.querySelectorAll('.burger-menu a');
+
+  burger.addEventListener('click', () => {
+    menu.style.display = 'flex';
+  });
+
+  closeBtn.addEventListener('click', () => {
+    menu.style.display = 'none';
+  });
+
+  menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      menu.style.display = 'none';
+    });
+  });
+
+  // LOUPE (SEARCH ICON)
+  const searchIcon = document.querySelector('.search-icon');
+  const searchBar = document.querySelector('.search-bar');
+
+  searchIcon.addEventListener('click', () => {
+    if (searchBar.style.display === 'block') {
+      searchBar.style.display = 'none';
+    } else {
+      searchBar.style.display = 'block';
+    }
+  });
+</script>
 
 </body>
 </html>
