@@ -320,9 +320,15 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4); /* overlay sombre */
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.6),   /* plus foncé en haut */
+    rgba(0, 0, 0, 0.6)
+  );
   border-radius: inherit;
+  z-index: 0;
 }
+
 
 .accroche-section > * {
   position: relative;
