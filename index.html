@@ -6,39 +6,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <style>
   /* Style du Slider */
-  .slider-container {
-    text-align: center;
-    margin: 30px 0;
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 12px;
-  }
+  /* Style du Slider */
+.slider-container {
+  text-align: center;
+  margin: 30px 0;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 12px;
+}
 
 .slider {
   display: flex;
   gap: 20px;
-  overflow: hidden;
+  overflow-x: auto; /* Ajoute cette ligne */
   padding-bottom: 10px;
   position: relative;
-  white-space: nowrap;  /* Ajoute cette ligne */
+  white-space: nowrap; /* Ajoute cette ligne */
+}
 
+.slider-item {
+  flex: 0 0 auto;
+  width: 300px;  /* Remplace width: 100% par 300px */
+  text-align: center;
+  transition: transform 0.5s ease-in-out;
+}
 
-  }
-
-  .slider-item {
-  flex: 0 0 auto;  /* Ajuste la taille pour s'adapter à l'image */
-  width: 200px; /* Choisis une largeur fixe plus petite */
-
-  }
-
-  .slider-img {
+.slider-img {
   width: 100%;
   max-width: 100%;  /* Ajoute cette ligne */
   height: auto;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-  }
 
   /* Animation de défilement */
   @keyframes slide {
