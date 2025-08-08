@@ -365,8 +365,7 @@
 
 
 .featured-info a,
-.product a,
-.kit-card a {
+.product a, {
   background: linear-gradient(to bottom, #ffc94d, #ffa41c);  /* Lustre juteux */
   color: white;
   text-decoration: none;
@@ -380,8 +379,7 @@
 }
 
 .featured-info a:hover,
-.product a:hover,
-.kit-card a:hover {
+.product a:hover, {
   background: linear-gradient(to bottom, #ffd366, #ffb74d);  /* Lustre plus pâle au survol */
   transform: scale(1.05);
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
@@ -410,50 +408,6 @@
 @keyframes scrollBanner {
   0%   { transform: translateX(0%); }
   100% { transform: translateX(-100%); }
-}
-
-.kit-slider {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  padding: 20px 0;
-}
-
-.kit-card {
-  flex: 0 1 250px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
-  padding: 16px;
-  text-align: center;
-  transition: transform 0.2s ease;
-}
-
-.kit-card:hover {
-  transform: translateY(-5px);
-}
-
-.kit-card img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
-.kit-card a {
-  display: inline-block;
-  margin-top: 12px;
-  padding: 10px 20px;
-  background: #ffa41c;
-  color: white;
-  border-radius: 8px;
-  font-weight: bold;
-  text-decoration: none;
-  transition: background 0.2s ease;
-}
-
-.kit-card a:hover {
-  background: #ff8c00;
 }
 
   
@@ -526,18 +480,7 @@
 </section>
 
 
-<section class="kit-slider-section">
-  <h2>Kit du travailleur de bureau 💼</h2>
 
-  <div class="kit-slider">
-    <div class="kit-card">
-      <img src="https://m.media-amazon.com/images/I/81NHxf2ZwYL._AC_SL1500_.jpg" alt="Chaise ergonomique Mimoglad" />
-      <h3>Chaise ergonomique Mimoglad</h3>
-      <p>Confort posture optimale, appuie-tête et accoudoirs réglables – parfaite pour soutenir le dos au bureau.</p>
-      <a href="https://www.amazon.ca/Mimoglad-Ergonomic-Adjustable-Headrest-Armrests/dp/B09N93L2RQ?tag=motiontherapy-20" target="_blank" rel="noopener noreferrer">Voir sur Amazon</a>
-    </div>
-  </div>
-</section>
 
 
 
