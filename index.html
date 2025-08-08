@@ -7,6 +7,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <style>
 
+.encadre {
+  background-color: #003366;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border: 2px solid #6699cc;
+  width: 100%;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 768px) {
+  .encadre { font-size: 18px; }
+}
+@media screen and (max-width: 480px) {
+  .encadre { font-size: 16px; }
+}
+
+   
  /* Ciblage de tous les liens "Voir sur Amazon" */
 a[href*="amazon.ca"] {
   display: inline-block;
