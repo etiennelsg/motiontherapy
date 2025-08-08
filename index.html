@@ -788,15 +788,24 @@
   });
 
   // FILTRAGE DES PRODUITS
-  function filterProducts(query) {
+function filterProducts(query) {
     const cards = document.querySelectorAll(".product");
     query = query.toLowerCase();
 
     cards.forEach(card => {
-      const text = card.innerText.toLowerCase();
-      card.style.display = text.includes(query) ? "block" : "none";
+      const title = card.querySelector('h2').innerText.trim();
+      const description = card.querySelector('p').innerText.trim();
+
+      // Si le titre ou la description sont vides, on cache complètement la carte
+      if (!title || !description) {
+        card.style.display = "none";  // Cette carte disparaît
+      } else {
+        const text = card.innerText.toLowerCase();
+        card.style.display = text.includes(query) ? "block" : "none";  // On affiche les cartes qui correspondent au filtre
+      }
     });
-  }
+}
+
 </script>
 
 
