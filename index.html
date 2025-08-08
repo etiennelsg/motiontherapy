@@ -7,6 +7,30 @@
  <style>
 
    .top-banner {
+  overflow: hidden;
+  background-color: #003366;
+  color: white;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.banner-text {
+  white-space: nowrap;
+  display: inline-block;
+  animation: scrollBanner 15s linear infinite;
+  padding-left: 100%;
+}
+
+@keyframes scrollBanner {
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+
+   .top-banner {
   background-color: #003366;
   color: white;
   text-align: center;
@@ -314,6 +338,12 @@
 <body>
 <div class="top-banner">
   📦 Livraison rapide avec Amazon Prime.
+</div>
+
+  <div class="top-banner">
+  <div class="banner-text">
+    📦 Livraison rapide avec Amazon Prime. 📦 Livraison rapide avec Amazon Prime.
+  </div>
 </div>
 
   <header>
