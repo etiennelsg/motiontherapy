@@ -27,11 +27,7 @@ a[href*="amazon.ca"]:hover {
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
-
-
-
-
-   .encadre {
+ .encadre {
   background-color: #003366; /* Fond bleu foncé */
   color: white; /* Texte en blanc */
   padding: 15px; /* Espace autour du texte */
@@ -41,7 +37,11 @@ a[href*="amazon.ca"]:hover {
   text-align: center; /* Centrer le texte */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre portée pour l'effet de profondeur */
   border: 2px solid #6699cc; /* Bordure bleue plus claire */
+  max-width: 100%; /* Assure que l'encadré ne dépasse pas */
+  white-space: nowrap; /* Empêche le texte de passer à la ligne suivante */
+  overflow: hidden; /* Masque le texte qui dépasse */
 }
+
 
 
    @keyframes slide {
