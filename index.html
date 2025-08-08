@@ -23,23 +23,25 @@
   background-color: #f9f9f9;
   padding: 20px;
   border-radius: 12px;
-  width: 100%; /* Assurez-vous que le conteneur prend toute la largeur */
-  overflow: hidden; /* Pour cacher tout débordement horizontal */
+  width: 100%;  /* Assurez-vous que le conteneur prend toute la largeur */
 }
 
 .slider {
   display: flex;
   gap: 20px;
+  overflow-x: auto;  /* Permet le défilement horizontal */
   padding-bottom: 10px;
   position: relative;
-  width: 100%; /* Le slider prend toute la largeur disponible */
-  overflow: hidden; /* Empêche le défilement visible */
+  flex-wrap: nowrap; /* Empêche les éléments de se répartir verticalement */
+  scroll-snap-type: x mandatory; /* Permet de faire défiler chaque élément de manière fluide */
+  -webkit-overflow-scrolling: touch; /* Pour un bon défilement sur mobile */
 }
 
 .slider-item {
-  flex: 0 0 33.33%;  /* Chaque item prend 33.33% de la largeur du slider */
+  flex: 0 0 33.33%;  /* Chaque item prendra 33.33% de la largeur */
   text-align: center;
   transition: transform 0.5s ease-in-out;
+  scroll-snap-align: start;  /* Assure que l'élément s'aligne correctement lors du défilement */
 }
 
 .slider-img {
