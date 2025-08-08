@@ -6,6 +6,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <style>
 
+   /* Style de tous les liens contenant 'amazon' */
+a[href*="amazon.ca"], a[href*="amazon.com"] {
+  background-color: #ffa41c; /* Orange juteux d'Amazon */
+  color: white; /* Texte en blanc */
+  text-decoration: none; /* Supprimer la sous-ligne */
+  padding: 12px 24px; /* Espacement autour du texte */
+  border-radius: 8px; /* Coins arrondis */
+  font-weight: bold; /* Texte en gras */
+  font-size: 16px; /* Taille du texte */
+  display: inline-block; /* Bloc cliquable */
+  transition: background-color 0.3s, transform 0.3s; /* Transition douce */
+  border: none; /* Retirer les bordures par défaut */
+}
+
+a[href*="amazon.ca"]:hover, a[href*="amazon.com"]:hover {
+  background-color: #ff8c00; /* Couleur orange plus claire au survol */
+  transform: scale(1.05); /* Agrandir au survol */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+
    .encadre {
   background-color: #003366; /* Fond bleu foncé */
   color: white; /* Texte en blanc */
