@@ -37,10 +37,12 @@ a[href*="amazon.ca"]:hover {
   text-align: center; /* Centrer le texte */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre portée pour l'effet de profondeur */
   border: 2px solid #6699cc; /* Bordure bleue plus claire */
-  max-width: 100%; /* Assure que l'encadré ne dépasse pas */
+  width: 100%; /* Faire en sorte que l'encadré prenne 100% de la largeur */
+  overflow: hidden; /* Empêche tout débordement du texte */
+  text-overflow: ellipsis; /* Utilise une ellipse si le texte est trop long */
   white-space: nowrap; /* Empêche le texte de passer à la ligne suivante */
-  overflow: hidden; /* Masque le texte qui dépasse */
 }
+
 
 
 
