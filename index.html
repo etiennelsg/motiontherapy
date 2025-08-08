@@ -6,6 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <style>
 
+   .banner-text {
+  white-space: nowrap;
+  display: inline-block;
+  animation: scrollBanner 15s linear infinite;
+  padding-left: 100%;
+  padding-right: 100%; /* ← AJOUTÉ */
+}
+
+
    .top-banner {
   overflow: hidden;
   background-color: #003366;
@@ -338,11 +347,10 @@
 <body>
 
 
-  <div class="top-banner">
-  <div class="banner-text">
-    📦 Livraison rapide avec Amazon Prime.         📦 Livraison rapide avec Amazon Prime.
-  </div>
+ <div class="banner-text">
+  📦 Livraison rapide avec Amazon Prime.
 </div>
+
 
   <header>
     <h1>
