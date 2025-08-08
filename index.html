@@ -397,23 +397,26 @@
 .featured-info a,
 .product a,
 .kit-card a {
-  background-color: #ffa41c;  /* Orange Amazon */
-  color: white;               /* Texte blanc */
+  background: linear-gradient(to bottom, #ffc94d, #ffa41c);  /* Lustre juteux */
+  color: white;
   text-decoration: none;
-  padding: 8px 12px;          /* Taille comme avant */
+  padding: 8px 12px;
   border-radius: 8px;
   font-weight: bold;
+  margin-top: 12px;  /* espacement avec le texte précédent */
   transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4); /* effet lustré */
+  border: 1px solid #e69500;
 }
 
 .featured-info a:hover,
 .product a:hover,
 .kit-card a:hover {
-  background-color: #ffb74d;  /* Plus pâle au survol */
+  background: linear-gradient(to bottom, #ffd366, #ffb74d);  /* Lustre plus pâle au survol */
   transform: scale(1.05);
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
+
 
 
 
