@@ -348,85 +348,41 @@
     En tant que partenaire Amazon, je réalise un bénéfice sur les achats remplissant les conditions requises.
   </footer>
 <script>
-  function openMenu() {
-    document.getElementById("burgerMenu").style.display = "flex";
-  }
-
-  function closeMenu() {
-    document.getElementById("burgerMenu").style.display = "none";
-  }
-
   document.addEventListener("DOMContentLoaded", () => {
-    const links = document.querySelectorAll(".burger-menu a");
-    links.forEach(link => {
-      link.addEventListener("click", () => {
-        closeMenu();
-      });
+    // BURGER
+    const burger = document.querySelector('.burger');
+    const menu = document.querySelector('.burger-menu');
+    const closeBtn = document.querySelector('.close-btn');
+    const menuLinks = document.querySelectorAll('.burger-menu a');
+
+    burger.addEventListener('click', () => {
+      menu.style.display = 'flex';
     });
-  });
-</script>
-<script>
-  function toggleSearch() {
-    const bar = document.getElementById("searchBar");
-    bar.style.display = (bar.style.display === "block") ? "none" : "block";
-  }
 
-  function filterProducts(query) {
-    const cards = document.querySelectorAll(".product");
-    query = query.toLowerCase();
-
-    cards.forEach(card => {
-      const text = card.innerText.toLowerCase();
-      card.style.display = text.includes(query) ? "block" : "none";
-    });
-  }
-</script>
-<script>
-  // MENU BURGER
-  const burger = document.querySelector('.burger');
-  const menu = document.querySelector('.burger-menu');
-  const closeBtn = document.querySelector('.close-btn');
-  const menuLinks = document.querySelectorAll('.burger-menu a');
-
-  burger.addEventListener('click', () => {
-    menu.style.display = 'flex';
-  });
-
-  closeBtn.addEventListener('click', () => {
-    menu.style.display = 'none';
-  });
-
-  menuLinks.forEach(link => {
-    link.addEventListener('click', () => {
+    closeBtn.addEventListener('click', () => {
       menu.style.display = 'none';
     });
+
+    menuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        menu.style.display = 'none';
+      });
+    });
+
+    // LOUPE
+    const searchIcon = document.querySelector('.search-icon');
+    const searchBar = document.getElementById('searchBar');
+
+    searchIcon.addEventListener('click', () => {
+      if (searchBar.style.display === 'block') {
+        searchBar.style.display = 'none';
+      } else {
+        searchBar.style.display = 'block';
+      }
+    });
   });
 
-  // LOUPE (SEARCH ICON)
-  const searchIcon = document.querySelector('.search-icon');
-  const searchBar = document.querySelector('.search-bar');
-
-  searchIcon.addEventListener('click', () => {
-    if (searchBar.style.display === 'block') {
-      searchBar.style.display = 'none';
-    } else {
-      searchBar.style.display = 'block';
-    }
-  });
-</script>
-
-  <script>
-  const searchIcon = document.querySelector('.search-icon');
-  const searchBar = document.getElementById('searchBar');
-
-  searchIcon.addEventListener('click', () => {
-    if (searchBar.style.display === 'block') {
-      searchBar.style.display = 'none';
-    } else {
-      searchBar.style.display = 'block';
-    }
-  });
-
+  // FILTRAGE DES PRODUITS
   function filterProducts(query) {
     const cards = document.querySelectorAll(".product");
     query = query.toLowerCase();
@@ -437,6 +393,7 @@
     });
   }
 </script>
+
 
 
 </body>
