@@ -415,5 +415,29 @@
   });
 </script>
 
+  <script>
+  const searchIcon = document.querySelector('.search-icon');
+  const searchBar = document.getElementById('searchBar');
+
+  searchIcon.addEventListener('click', () => {
+    if (searchBar.style.display === 'block') {
+      searchBar.style.display = 'none';
+    } else {
+      searchBar.style.display = 'block';
+    }
+  });
+
+  function filterProducts(query) {
+    const cards = document.querySelectorAll(".product");
+    query = query.toLowerCase();
+
+    cards.forEach(card => {
+      const text = card.innerText.toLowerCase();
+      card.style.display = text.includes(query) ? "block" : "none";
+    });
+  }
+</script>
+
+
 </body>
 </html>
