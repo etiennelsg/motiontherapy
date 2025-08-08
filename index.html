@@ -455,6 +455,49 @@
   100% { transform: translateX(-100%); }
 }
 
+.kit-slider {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.kit-card {
+  flex: 0 1 250px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  padding: 16px;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.kit-card:hover {
+  transform: translateY(-5px);
+}
+
+.kit-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.kit-card a {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 20px;
+  background: #ffa41c;
+  color: white;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.kit-card a:hover {
+  background: #ff8c00;
+}
 
   
 </style>
