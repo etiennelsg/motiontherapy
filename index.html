@@ -42,11 +42,6 @@
     100% { transform: translateX(-100%); }
   }
 
-  .slider {
-    animation: slide 20s linear infinite;
-  }
-
-
    html, body {
   max-width: 100%;
   overflow-x: hidden;
@@ -535,6 +530,7 @@
 </section>
 
 
+
  <div class="category-bubbles">
   <div class="bubble"><div class="emoji">🔥</div><div class="label">Perte de poids</div></div>
   <div class="bubble"><div class="emoji">🦴</div><div class="label">Douleurs</div></div>
@@ -762,6 +758,34 @@ function filterProducts(query) {
   });
 </script>
 
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    let currentIndex = 0;
+    const items = document.querySelectorAll('.slider-item');
+    const totalItems = items.length;
+    
+    // Fonction pour faire défiler le slider
+    function slideNext() {
+      currentIndex = (currentIndex + 1) % totalItems;
+      updateSliderPosition();
+    }
+
+    function slidePrev() {
+      currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+      updateSliderPosition();
+    }
+
+    // Mettre à jour la position du slider
+    function updateSliderPosition() {
+      const offset = -currentIndex * 100;  // Chaque item doit avoir 100% de largeur
+      document.querySelector('.slider').style.transform = `translateX(${offset}%)`;
+    }
+
+    // Défilement automatique toutes les 5 secondes
+    setInterval(slideNext, 5000);  // Change l'image toutes les 5 secondes
+  });
+</script>
+   
 
 </body>
 </html>
