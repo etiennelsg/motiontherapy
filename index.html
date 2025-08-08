@@ -14,20 +14,20 @@
     border-radius: 12px;
   }
 
- .slider {
+.slider {
   display: flex;
   gap: 20px;
   overflow: hidden;
   padding-bottom: 10px;
   position: relative;
-  flex-wrap: nowrap;  /* Ajoute cette ligne */
+  white-space: nowrap;  /* Ajoute cette ligne */
+
 
   }
 
   .slider-item {
-  flex: 1;
-  text-align: center;
-  transition: transform 0.5s ease-in-out;
+  flex: 0 0 auto;  /* Ajuste la taille pour s'adapter à l'image */
+  width: 200px; /* Choisis une largeur fixe plus petite */
 
   }
 
