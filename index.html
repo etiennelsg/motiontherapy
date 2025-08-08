@@ -573,7 +573,7 @@ html, body {
 </section>
 
  <section class="slider-container">
-  <h2 class="encadre">Ensemble pour le Bureau</h2>
+  <h2 id="office-bundle-title" class="encadre">⭐ Ensemble pour le Bureau ⭐</h2>
   <div class="slider">
     <div class="slider-item">
       <img src="https://m.media-amazon.com/images/I/81NHxf2ZwYL._AC_SL1500_.jpg" alt="Chaise de bureau ergonomique" class="slider-img">
@@ -805,6 +805,15 @@ function filterProducts(query) {
 
 </script>
    
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const el = document.getElementById('office-bundle-title');
+  if (el) {
+    // 🔁 Mets EXACTEMENT le texte que tu veux voir à l’écran
+    el.textContent = '⭐ Ensemble pour le Bureau ⭐';
+  }
+});
+</script>
 
 </body>
 </html>
