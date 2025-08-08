@@ -373,6 +373,11 @@
   scroll-snap-type: x mandatory;
   padding-bottom: 10px;
   -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+}
+
+.kit-slider::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 .kit-card {
@@ -384,6 +389,11 @@
   width: 240px;
   scroll-snap-align: start;
   text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.kit-card:hover {
+  transform: translateY(-5px);
 }
 
 .kit-card img {
@@ -404,6 +414,7 @@
   color: #555;
   margin-bottom: 10px;
 }
+
 
 
 
