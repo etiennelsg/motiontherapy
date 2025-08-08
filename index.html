@@ -6,13 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <style>
 
- /* Style des boutons Amazon */
-.amazon-btn {
+ /* Ciblage de tous les liens "Voir sur Amazon" */
+a[href*="amazon.ca"] {
   display: inline-block;
   padding: 10px 20px;
   background-color: #ffa41c;  /* Couleur orange */
   color: white;
-  text-decoration: none;
+  text-decoration: none; /* On enlève le soulignement */
   font-weight: bold;
   border-radius: 8px;
   transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
@@ -20,11 +20,13 @@
   border: 1px solid #e69500;
 }
 
-.amazon-btn:hover {
+/* Effet au survol pour tous les boutons */
+a[href*="amazon.ca"]:hover {
   background-color: #ffb74d; /* Teinte plus claire d'orange au survol */
   transform: scale(1.05);
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
+
 
 
 
