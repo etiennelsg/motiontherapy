@@ -219,11 +219,11 @@
     }
   ];
 
-  // --- Rendu du feed (en “pages”) ---
+  // --- Rendu du feed (bouton en bas + boucle infinie) ---
   const feed = document.getElementById('feed');
   const loadMore = document.getElementById('loadMore');
-  const PAGE_SIZE = 6;
-  let cursor = 0;
+  const PAGE_SIZE = 6;   // change à 4/8 si tu veux
+  let cursor = 0;        // index du prochain produit à afficher
 
   function cardHTML(p){
     return `
@@ -243,21 +243,24 @@
     `;
   }
 
+  // Ajoute PAGE_SIZE cartes juste AVANT le bouton => bouton reste en bas. Boucle circulaire.
   function renderNext(){
-    const end = Math.min(cursor + PAGE_SIZE, PRODUCTS.length);
-    for (let i = cursor; i < end; i++){
-      feed.insertAdjacentHTML('beforeend', cardHTML(PRODUCTS[i]));
+    if (!PRODUCTS.length) return;
+    let count = 0;
+    while (count < PAGE_SIZE) {
+      const p = PRODUCTS[cursor];
+      loadMore.insertAdjacentHTML('beforebegin', cardHTML(p));
+      cursor = (cursor + 1) % PRODUCTS.length; // reboucle au début quand on atteint la fin
+      count++;
     }
-    cursor = end;
-    if (cursor >= PRODUCTS.length) loadMore.style.display = 'none';
   }
 
   document.addEventListener('DOMContentLoaded', ()=>{
-    renderNext();
-    loadMore.addEventListener('click', renderNext);
+    renderNext();                       // premières cartes
+    loadMore.addEventListener('click', renderNext); // recharge à la demande
   });
 
-  // --- Filtre recherche (fonctionne sur le mock-up) ---
+  // --- Filtre recherche (sur le mock-up) ---
   searchInput?.addEventListener('input', e=>{
     const q = e.target.value.trim().toLowerCase();
     document.querySelectorAll('.card').forEach(card=>{
@@ -267,6 +270,7 @@
     });
   });
 </script>
+
 
 </body>
 </html>
