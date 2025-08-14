@@ -1,839 +1,204 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-<title>Motiontherapy</title>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <style>
-
-.encadre {
-  background-color: #003366;
-  color: white;
-  padding: 15px;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: bold;
-  text-align: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  border: 2px solid #6699cc;
-  width: 100%;
-  white-space: nowrap;
-}
-
-@media screen and (max-width: 768px) {
-  .encadre { font-size: 18px; }
-}
-@media screen and (max-width: 480px) {
-  .encadre { font-size: 16px; }
-}
-
-   
- /* Ciblage de tous les liens "Voir sur Amazon" */
-a[href*="amazon.ca"] {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #ffa41c;  /* Couleur orange */
-  color: white;
-  text-decoration: none; /* On enlève le soulignement */
-  font-weight: bold;
-  border-radius: 8px;
-  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.25);
-  border: 1px solid #e69500;
-}
-
-/* Effet au survol pour tous les boutons */
-a[href*="amazon.ca"]:hover {
-  background-color: #ffb74d; /* Teinte plus claire d'orange au survol */
-  transform: scale(1.05);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  
-}
-
-   @keyframes slide {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
-}
-
-   
-/* Style du Slider - Mise à jour */
-.slider-container {
-  text-align: center;
-  margin: 30px 0;
-  background-color: #f9f9f9;
-  padding: 20px;
-  border-radius: 12px;
-  width: 100%;
-}
-
-.slider {
-  display: flex;
-  gap: 10px; /* Réduit l'espace entre les éléments */
-  overflow-x: auto;
-  padding-bottom: 10px;
-  position: relative;
-  flex-wrap: nowrap;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-}
-
-.slider-item {
-  flex: 0 0 30%; /* Réduit la taille des éléments pour les rapprocher */
-  text-align: center;
-  transition: transform 0.5s ease-in-out;
-  scroll-snap-align: start;
-  margin: 0 5px; /* Réduit l'écart horizontal entre les éléments */
-}
-
-.slider-img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-
-
-html, body {
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
-
-
-   
-   .featured-info p:last-of-type,
-.product p:last-of-type {
-  margin-bottom: 24px;  /* ou 16px si tu veux plus d'air */
-}
-
-
-   .scrolling-banner {
-  background-color: #fff4e6;
-  overflow: hidden;
-  height: 30px;
-  display: flex;
-  align-items: center;
-}
-
-
-   .top-banner {
-  overflow: hidden;
-  background-color: #003366;
-  color: white;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  font-size: 13px;
-  font-weight: 500;
-}
-
-
-
-@keyframes scrollBanner {
-  0%   { transform: translateX(0%); }
-  100% { transform: translateX(-100%); }
-}
-
-  /* 1. Harmoniser header-icons */
-  .header-icons {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 20px;
-    right: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 10;
-}
-
-
-  .burger, .search-icon {
-    font-size: 20px;
-    cursor: pointer;
-    padding: 6px;
-    color: white;
-  }
-
-  .search-bar {
-    display: none;
-    text-align: center;
-    margin-top: 10px;
-  }
-
-  .search-bar input {
-    width: 80%;
-    padding: 8px 12px;
-    font-size: 14px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-  }
-
-  .burger-menu {
-    display: none;
-    flex-direction: column;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 80%;
-    height: 100%;
-    background-color: #f4f4f4;
-    box-shadow: 2px 0 10px rgba(0,0,0,0.2);
-    padding: 20px;
-    z-index: 1000;
-  }
-
-  .burger-menu a {
-    padding: 12px 0;
-    font-size: 18px;
-    color: #333;
-    text-decoration: none;
-    border-bottom: 1px solid #ddd;
-  }
-
-  .close-btn {
-    align-self: flex-end;
-    font-size: 24px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    margin-bottom: 20px;
-  }
-
-  /* 2. Produit vedette */
-  .featured-product {
-    background: #eef6ff;
-    padding: 20px 10px;
-    text-align: center;
-    margin-bottom: 30px;
-  }
-
-  .featured-product h2 {
-    font-size: 16px;
-    color: #003366;
-    margin-bottom: 12px;
-  }
-
-  .featured-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    background: white;
-    border-radius: 16px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    padding: 20px;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .featured-card img {
-    width: 100%;
-    max-width: 220px;
-    border-radius: 8px;
-  }
-
-  .featured-info h3 {
-    font-size: 16px;
-    margin: 6px 0 4px;
-    color: #333;
-  }
-
-  .featured-info p {
-    font-size: 13px;
-    color: #666;
-    margin: 0;
-    margin-bottom: 6px;
-  }
-
-  
-
-  
-
-  /* 3. Catégories bulles */
-  .category-bubbles {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    gap: 16px;
-    padding: 16px;
-    background: #f9fbff;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    margin-bottom: 30px;
-  }
-
-  .bubble {
-    flex: 0 0 auto;
-    scroll-snap-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 60px;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-    padding: 10px 0;
-  }
-
-  .bubble:hover {
-    transform: scale(1.1);
-  }
-
-  .emoji {
-    width: 52px;
-    height: 52px;
-    background: linear-gradient(145deg, #e6f0ff, #ffffff);
-    color: #0033cc;
-    border-radius: 50%;
-    font-size: 22px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    border: 1px solid #cce0ff;
-  }
-
-  .label {
-    margin-top: 6px;
-    font-size: 12px;
-    font-weight: bold;
-    color: #333;
-  }
-
-  /* 4. Grid produits */
-  .product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 30px;
-  }
-
-  .product {
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    padding: 15px;
-    text-align: center;
-  }
-
-  .product img {
-    max-width: 100%;
-    height: 180px;
-    object-fit: contain;
-    border-radius: 8px;
-  }
-
-  .product h2 {
-    font-size: 18px;
-    margin: 10px 0 8px;
-  }
-
-  .product p {
-    font-size: 14px;
-    color: #666;
-  }
-
-  
-
-  footer {
-    text-align: center;
-    font-size: 12px;
-    color: #777;
-    padding: 20px;
-  }
-
-  body {
-    margin: 0;
-    font-family: "Segoe UI", sans-serif;
-    background-color: #f9f9f9;
-    color: #222;
-  }
-
-  header {
-  position: relative;
-  background: linear-gradient(135deg, #003366 1%, #6699cc 99%);
-  color: white;
-  text-align: center;
-  padding: 10px 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-
-  header h1 {
-    font-size: 24px;
-    font-weight: 700;
-    margin: 0;
-  }
-
-  header h1 span {
-    font-size: 14px;
-    font-weight: normal;
-    display: block;
-    margin-top: 4px;
-  }
-
-   
-
-.accroche-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.6),   /* plus foncé en haut */
-    rgba(0, 0, 0, 0.6)
-  );
-  border-radius: inherit;
-  z-index: 0;
-}
-
-
-.accroche-section > * {
-  position: relative;
-  z-index: 1;
-}
-
-
-
-.cta-button {
-  display: inline-block;
-  padding: 10px 20px;
-  background: linear-gradient(to bottom, #4d79aa, #003366);  /* bleu juteux */
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 8px;
-  margin-top: 16px;
-  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.25);
-  border: 1px solid #00264d;
-}
-
-.cta-button:hover {
-  background: linear-gradient(to bottom, #6699cc, #0055aa);  /* bleu plus clair au survol */
-  transform: scale(1.05);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-}
-
-
-
- * {
-  box-sizing: border-box;
-}
-
-  
-
-
-
-
-.featured-info a,
-.product a {
-  background: linear-gradient(to bottom, #ffc94d, #ffa41c);  /* Lustre juteux */
-  color: white;
-  text-decoration: none;
-  padding: 8px 12px;
-  border-radius: 8px;
-  font-weight: bold;
-  margin-top: 12px;  /* espacement avec le texte précédent */
-  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4); /* effet lustré */
-  border: 1px solid #e69500;
-}
-
-.featured-info a:hover,
-.product a:hover {
-  background: linear-gradient(to bottom, #ffd366, #ffb74d);  /* Lustre plus pâle au survol */
-  transform: scale(1.05);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-}
-
-
-.scrolling-banner {
-  background-color: #fff4e6;
-  overflow: hidden;
-  height: 30px;
-  display: flex;
-  align-items: center;
-}
-
-.banner-text {
-  white-space: nowrap;
-  display: inline-block;
-  animation: scrollBanner 30s linear infinite;
-  padding-left: 100%;
-  padding-right: 100%;
-  font-size: 13px;
-  font-weight: 500;
-  color: #cc6600;
-}
-
-@keyframes scrollBanner {
-  0%   { transform: translateX(0%); }
-  100% { transform: translateX(-100%); }
-}
-
-   /* --- Mobile beauty override --- */
-.accroche-section {
-  background: url('https://www.rona.ca/documents/ronaResponsive/SpecialPages/Projects/assets/images/template-guide/home-gym-ideas/amenager-gym-maison-facebook.jpg')
-              center / cover no-repeat;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 20px;
-  min-height: 30vh; /* hauteur fluide mobile */
-  color: white;
-}
-
-   
-   
-.accroche-section h2 {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-  color: #ffa41c;
-}
-
-.accroche-section p {
-  font-size: 1rem;
-  line-height: 1.4;
-  max-width: 90%;
-  margin: 0 auto 15px;
-}
-
-.cta-button {
-  font-size: 1rem;
-  padding: 12px 24px;
-  border-radius: 10px;
-  background: linear-gradient(to bottom, #4d79aa, #003366);
-}
-
-   /* Guides 2x2 mobile */
-.guides-2x2{
-  display:grid;
-  grid-template-columns:1fr 1fr; /* 2x2 sur mobile */
-  gap:10px;
-  padding:16px;
-  background:#f9fbff;
-}
-
-.guide-card{
-  position:relative;
-  display:block;
-  border-radius:12px;
-  overflow:hidden;
-  aspect-ratio:16/10;                 /* ratio propre sur mobile */
-  background:#e9eef6;                 /* fallback */
-  background-image: var(--bg);
-  background-size:cover;
-  background-position:center;
-  box-shadow:0 2px 8px rgba(0,0,0,.06);
-  text-decoration:none;
-}
-
-.guide-card::after{                    /* léger dégradé pour lisibilité */
-  content:"";
-  position:absolute; inset:0;
-  background:linear-gradient(180deg, rgba(0,0,0,0.0) 35%, rgba(0,0,0,.55) 100%);
-}
-
-.guide-title{
-  position:absolute; left:10px; right:10px; bottom:10px;
-  z-index:1; color:#fff; font-weight:800; line-height:1.2;
-  font-size:14px; text-shadow:0 1px 2px rgba(0,0,0,.6);
-}
-
-/* Desktop : 4 en ligne */
-@media (min-width:768px){
-  .guides-2x2{ grid-template-columns:repeat(4,1fr); }
-}
-
-  
-</style>
-
+  <meta charset="utf-8" />
+  <title>GiftFeed — Like TIWIB (Mobile)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root{
+      --bg:#f7f8fb; --card:#fff; --text:#1f2330; --muted:#667085;
+      --blue:#003366; --blue-2:#5f8fbf; --orange:#ffa41c;
+      --radius:14px; --shadow:0 2px 8px rgba(16,24,40,.06);
+    }
+    *{box-sizing:border-box} html,body{margin:0;padding:0} img{max-width:100%;display:block}
+    body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Inter,Arial,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+
+    /* Header minimal */
+    header{background:linear-gradient(135deg,var(--blue) 2%,var(--blue-2) 98%);color:#fff;box-shadow:0 6px 14px rgba(0,0,0,.10)}
+    .topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 12px}
+    .ico{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;user-select:none}
+    .brand{font-weight:800;letter-spacing:.3px;font-size:18px;text-align:center;flex:1}
+
+    /* Liens rapides (scroll horizontal) */
+    .quicknav{display:flex;gap:10px;overflow-x:auto;padding:8px 12px 12px;-webkit-overflow-scrolling:touch}
+    .chip{flex:0 0 auto;padding:8px 12px;border-radius:999px;font-weight:700;font-size:13px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);color:#fff;text-decoration:none;white-space:nowrap}
+
+    /* Section titre + guides 2x2 */
+    .section{padding:14px}
+    .section h2{margin:4px 2px 10px;font-size:18px;font-weight:800;color:var(--blue);text-align:center}
+    .guides{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .guide{position:relative;display:block;border-radius:12px;overflow:hidden;background:#e9eef6;box-shadow:var(--shadow);text-decoration:none}
+    .guide::before{content:"";display:block;padding-top:62.5%} /* ~16:10 */
+    .guide[data-bg]{background-image:var(--guide-bg,none);background-size:cover;background-position:center}
+    .guide .title{position:absolute;left:10px;right:10px;bottom:10px;z-index:1;color:#fff;font-weight:900;font-size:14px;line-height:1.2;text-shadow:0 1px 2px rgba(0,0,0,.55)}
+    .guide::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 35%,rgba(0,0,0,.55) 100%)}
+
+    /* Feed produits 1 colonne */
+    .feed{padding:10px 14px 24px}
+    .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-bottom:14px}
+    .card-media{background:#eef2f7;position:relative}
+    .card-media::before{content:"";display:block;padding-top:66%} /* ~3:2 */
+    .card-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .card-body{padding:12px}
+    .card-title{margin:0 0 8px;font-size:16px;font-weight:800;line-height:1.25}
+    .card-desc{margin:0 0 12px;font-size:13px;color:var(--muted);line-height:1.45}
+    .row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .price{font-weight:900;font-size:15px;background:#fff3e0;color:#9a5b00;padding:6px 10px;border-radius:10px;border:1px solid #ffd89a}
+    .btn{display:inline-block;min-height:44px;line-height:44px;padding:0 16px;border-radius:10px;font-weight:800;text-decoration:none;background:linear-gradient(to bottom,#ffc94d,var(--orange));border:1px solid #e69500;color:#fff;box-shadow:0 2px 5px rgba(0,0,0,.10),inset 0 1px 0 rgba(255,255,255,.35);text-align:center;flex:0 0 auto}
+    .btn:active{transform:scale(.98)}
+    .load-more{display:block;width:100%;margin:8px 0 0;border:0;cursor:pointer;background:#e9eef6;color:#1f2330;border-radius:12px;height:44px;font-weight:800}
+
+    /* Search (toggle) */
+    .search-wrap{display:none;padding:0 12px 12px}
+    .search-wrap input{width:100%;height:42px;border-radius:12px;border:1px solid #e3e7ef;padding:0 12px;font-size:15px}
+
+    footer{padding:18px 14px 28px;text-align:center;color:#6b7280;font-size:12px}
+
+    @media(min-width:768px){
+      .guides{grid-template-columns:repeat(4,1fr)}
+      .section h2{font-size:20px}
+      .card-title{font-size:17px}
+    }
+  </style>
 </head>
 <body>
 
-
- <div class="banner-text">
-  📦 Livraison rapide avec Amazon Prime.  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📦 Livraison rapide avec Amazon Prime.  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📦 Livraison rapide avec Amazon Prime. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📦 Livraison rapide avec Amazon Prime.  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📦 Livraison rapide avec Amazon Prime.
-</div>
-
-
-
-
+  <!-- Header -->
   <header>
-    <h1>
-  Le choix du kiné<br>
-  <span style="font-size: 14px; font-weight: normal; display: block; margin-top: 4px;">
-  </span>
-</h1>
-    <div class="header-icons">
-  <div class="burger" onclick="toggleMenu()">☰</div>
-  <div class="search-icon" onclick="toggleSearch()">🔍</div>
-</div>
+    <div class="topbar">
+      <div class="ico" id="btnMenu" aria-label="Menu">☰</div>
+      <div class="brand">GiftFeed</div>
+      <div class="ico" id="btnSearch" aria-label="Recherche">🔍</div>
+    </div>
 
-    <div class="search-bar" id="searchBar">
-  <input type="text" placeholder="Rechercher un produit..." oninput="filterProducts(this.value)">
-</div>
+    <!-- Liens rapides -->
+    <nav class="quicknav" aria-label="Liens rapides">
+      <a class="chip" href="#new">Nouveautés</a>
+      <a class="chip" href="#guides">Guides</a>
+      <a class="chip" href="#under20">Sous 20 $</a>
+      <a class="chip" href="#random">Au hasard</a>
+    </nav>
 
-
-
-
-<nav id="burgerMenu" class="burger-menu">
-  <button class="close-btn" onclick="closeMenu()">✕</button>
-  <a href="#vedette">Produit vedette</a>
-  <a href="#categories">Catégories</a>
-  <a href="#contact">Contact</a>
-</nav>
-
-
+    <!-- Barre de recherche (toggle) -->
+    <div class="search-wrap" id="searchWrap">
+      <input id="searchInput" type="search" placeholder="Rechercher un produit…">
+    </div>
   </header>
-  
-  <section class="accroche-section">
-  <h2>Ton corps mérite mieux.</h2>
-  <p>Découvrez notre sélection d’outils abordables pour améliorer votre santé, votre posture et votre confort.</p>
-  <a href="#grille-produits" class="cta-button">Voir le catalogue ➜</a>
-</section>
 
-  <section class="guides-2x2" id="guides">
-  <a class="guide-card" href="#guide-confort" style="--bg:url('')">
-    <span class="guide-title">Confort bureau & gaming</span>
-  </a>
-  <a class="guide-card" href="#guide-home" style="--bg:url('')">
-    <span class="guide-title">Entraînement à domicile</span>
-  </a>
-  <a class="guide-card" href="#guide-recup" style="--bg:url('')">
-    <span class="guide-title">Récupération et relaxation</span>
-  </a>
-  <a class="guide-card" href="#guide-gadgets" style="--bg:url('')">
-    <span class="guide-title">Gadgets et accessoires insolites</span>
-  </a>
-</section>
-
-  <section class="featured-product">
-  <h2> En vedette cette semaine </h2>
-  <div class="featured-card">
-    <img 
-      src="https://m.media-amazon.com/images/I/617NmwvU4tL._AC_SL1500_.jpg"
-      alt="Bandes élastiques Gritin"
-      style="filter: brightness(0.9) contrast(1.05) saturate(1.1) blur(0.4px); border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-    <div class="featured-info">
-      <h3>Bandes élastiques Gritin</h3>
-      <p><strong>Description :</strong> Ensemble de 5 bandes élastiques avec niveaux progressifs. Douces pour la peau, pratiques et légères.</p>
-      <p><strong>Avis du kiné :</strong> Indispensable pour la mobilité, la rééducation et l’activation musculaire sans stress articulaire. À avoir dans chaque tiroir de bureau ou sac de gym.</p>
-      <p><strong>Pourquoi en vedette :</strong> Leur douceur et leur format mini en font un choix parfait pour intégrer le mouvement au quotidien, sans équipement lourd.</p>
-      <a 
-        href="https://www.amazon.ca/Gritin-Skin-Friendly-Levels-Free-Included-Ideal-Green-Blue-Yellow-Pink-Black/dp/B07L9WLKZQ?tag=motiontherapy-20&linkCode=ll1"
-        target="_blank"
-        rel="noopener noreferrer">Voir sur Amazon</a>
+  <!-- Latest Gift Guides -->
+  <section class="section" id="guides">
+    <h2>Latest Gift Guides</h2>
+    <div class="guides">
+      <a class="guide" href="#g1" style="--guide-bg:url('https://images.unsplash.com/photo-1603481588273-0c4c8b22f6d6?q=80&w=1200&auto=format&fit=crop')" data-bg>
+        <span class="title">Confort bureau & gaming</span>
+      </a>
+      <a class="guide" href="#g2" style="--guide-bg:url('https://images.unsplash.com/photo-1598970434795-0c54fe7c0642?q=80&w=1200&auto=format&fit=crop')" data-bg>
+        <span class="title">Entraînement à domicile</span>
+      </a>
+      <a class="guide" href="#g3" style="--guide-bg:url('https://images.unsplash.com/photo-1554344728-77cf90d9ed26?q=80&w=1200&auto=format&fit=crop')" data-bg>
+        <span class="title">Récupération & relaxation</span>
+      </a>
+      <a class="guide" href="#g4" style="--guide-bg:url('https://images.unsplash.com/photo-1519861531473-9200262188bf?q=80&w=1200&auto=format&fit=crop')" data-bg>
+        <span class="title">Gadgets & accessoires insolites</span>
+      </a>
     </div>
-    </div>
-</section>
+  </section>
 
+  <!-- Feed produits -->
+  <main class="feed" id="feed">
+    <article class="card">
+      <a class="card-media" href="#" aria-label="Voir le produit">
+        <img loading="lazy" decoding="async" src="https://m.media-amazon.com/images/I/71YUqgTD2SL._AC_SL1500_.jpg" alt="Repose-poignets ergonomique — mousse mémoire">
+      </a>
+      <div class="card-body">
+        <h3 class="card-title">Repose-poignets ergonomique</h3>
+        <p class="card-desc">Soulage les poignets au clavier/souris, simple et efficace au bureau.</p>
+        <div class="row">
+          <span class="price">19,99 $</span>
+          <a class="btn" href="#" target="_blank" rel="noopener">Voir sur Amazon</a>
+        </div>
+      </div>
+    </article>
 
- <div class="category-bubbles">
-  <div class="bubble"><div class="emoji">🔥</div><div class="label">Perte de poids</div></div>
-  <div class="bubble"><div class="emoji">🦴</div><div class="label">Douleurs</div></div>
-  <div class="bubble"><div class="emoji">🧘</div><div class="label">Posture</div></div>
-  <div class="bubble"><div class="emoji">💆</div><div class="label">Récupération</div></div>
-  <div class="bubble"><div class="emoji">🏋️</div><div class="label">Entraînement</div></div>
-  <div class="bubble"><div class="emoji">🧠</div><div class="label">Concentration</div></div>
-   <div class="bubble"><div class="emoji">💻</div><div class="label">Ergonomie</div></div>
-   <div class="bubble"><div class="emoji">🌙</div><div class="label">Sommeil</div></div>
-   <div class="bubble"><div class="emoji">🎒</div> <div class="label">Accessoires</div></div>
+    <article class="card">
+      <a class="card-media" href="#" aria-label="Voir le produit">
+        <img loading="lazy" decoding="async" src="https://m.media-amazon.com/images/I/617NmwvU4tL._AC_SL1500_.jpg" alt="Bandes élastiques de résistance — lot de 5">
+      </a>
+      <div class="card-body">
+        <h3 class="card-title">Bandes élastiques — lot de 5</h3>
+        <p class="card-desc">Parfaites pour activer le haut du dos et entretenir la mobilité.</p>
+        <div class="row">
+          <span class="price">14,99 $</span>
+          <a class="btn" href="#" target="_blank" rel="noopener">Voir sur Amazon</a>
+        </div>
+      </div>
+    </article>
 
-</div>
+    <article class="card">
+      <a class="card-media" href="#" aria-label="Voir le produit">
+        <img loading="lazy" decoding="async" src="https://m.media-amazon.com/images/I/71ngBw1EafL._AC_SL1500_.jpg" alt="Ballon de mobilisation — anti-éclatement">
+      </a>
+      <div class="card-body">
+        <h3 class="card-title">Ballon de mobilisation</h3>
+        <p class="card-desc">Travail postural en douceur, renforce les muscles profonds.</p>
+        <div class="row">
+          <span class="price">22,90 $</span>
+          <a class="btn" href="#" target="_blank" rel="noopener">Voir sur Amazon</a>
+        </div>
+      </div>
+    </article>
 
-
-<h2 style="text-align: center; color: #003366; font-size: 22px; margin-top: 0;">Nos recommandations kiné 🔍</h2>
- <section class="product-grid">
-  <div class="product">
-  <img src="https://m.media-amazon.com/images/I/71YUqgTD2SL._AC_SL1500_.jpg" alt="Repose-poignets ergonomique" style="filter: contrast(1.1) brightness(0.95); border-radius: 10px; box-shadow: 0 0 6px rgba(0,0,0,0.1);">
-  <h2>Repose-poignets ergonomique</h2>
-  <p><strong>Description :</strong> Ensemble coussiné pour clavier et souris, en mousse mémoire. Soulage les poignets au quotidien.</p>
-  <p><strong>Avis du kiné :</strong> Simple, mais redoutablement efficace pour éviter les tendinites du poignet au bureau. Un must si tu tapes beaucoup.</p>
-  <a href="https://www.amazon.ca/Gimars-Memory-Keyboard-Support-Computer/dp/B01M11FLUJ?&linkCode=ll1&tag=motiontherapy-20&language=en_CA&ref_=as_li_ss_tl" target="_blank" rel="noopener noreferrer">Voir sur Amazon</a>
-</div>
-
-
-  <div class="product">
-  <img src="https://m.media-amazon.com/images/I/7153xLfdwAL._AC_SL1500_.jpg"
-       alt="Tapis de yoga antidérapant"
-       style="filter: brightness(0.95) contrast(1.1); border-radius: 10px; box-shadow: 0 0 6px rgba(0,0,0,0.1);">
-  <h2>Tapis de yoga antidérapant</h2>
-  <p><strong>Description :</strong> Tapis d’exercice extra épais 5 cm sur lequel tu peux t’étirer en toute sécurité, sans glissement.</p>
-  <p><strong>Avis du kiné :</strong> Idéal pour travailler la mobilité et relaxer les muscles après une journée assise.</p>
-  <a href="https://www.amazon.ca/AmazonBasics-2-Inch-Extra-Exercise-Carrying/dp/B01LP0V4JY?linkCode=ll1&tag=motiontherapy-20"
-     target="_blank" rel="noopener noreferrer">Voir sur Amazon</a>
-</div>
-
-
-  <div class="product">
-  <img src="https://m.media-amazon.com/images/I/71dNRC1t2sL._SL1500_.jpg"
-       alt="Correcteur de posture"
-       style="filter: brightness(0.95) contrast(1.1); border-radius: 10px; box-shadow: 0 0 6px rgba(0,0,0,0.1);">
-  <h2>Correcteur de posture</h2>
-  <p><strong>Description :</strong> Bretelles ajustables pour ouvrir les épaules et réaligner le dos sans effort.</p>
-  <p><strong>Avis du kiné :</strong> Idéal pour lutter contre les épaules voûtées en position assise. Porte-le progressivement selon ta tolérance.</p>
-  <a href="https://www.amazon.ca/Latest-Model-Posture-Corrector-Women/dp/B07VST9VYH?linkCode=ll1&tag=motiontherapy-20"
-     target="_blank" rel="noopener noreferrer">Voir sur Amazon</a>
-</div>
-
-
-  <div class="product">
-  <img src="https://m.media-amazon.com/images/I/71ngBw1EafL._AC_SL1500_.jpg"
-       alt="Ballon de mobilisation"
-       style="filter: brightness(0.95) contrast(1.1); border-radius: 10px; box-shadow: 0 0 6px rgba(0,0,0,0.1);">
-  <h2>Ballon de mobilisation</h2>
-  <p><strong>Description :</strong> Ballon anti-éclatement pour la mobilité, l’équilibre et l’activation posturale.</p>
-  <p><strong>Avis du kiné :</strong> Idéal pour soulager le bas du dos et renforcer les muscles profonds en douceur. Simple à intégrer à ta routine.</p>
-  <a href="https://www.amazon.ca/BalanceFrom-Anti-Burst-Resistant-Exercise-000-Pound/dp/B07S4GQRY1?linkCode=ll1&tag=motiontherapy-20"
-     target="_blank" rel="noopener noreferrer">Voir sur Amazon</a>
-</div>
-
-
-<!-- Lampe lumière du jour -->
-<div class="product">
-  <img 
-    src="https://m.media-amazon.com/images/I/41IzvDiFoyL._AC_SL1500_.jpg"
-    alt="Lampe lumière du jour"
-    style="filter: brightness(0.9) contrast(1.05) saturate(1.2) hue-rotate(3deg) blur(0.3px); border-radius: 10px; box-shadow: 0 0 8px rgba(0,0,0,0.15);">
-  <h2>Lampe lumière du jour</h2>
-  <p><strong>Description :</strong> Boost l’énergie, la concentration et l’humeur, surtout en hiver. À placer près de l’écran le matin.</p>
-  <p><strong>Avis du kiné :</strong> Excellent outil pour soutenir ton rythme circadien, surtout si tu passes la journée en intérieur. L’exposition lumineuse le matin peut améliorer ta qualité de sommeil et ton humeur générale.</p>
-  <a 
-    href="https://www.amazon.ca/Lastar-CM003-Sunlight-Lamp-lamp/dp/B09DV44ST8?tag=motiontherapy-20&linkCode=ll1&ref_=as_li_ss_tl"
-    target="_blank" 
-    rel="noopener noreferrer">Voir sur Amazon</a>
-</div>
-
-<!-- Rouleau de massage -->
-<div class="product">
-  <img 
-    src="https://m.media-amazon.com/images/I/91yuQpw++mL._AC_SL1500_.jpg"
-    alt="Rouleau de massage"
-    style="filter: brightness(0.92) contrast(1.08) saturate(1.1) hue-rotate(6deg) blur(0.4px); border-radius: 10px; box-shadow: 0 0 8px rgba(0,0,0,0.15);">
-  <h2>Rouleau de massage</h2>
-  <p><strong>Description :</strong> Rouleau en mousse dense, idéal pour relâcher les tensions musculaires et stimuler la circulation.</p>
-  <p><strong>Avis du kiné :</strong> Parfait après une séance d’assise ou d’exercice intense : tu relâches les tensions profondes avec efficacité.</p>
-  <a 
-    href="https://www.amazon.ca/Amazon-Basics-Exercise-Recovery-Centimeters/dp/B071P2MQ5D?linkCode=ll1&tag=motiontherapy-20"
-    target="_blank" 
-    rel="noopener noreferrer">Voir sur Amazon</a>
-</div>
-
-
-
-
-  <div class="product">
-  <img 
-    src="https://m.media-amazon.com/images/I/81FV9lccS-L._AC_SL1500_.jpg"
-    alt="Balle de massage lacrosse"
-    style="filter: brightness(0.95) contrast(1.1); border-radius: 10px; box-shadow: 0 0 6px rgba(0,0,0,0.1);">
-  <h2>Balle de massage lacrosse</h2>
-  <p><strong>Description :</strong> Petite balle dense pour cibler les points de tension, trapèzes, voûte plantaire ou fessiers avec précision.</p>
-  <p><strong>Avis du kiné :</strong> Parfaite pour traiter les zones sensibles ou les trigger points rapidement et efficacement.</p>
-  <a 
-    href="https://www.amazon.ca/Acupoint-Physical-Massage-Therapy-Balls/dp/B01IL7SKUU?linkCode=ll1&tag=motiontherapy-20"
-    target="_blank" 
-    rel="noopener noreferrer">Voir sur Amazon</a>
-</div>
-
-
-  <div class="product">
-  <img 
-    src="https://m.media-amazon.com/images/I/714wUiFctcL._AC_SL1500_.jpg"
-    alt="Support pour portable"
-    style="filter: brightness(0.95) contrast(1.1); border-radius: 10px; box-shadow: 0 0 6px rgba(0,0,0,0.1);">
-  <h2>Support pour portable</h2>
-  <p><strong>Description :</strong> Support réglable qui élève ton portable à hauteur des yeux pour soulager la nuque.</p>
-  <p><strong>Avis du kiné :</strong> Simple et efficace : soulever ton écran règle instantanément 80 % des douleurs cervicales de bureau.</p>
-  <a 
-    href="https://www.amazon.ca/OMOTON-Ergonomic-Adjustable-Compatible-iPad%EF%BC%8810-15-6/dp/B0B6V32P8V?linkCode=ll1&tag=motiontherapy-20"
-    target="_blank" rel="noopener noreferrer">Voir sur Amazon</a>
-</div>
-
-
-  <div class="product">
-  <img 
-    src="https://m.media-amazon.com/images/I/81MapfvdofL._AC_SL1500_.jpg"
-    alt="Mini stepper de bureau"
-    style="filter: brightness(0.95) contrast(1.1); border-radius: 10px; box-shadow: 0 0 6px rgba(0,0,0,0.1);">
-  <h2>Mini stepper de bureau</h2>
-  <p><strong>Description :</strong> Compact, parfait sous le bureau pour pédaler doucement tout au long de la journée.</p>
-  <p><strong>Avis du kiné :</strong> Simple et intelligent : active ta circulation tout en restant concentré au travail.</p>
-  <a 
-    href="https://www.amazon.ca/Sunny-Health-Fitness-Stepper-Resistance/dp/B0016BQFSS?linkCode=ll1&tag=motiontherapy-20"
-    target="_blank" 
-    rel="noopener noreferrer">Voir sur Amazon</a>
-</div>
-
-
+    <button class="load-more" id="loadMore">Voir plus</button>
+  </main>
 
   <footer>
-    En tant que partenaire Amazon, je réalise un bénéfice sur les achats remplissant les conditions requises.
+    En tant que partenaire Amazon, je peux percevoir une commission sur les achats éligibles.
   </footer>
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    // BURGER
-    const burger = document.querySelector('.burger');
-    const menu = document.querySelector('.burger-menu');
-    const closeBtn = document.querySelector('.close-btn');
-    const menuLinks = document.querySelectorAll('.burger-menu a');
 
-    burger.addEventListener('click', () => {
-      menu.style.display = 'flex';
+  <script>
+    // Toggle recherche
+    const btnSearch = document.getElementById('btnSearch');
+    const searchWrap = document.getElementById('searchWrap');
+    const searchInput = document.getElementById('searchInput');
+    btnSearch.addEventListener('click', ()=>{
+      const show = searchWrap.style.display !== 'block';
+      searchWrap.style.display = show ? 'block' : 'none';
+      if(show) searchInput.focus();
     });
 
-    closeBtn.addEventListener('click', () => {
-      menu.style.display = 'none';
-    });
-
-    menuLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        menu.style.display = 'none';
+    // Filtre simple par titre
+    searchInput?.addEventListener('input', e=>{
+      const q = e.target.value.trim().toLowerCase();
+      document.querySelectorAll('.card').forEach(card=>{
+        const title = card.querySelector('.card-title')?.textContent.toLowerCase() || '';
+        card.style.display = title.includes(q) ? '' : 'none';
       });
     });
 
-    // LOUPE
-    const searchIcon = document.querySelector('.search-icon');
-    const searchBar = document.getElementById('searchBar');
+    // Lazy-load robuste (fallback: loading="lazy")
+    const io = 'IntersectionObserver' in window ? new IntersectionObserver((entries, obs)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          const img = e.target;
+          img.src = img.dataset.src || img.src;
+          obs.unobserve(img);
+        }
+      });
+    }, {rootMargin:'120px'}) : null;
+    document.querySelectorAll('img[loading="lazy"]').forEach(img=>{ if(io) io.observe(img); });
 
-    searchIcon.addEventListener('click', () => {
-      if (searchBar.style.display === 'block') {
-        searchBar.style.display = 'none';
-      } else {
-        searchBar.style.display = 'block';
-      }
+    // “Voir plus” : duplique des cartes de démo (remplace par ton fetch)
+    const feed = document.getElementById('feed');
+    const loadMore = document.getElementById('loadMore');
+    loadMore.addEventListener('click', ()=>{
+      const samples = Array.from(document.querySelectorAll('.card')).slice(0,2);
+      samples.forEach(s=>{
+        const clone = s.cloneNode(true);
+        clone.querySelectorAll('img').forEach(img=>{ img.loading='lazy'; });
+        feed.insertBefore(clone, loadMore);
+      });
+      loadMore.scrollIntoView({behavior:'smooth', block:'center'});
     });
-  });
-
-  // FILTRAGE DES PRODUITS
-function filterProducts(query) {
-    const cards = document.querySelectorAll(".product");
-    query = query.toLowerCase();
-
-    cards.forEach(card => {
-      const title = card.querySelector('h2').innerText.trim();
-      const description = card.querySelector('p').innerText.trim();
-
-      // Si le titre ou la description sont vides, on cache complètement la carte
-      if (!title || !description) {
-        card.style.display = "none";  // Cette carte disparaît
-      } else {
-        const text = card.innerText.toLowerCase();
-        card.style.display = text.includes(query) ? "block" : "none";  // On affiche les cartes qui correspondent au filtre
-      }
-    });
-}
-
-</script>
-   
-
+  </script>
 </body>
 </html>
