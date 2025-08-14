@@ -105,101 +105,165 @@
 </section>
 
 
-  <!-- Feed produits -->
-  <main class="feed" id="feed">
-    <article class="card">
-      <a class="card-media" href="#" aria-label="Voir le produit">
-        <img loading="lazy" decoding="async" src="https://m.media-amazon.com/images/I/71YUqgTD2SL._AC_SL1500_.jpg" alt="Repose-poignets ergonomique — mousse mémoire">
-      </a>
-      <div class="card-body">
-        <h3 class="card-title">Repose-poignets ergonomique</h3>
-        <p class="card-desc">Soulage les poignets au clavier/souris, simple et efficace au bureau.</p>
-        <div class="row">
-          <span class="price">19,99 $</span>
-          <a class="btn" href="#" target="_blank" rel="noopener">Voir sur Amazon</a>
-        </div>
-      </div>
-    </article>
+  <!-- Feed produits (mock-up) -->
+<main class="feed" id="feed">
+  <!-- Les cartes seront injectées ici par le script -->
+  <button class="load-more" id="loadMore">Voir plus</button>
+</main>
 
-    <article class="card">
-      <a class="card-media" href="#" aria-label="Voir le produit">
-        <img loading="lazy" decoding="async" src="https://m.media-amazon.com/images/I/617NmwvU4tL._AC_SL1500_.jpg" alt="Bandes élastiques de résistance — lot de 5">
-      </a>
-      <div class="card-body">
-        <h3 class="card-title">Bandes élastiques — lot de 5</h3>
-        <p class="card-desc">Parfaites pour activer le haut du dos et entretenir la mobilité.</p>
-        <div class="row">
-          <span class="price">14,99 $</span>
-          <a class="btn" href="#" target="_blank" rel="noopener">Voir sur Amazon</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="card">
-      <a class="card-media" href="#" aria-label="Voir le produit">
-        <img loading="lazy" decoding="async" src="https://m.media-amazon.com/images/I/71ngBw1EafL._AC_SL1500_.jpg" alt="Ballon de mobilisation — anti-éclatement">
-      </a>
-      <div class="card-body">
-        <h3 class="card-title">Ballon de mobilisation</h3>
-        <p class="card-desc">Travail postural en douceur, renforce les muscles profonds.</p>
-        <div class="row">
-          <span class="price">22,90 $</span>
-          <a class="btn" href="#" target="_blank" rel="noopener">Voir sur Amazon</a>
-        </div>
-      </div>
-    </article>
-
-    <button class="load-more" id="loadMore">Voir plus</button>
-  </main>
 
   <footer>
     En tant que partenaire Amazon, je peux percevoir une commission sur les achats éligibles.
   </footer>
 
   <script>
-    // Toggle recherche
-    const btnSearch = document.getElementById('btnSearch');
-    const searchWrap = document.getElementById('searchWrap');
-    const searchInput = document.getElementById('searchInput');
-    btnSearch.addEventListener('click', ()=>{
-      const show = searchWrap.style.display !== 'block';
-      searchWrap.style.display = show ? 'block' : 'none';
-      if(show) searchInput.focus();
-    });
+  // --- Toggle recherche (inchangé) ---
+  const btnSearch = document.getElementById('btnSearch');
+  const searchWrap = document.getElementById('searchWrap');
+  const searchInput = document.getElementById('searchInput');
+  btnSearch.addEventListener('click', ()=>{
+    const show = searchWrap.style.display !== 'block';
+    searchWrap.style.display = show ? 'block' : 'none';
+    if (show) searchInput.focus();
+  });
 
-    // Filtre simple par titre
-    searchInput?.addEventListener('input', e=>{
-      const q = e.target.value.trim().toLowerCase();
-      document.querySelectorAll('.card').forEach(card=>{
-        const title = card.querySelector('.card-title')?.textContent.toLowerCase() || '';
-        card.style.display = title.includes(q) ? '' : 'none';
-      });
-    });
+  // --- Données mock-up EDITABLES ---
+  // Remplace titre/desc/prix/img/url et c’est tout.
+  const PRODUCTS = [
+    {
+      title: "Repose-poignets ergonomique",
+      desc: "Soulage les poignets au clavier/souris, simple et efficace au bureau.",
+      price: "19,99 $",
+      img: "https://picsum.photos/seed/wristrest/1200/800",
+      url: "#"
+    },
+    {
+      title: "Bandes élastiques — lot de 5",
+      desc: "Parfaites pour activer le haut du dos et entretenir la mobilité.",
+      price: "14,99 $",
+      img: "https://picsum.photos/seed/bands/1200/800",
+      url: "#"
+    },
+    {
+      title: "Ballon de mobilisation 65 cm",
+      desc: "Travail postural en douceur, renforce les muscles profonds.",
+      price: "22,90 $",
+      img: "https://picsum.photos/seed/ball/1200/800",
+      url: "#"
+    },
+    {
+      title: "Rouleau de massage (foam roller)",
+      desc: "Relâche les tensions après sport ou longue assise.",
+      price: "17,90 $",
+      img: "https://picsum.photos/seed/foamroller/1200/800",
+      url: "#"
+    },
+    {
+      title: "Lampe lumière du jour",
+      desc: "Un coup de boost le matin pour le rythme circadien.",
+      price: "39,99 $",
+      img: "https://picsum.photos/seed/daylight/1200/800",
+      url: "#"
+    },
+    {
+      title: "Support pour portable (réglable)",
+      desc: "Monte l’écran à hauteur des yeux, nuque soulagée.",
+      price: "24,90 $",
+      img: "https://picsum.photos/seed/laptopstand/1200/800",
+      url: "#"
+    },
+    {
+      title: "Balle de massage (lacrosse)",
+      desc: "Cible les trigger points : trapèzes, fessiers, voûte plantaire.",
+      price: "8,99 $",
+      img: "https://picsum.photos/seed/ball2/1200/800",
+      url: "#"
+    },
+    {
+      title: "Tapis de sol antidérapant",
+      desc: "Confortable et stable pour mobilité et renforcement.",
+      price: "18,50 $",
+      img: "https://picsum.photos/seed/yogamat/1200/800",
+      url: "#"
+    },
+    {
+      title: "Mini stepper de bureau",
+      desc: "Active la circulation sans quitter ton poste.",
+      price: "59,00 $",
+      img: "https://picsum.photos/seed/stepper/1200/800",
+      url: "#"
+    },
+    {
+      title: "Coussin lombaire mémoire de forme",
+      desc: "Soutien bas du dos sur chaise de bureau ou gaming.",
+      price: "21,90 $",
+      img: "https://picsum.photos/seed/lumbar/1200/800",
+      url: "#"
+    },
+    {
+      title: "Bouteille 1L graduée",
+      desc: "Pense à boire sans y penser, toute la journée.",
+      price: "12,90 $",
+      img: "https://picsum.photos/seed/bottle/1200/800",
+      url: "#"
+    },
+    {
+      title: "Pistolet de massage",
+      desc: "Récupération express après l’entraînement.",
+      price: "69,90 $",
+      img: "https://picsum.photos/seed/massagegun/1200/800",
+      url: "#"
+    }
+  ];
 
-    // Lazy-load robuste (fallback: loading="lazy")
-    const io = 'IntersectionObserver' in window ? new IntersectionObserver((entries, obs)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){
-          const img = e.target;
-          img.src = img.dataset.src || img.src;
-          obs.unobserve(img);
-        }
-      });
-    }, {rootMargin:'120px'}) : null;
-    document.querySelectorAll('img[loading="lazy"]').forEach(img=>{ if(io) io.observe(img); });
+  // --- Rendu du feed (en “pages”) ---
+  const feed = document.getElementById('feed');
+  const loadMore = document.getElementById('loadMore');
+  const PAGE_SIZE = 6;
+  let cursor = 0;
 
-    // “Voir plus” : duplique des cartes de démo (remplace par ton fetch)
-    const feed = document.getElementById('feed');
-    const loadMore = document.getElementById('loadMore');
-    loadMore.addEventListener('click', ()=>{
-      const samples = Array.from(document.querySelectorAll('.card')).slice(0,2);
-      samples.forEach(s=>{
-        const clone = s.cloneNode(true);
-        clone.querySelectorAll('img').forEach(img=>{ img.loading='lazy'; });
-        feed.insertBefore(clone, loadMore);
-      });
-      loadMore.scrollIntoView({behavior:'smooth', block:'center'});
+  function cardHTML(p){
+    return `
+      <article class="card">
+        <a class="card-media" href="${p.url}" aria-label="Voir le produit" target="_blank" rel="noopener">
+          <img loading="lazy" decoding="async" src="${p.img}" alt="${p.title}">
+        </a>
+        <div class="card-body">
+          <h3 class="card-title">${p.title}</h3>
+          <p class="card-desc">${p.desc}</p>
+          <div class="row">
+            <span class="price">${p.price}</span>
+            <a class="btn" href="${p.url}" target="_blank" rel="noopener">Voir sur Amazon</a>
+          </div>
+        </div>
+      </article>
+    `;
+  }
+
+  function renderNext(){
+    const end = Math.min(cursor + PAGE_SIZE, PRODUCTS.length);
+    for (let i = cursor; i < end; i++){
+      feed.insertAdjacentHTML('beforeend', cardHTML(PRODUCTS[i]));
+    }
+    cursor = end;
+    if (cursor >= PRODUCTS.length) loadMore.style.display = 'none';
+  }
+
+  document.addEventListener('DOMContentLoaded', ()=>{
+    renderNext();
+    loadMore.addEventListener('click', renderNext);
+  });
+
+  // --- Filtre recherche (fonctionne sur le mock-up) ---
+  searchInput?.addEventListener('input', e=>{
+    const q = e.target.value.trim().toLowerCase();
+    document.querySelectorAll('.card').forEach(card=>{
+      const title = card.querySelector('.card-title')?.textContent.toLowerCase() || '';
+      const desc  = card.querySelector('.card-desc')?.textContent.toLowerCase() || '';
+      card.style.display = (title.includes(q) || desc.includes(q)) ? '' : 'none';
     });
-  </script>
+  });
+</script>
+
 </body>
 </html>
