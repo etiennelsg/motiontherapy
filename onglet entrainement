@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Entraînement à domicile — Le coin du kinésiologue</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root{
+      --bg:#f7f8fb; --card:#fff; --text:#1f2330; --muted:#667085;
+      --blue:#003366; --blue-2:#5f8fbf; --orange:#ffa41c;
+      --radius:14px; --shadow:0 2px 8px rgba(16,24,40,.06);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Inter,Arial,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+
+    /* Header compact + Back */
+    header{background:linear-gradient(135deg,var(--blue) 2%,var(--blue-2) 98%);color:#fff;box-shadow:0 6px 14px rgba(0,0,0,.10)}
+    .topbar{display:flex;align-items:center;gap:10px;padding:10px 12px}
+    .ico{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;user-select:none}
+    .brand{font-weight:800;letter-spacing:.3px;font-size:18px;flex:1;text-align:center}
+
+    /* HERO */
+    .hero{
+      position:relative; overflow:hidden;
+      background:url('https://images.unsplash.com/photo-1683758575782-a632dbbe9eed?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0') center/cover no-repeat;
+    }
+    .hero::before{content:"";display:block;padding-top:40vh;} /* hauteur visuelle */
+    .hero::after{
+      content:""; position:absolute; inset:0;
+      background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.55) 100%);
+    }
+    .hero-content{
+      position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
+      text-align:center; color:#fff; padding:16px; z-index:1;
+    }
+    .hero h1{margin:0 0 6px; font-size:24px; font-weight:900;}
+    .hero p{margin:0; font-size:14px; opacity:.95;}
+
+    /* GRID 2×2 de cartes (même structure que l'accueil) */
+    .section{padding:14px}
+    .section h2{margin:10px 2px 12px; font-size:18px; font-weight:800; color:var(--blue); text-align:center}
+    .grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; padding:0 14px 24px;}
+    .card{background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; display:flex; flex-direction:column;}
+    .media{position:relative; background:#eef2f7;}
+    .media::before{content:""; display:block; padding-top:66%;} /* ~3:2 */
+    .media img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+    .body{padding:10px}
+    .title{margin:0 0 6px; font-size:14px; font-weight:800; line-height:1.25}
+    .desc{margin:0 0 10px; font-size:12px; color:var(--muted); line-height:1.35;
+      display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;}
+    .row{display:flex; align-items:center; justify-content:space-between; gap:8px}
+    .price{font-weight:900; font-size:13px; background:#fff3e0; color:#9a5b00; padding:6px 8px; border-radius:10px; border:1px solid #ffd89a}
+    .btn{display:inline-block; min-height:36px; line-height:36px; padding:0 12px; border-radius:10px; font-weight:800; text-decoration:none;
+      background:linear-gradient(to bottom,#ffc94d,var(--orange)); border:1px solid #e69500; color:#fff; box-shadow:0 2px 5px rgba(0,0,0,.10),inset 0 1px 0 rgba(255,255,255,.35); text-align:center; flex:0 0 auto}
+    .btn:active{transform:scale(.98)}
+
+    @media(min-width:768px){
+      .hero::before{padding-top:38vh}
+      .grid{grid-template-columns:repeat(4,minmax(0,1fr));}
+      .title{font-size:15px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="topbar">
+      <a class="ico" href="index.html" aria-label="Retour">←</a>
+      <div class="brand">Entraînement à domicile</div>
+      <div class="ico" aria-hidden="true" style="opacity:0">○</div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" role="banner" aria-label="Entraînement à domicile">
+    <div class="hero-content">
+      <h1>Entraînement à domicile</h1>
+      <p>Sélection d’outils pour des résultats à la maison</p>
+    </div>
+  </section>
+
+  <!-- Grille 2×2 de cartes -->
+  <section class="section">
+    <h2>Outils recommandés</h2>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <footer style="padding:18px 14px 28px;text-align:center;color:#6b7280;font-size:12px">
+    En tant que partenaire Amazon, je peux percevoir une commission sur les achats éligibles.
+  </footer>
+
+  <script>
+    // 16 produits MOCK-UP — remplace titre/desc/price/img/url comme tu veux.
+    // Astuce : pour Amazon, préfère l’URL mobile: https://www.amazon.ca/gp/aw/d/ASIN?tag=...&linkCode=ll1
+    const PRODUCTS = [
+      { title:"Bandes de résistance (lot de 5)", desc:"Activation dos/épaules, mobilité rapide.", price:"14,99 $", img:"https://picsum.photos/seed/bands/800/600", url:"#"},
+      { title:"Kettlebell 8–12 kg", desc:"Force & cardio en peu d’espace.", price:"39,90 $", img:"https://picsum.photos/seed/kb/800/600", url:"#"},
+      { title:"Corde à sauter", desc:"Cardio express, réglable et silencieuse.", price:"12,50 $", img:"https://picsum.photos/seed/rope/800/600", url:"#"},
+      { title:"Tapis de yoga épais", desc:"Confort & stabilité pour renfo et stretching.", price:"24,99 $", img:"https://picsum.photos/seed/yogamat/800/600", url:"#"},
+      { title:"Disques de glisse", desc:"Gainage dynamique, jambes & core.", price:"9,90 $", img:"https://picsum.photos/seed/sliders/800/600", url:"#"},
+      { title:"Barre de traction porte", desc:"Dos/biceps sans perçage.", price:"34,90 $", img:"https://picsum.photos/seed/pullup/800/600", url:"#"},
+      { title:"Poids chevilles 2×1 kg", desc:"Renfo bas du corps & fessiers.", price:"17,90 $", img:"https://picsum.photos/seed/ankle/800/600", url:"#"},
+      { title:"Rouleau de massage", desc:"Récupération après séance.", price:"16,90 $", img:"https://picsum.photos/seed/foamroller/800/600", url:"#"},
+      { title:"Pistolet de massage", desc:"Détente ciblée, plusieurs embouts.", price:"59,00 $", img:"https://picsum.photos/seed/massagegun/800/600", url:"#"},
+      { title:"Banc pliable", desc:"Presse, rowing, compact & stable.", price:"69,00 $", img:"https://picsum.photos/seed/bench/800/600", url:"#"},
+      { title:"Haltères réglables", desc:"Un set pour tout faire, gain de place.", price:"89,00 $", img:"https://picsum.photos/seed/dumbbells/800/600", url:"#"},
+      { title:"Ab roller", desc:"Gainage profond, format mini.", price:"14,50 $", img:"https://picsum.photos/seed/ab/800/600", url:"#"},
+      { title:"Mini stepper", desc:"Cardio doux, articulations friendly.", price:"59,00 $", img:"https://picsum.photos/seed/stepper/800/600", url:"#"},
+      { title:"Anneau Pilates", desc:"Adducteurs, posture, mobilité épaule.", price:"13,90 $", img:"https://picsum.photos/seed/pilates/800/600", url:"#"},
+      { title:"Élastique long (pull-up assist)", desc:"Tractions assistées & mobilité.", price:"11,90 $", img:"https://picsum.photos/seed/longband/800/600", url:"#"},
+      { title:"Plateau d’équilibre", desc:"Proprioception & cheville/genou.", price:"21,90 $", img:"https://picsum.photos/seed/balance/800/600", url:"#"}
+    ];
+
+    function cardHTML(p){
+      return `
+        <article class="card">
+          <a class="media" href="${p.url}" target="_blank"
+             rel="noopener noreferrer nofollow sponsored" referrerpolicy="no-referrer"
+             aria-label="Voir le produit">
+            <img loading="lazy" decoding="async" src="${p.img}" alt="${p.title}">
+          </a>
+          <div class="body">
+            <h3 class="title">${p.title}</h3>
+            <p class="desc">${p.desc}</p>
+            <div class="row">
+              <span class="price">${p.price}</span>
+              <a class="btn" href="${p.url}" target="_blank"
+                 rel="noopener noreferrer nofollow sponsored" referrerpolicy="no-referrer">
+                Voir sur Amazon
+              </a>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    const grid = document.getElementById('grid');
+    PRODUCTS.forEach(p => grid.insertAdjacentHTML('beforeend', cardHTML(p)));
+  </script>
+</body>
+</html>
