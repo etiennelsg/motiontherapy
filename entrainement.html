@@ -60,6 +60,34 @@
       .grid{grid-template-columns:repeat(4,minmax(0,1fr));}
       .title{font-size:15px}
     }
+
+    /* --- FIX cartes coupées sur mobile : empiler prix + bouton --- */
+@media (max-width: 420px){
+  .card-body { padding: 10px; }
+
+  .row{
+    display: flex;
+    flex-wrap: wrap;         /* permet de passer à la ligne */
+    gap: 8px;
+  }
+
+  .price{
+    order: 1;                /* le prix en premier */
+    flex: 0 0 auto;          /* garde sa taille naturelle */
+  }
+
+  .btn{
+    order: 2;                /* bouton en dessous */
+    width: 100%;             /* prend toute la largeur */
+    min-height: 42px;
+    line-height: 42px;
+    flex: 1 1 100%;
+  }
+
+  .card-title{ font-size: 15px; }
+  .card-desc{ font-size: 13px; }
+}
+
   </style>
 </head>
 <body>
