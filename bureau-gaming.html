@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Confort au bureau & gaming — GiftFeed</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root{
+      --bg:#f7f8fb; --card:#fff; --text:#1f2330; --muted:#667085;
+      --blue:#003366; --blue-2:#5f8fbf; --orange:#ffa41c;
+      --radius:14px; --shadow:0 2px 8px rgba(16,24,40,.06);
+    }
+    *{box-sizing:border-box} html,body{margin:0;padding:0} img{max-width:100%;display:block}
+    body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Inter,Arial,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+
+    /* Header minimal */
+    header{background:linear-gradient(135deg,var(--blue) 2%,var(--blue-2) 98%);color:#fff;box-shadow:0 6px 14px rgba(0,0,0,.10)}
+    .topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 12px}
+    .ico{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;user-select:none}
+    .brand{font-weight:800;letter-spacing:.3px;font-size:18px;text-align:center;flex:1}
+    .back{ text-decoration:none; color:#fff; }
+
+    /* HERO */
+    .hero{
+      position:relative;
+      background:url('https://images.unsplash.com/photo-1614624532983-4ce03382d63d?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat;
+      min-height:36vh;
+      display:flex; align-items:center; justify-content:center;
+      text-align:center; color:#fff; padding:24px 16px;
+    }
+    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.55))}
+    .hero-inner{position:relative;z-index:1;max-width:720px}
+    .hero h1{margin:0 0 8px;font-size:24px;font-weight:900;letter-spacing:.2px}
+    .hero p{margin:0;font-size:14px;opacity:.95}
+
+    /* Section titre */
+    .section{padding:14px}
+    .section h2{margin:6px 2px 12px;font-size:18px;font-weight:800;color:var(--blue);text-align:center}
+
+    /* Grid 2x2 */
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 14px 24px}
+    .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+    .card-media{background:#eef2f7;position:relative}
+    .card-media::before{content:"";display:block;padding-top:66%} /* ~3:2 */
+    .card-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .card-body{padding:12px}
+    .card-title{margin:0 0 6px;font-size:15px;font-weight:800;line-height:1.25}
+    .card-desc{margin:0 0 10px;font-size:13px;color:var(--muted);line-height:1.45}
+    .row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .price{font-weight:900;font-size:14px;background:#fff3e0;color:#9a5b00;padding:6px 10px;border-radius:10px;border:1px solid #ffd89a}
+    .btn{display:inline-block;min-height:40px;line-height:40px;padding:0 12px;border-radius:10px;font-weight:800;text-decoration:none;background:linear-gradient(to bottom,#ffc94d,var(--orange));border:1px solid #e69500;color:#fff;box-shadow:0 2px 5px rgba(0,0,0,.10),inset 0 1px 0 rgba(255,255,255,.35);text-align:center;white-space:nowrap}
+
+    /* Empiler prix + bouton sur écrans étroits (évite les cartes coupées) */
+    @media (max-width: 420px){
+      .row{flex-wrap:wrap;gap:8px}
+      .price{order:1}
+      .btn{order:2;width:100%}
+    }
+
+    /* Desktop : 4 par ligne */
+    @media(min-width:768px){
+      .grid{grid-template-columns:repeat(4,1fr)}
+      .hero{min-height:42vh}
+      .hero h1{font-size:28px}
+      .hero p{font-size:15px}
+    }
+
+    footer{padding:18px 14px 28px;text-align:center;color:#6b7280;font-size:12px}
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="topbar">
+      <a class="ico back" href="index.html" aria-label="Retour">⟵</a>
+      <div class="brand">Le coin du kinésiologue</div>
+      <div class="ico" aria-hidden="true" style="opacity:.3;">🔍</div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" role="img" aria-label="Espace de bureau et setup gaming confortable">
+    <div class="hero-inner">
+      <h1>Confort au bureau & gaming</h1>
+      <p>Votre dos vous remerciera</p>
+    </div>
+  </section>
+
+  <!-- Titre section -->
+  <section class="section">
+    <h2>Notre sélection (16 idées)</h2>
+  </section>
+
+  <!-- GRID 2×2 (16 cartes mock-up) -->
+  <main class="grid" id="grid"></main>
+
+  <footer>
+    En tant que partenaire Amazon, je peux percevoir une commission sur les achats éligibles.
+  </footer>
+
+  <script>
+    // 👇 Édite facilement ces 16 produits (titre/desc/prix/img/url)
+    const PRODUCTS = [
+      { title:"Support pour portable (réglable)",
+        desc:"Monte l’écran à hauteur des yeux, nuque soulagée.",
+        price:"24,90 $",
+        img:"https://picsum.photos/seed/laptopstand/1200/800",
+        url:"#"
+      },
+      { title:"Coussin lombaire mémoire de forme",
+        desc:"Soutien du bas du dos — chaise de bureau ou gaming.",
+        price:"21,90 $",
+        img:"https://picsum.photos/seed/lumbar/1200/800",
+        url:"#"
+      },
+      { title:"Repose-poignets clavier + souris",
+        desc:"Moins de tension, plus de confort au quotidien.",
+        price:"19,99 $",
+        img:"https://picsum.photos/seed/wristrest/1200/800",
+        url:"#"
+      },
+      { title:"Repose-pieds ergonomique",
+        desc:"Améliore la posture assise et la circulation.",
+        price:"18,50 $",
+        img:"https://picsum.photos/seed/footrest/1200/800",
+        url:"#"
+      },
+      { title:"Lampe de bureau à intensité réglable",
+        desc:"Confort visuel, réduit la fatigue oculaire.",
+        price:"29,90 $",
+        img:"https://picsum.photos/seed/desklamp/1200/800",
+        url:"#"
+      },
+      { title:"Casque gaming (confort longue durée)",
+        desc:"Arceau souple, coussinets moelleux, immersion.",
+        price:"49,00 $",
+        img:"https://picsum.photos/seed/headset/1200/800",
+        url:"#"
+      },
+      { title:"Micro USB sur pied",
+        desc:"Calls & stream clairs, installation facile.",
+        price:"39,00 $",
+        img:"https://picsum.photos/seed/mic/1200/800",
+        url:"#"
+      },
+      { title:"Clavier mécanique silencieux",
+        desc:"Sensation premium, bruit réduit pour le bureau.",
+        price:"59,90 $",
+        img:"https://picsum.photos/seed/keyboard/1200/800",
+        url:"#"
+      },
+      { title:"Souris ergonomique (verticale)",
+        desc:"Moins de pression sur l’avant-bras et le poignet.",
+        price:"27,90 $",
+        img:"https://picsum.photos/seed/mouse/1200/800",
+        url:"#"
+      },
+      { title:"Tapis de souris XXL",
+        desc:"Surface stable pour clavier + souris.",
+        price:"15,90 $",
+        img:"https://picsum.photos/seed/mousepad/1200/800",
+        url:"#"
+      },
+      { title:"Gestion des câbles (kit)",
+        desc:"Bureau clean : gaines, pinces et attaches.",
+        price:"14,90 $",
+        img:"https://picsum.photos/seed/cable/1200/800",
+        url:"#"
+      },
+      { title:"Bras d’écran (VESA)",
+        desc:"Ajuste la hauteur et la distance en un geste.",
+        price:"39,90 $",
+        img:"https://picsum.photos/seed/monitorarm/1200/800",
+        url:"#"
+      },
+      { title:"Lunettes anti-lumière bleue",
+        desc:"Confort visuel le soir, moins d’éblouissement.",
+        price:"16,90 $",
+        img:"https://picsum.photos/seed/bluelight/1200/800",
+        url:"#"
+      },
+      { title:"Humidificateur de bureau",
+        desc:"Air moins sec, meilleure voix en calls longs.",
+        price:"22,90 $",
+        img:"https://picsum.photos/seed/humidifier/1200/800",
+        url:"#"
+      },
+      { title:"Tapis anti-fatigue (standing desk)",
+        desc:"Supporte les longues sessions debout.",
+        price:"34,90 $",
+        img:"https://picsum.photos/seed/standing/1200/800",
+        url:"#"
+      },
+      { title:"Éclairage LED ambiant (bande RGB)",
+        desc:"Confort visuel + vibe gaming.",
+        price:"19,90 $",
+        img:"https://picsum.photos/seed/ledstrip/1200/800",
+        url:"#"
+      }
+    ];
+
+    function cardHTML(p){
+      return `
+        <article class="card">
+          <a class="card-media" href="${p.url}" aria-label="Voir le produit" target="_blank" rel="noopener">
+            <img loading="lazy" decoding="async" src="${p.img}" alt="${p.title}">
+          </a>
+          <div class="card-body">
+            <h3 class="card-title">${p.title}</h3>
+            <p class="card-desc">${p.desc}</p>
+            <div class="row">
+              <span class="price">${p.price}</span>
+              <a class="btn" href="${p.url}" target="_blank" rel="noopener">Voir l’offre →</a>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    // Rendu initial des 16 cartes
+    const grid = document.getElementById('grid');
+    PRODUCTS.forEach(p => grid.insertAdjacentHTML('beforeend', cardHTML(p)));
+  </script>
+</body>
+</html>
