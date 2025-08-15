@@ -6,6 +6,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
 
+    /* HAMBURGER DRAWER */
+.overlay{
+  position:fixed; inset:0;
+  background:rgba(0,0,0,.35);
+  opacity:0; pointer-events:none;
+  transition:opacity .2s ease;
+  z-index:900;
+}
+.overlay.show{ opacity:1; pointer-events:auto; }
+
+.drawer{
+  position:fixed; top:0; left:0; height:100dvh;
+  width:84%; max-width:320px; background:#fff;
+  box-shadow:2px 0 18px rgba(0,0,0,.18);
+  transform:translateX(-100%); transition:transform .28s ease;
+  z-index:901; padding:16px 14px;
+}
+.drawer.open{ transform:translateX(0); }
+
+.drawer .close{
+  border:0; background:none; font-size:24px; line-height:1;
+  cursor:pointer; display:block; margin-left:auto;
+}
+.drawer a{
+  display:block; padding:12px 10px;
+  border-bottom:1px solid #eef2f7;
+  color:#1f2330; font-weight:700; text-decoration:none;
+}
+.drawer a:hover{ background:#f7f8fb; }
+
+
     .edge-fade{
   height:14px;
   background: linear-gradient(to bottom, rgba(0,0,0,.15), rgba(0,0,0,0));
@@ -111,6 +142,21 @@ header{background:linear-gradient(135deg,var(--blue) 2%,var(--blue-2) 98%);color
       <input id="searchInput" type="search" placeholder="Rechercher un produit…">
     </div>
   </header>
+  <!-- Menu hamburger -->
+<div id="overlay" class="overlay"></div>
+<nav id="drawer" class="drawer" aria-label="Menu latéral">
+  <button class="close" aria-label="Fermer le menu">✕</button>
+
+  <a href="index.html">Accueil</a>
+  <a href="a-propos.html">À propos</a>
+  <a href="entrainement.html">Entraînement à domicile</a>
+  <a href="bureau-gaming.html">Confort bureau & gaming</a>
+  <a href="relaxation.html">Récupération & relaxation</a>
+  <a href="gadgets.html">Gadgets & accessoires insolites</a>
+  <a href="contact.html">💡 Pose tes questions</a>
+  <a href="#cafe" target="_blank" rel="noopener">☕ Offrez-moi un café !</a>
+</nav>
+
   <div class="edge-fade"></div>
 
 
@@ -148,6 +194,21 @@ header{background:linear-gradient(135deg,var(--blue) 2%,var(--blue-2) 98%);color
   </footer>
 
   <script>
+    // HAMBURGER
+const btnMenu   = document.getElementById('btnMenu');
+const drawer    = document.getElementById('drawer');
+const overlay   = document.getElementById('overlay');
+const btnClose  = document.querySelector('#drawer .close');
+
+function openMenu(){ drawer.classList.add('open'); overlay.classList.add('show'); }
+function closeMenu(){ drawer.classList.remove('open'); overlay.classList.remove('show'); }
+
+btnMenu.addEventListener('click', openMenu);
+btnClose.addEventListener('click', closeMenu);
+overlay.addEventListener('click', closeMenu);
+// Fermer quand on clique un lien du menu
+document.querySelectorAll('#drawer a').forEach(a => a.addEventListener('click', closeMenu));
+
   // --- Toggle recherche (inchangé) ---
   const btnSearch = document.getElementById('btnSearch');
   const searchWrap = document.getElementById('searchWrap');
