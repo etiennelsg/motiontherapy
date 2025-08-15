@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Gadgets & accessoires insolites — GiftFeed</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root{
+      --bg:#f7f8fb; --card:#fff; --text:#1f2330; --muted:#667085;
+      --blue:#003366; --blue-2:#5f8fbf; --orange:#ffa41c;
+      --radius:14px; --shadow:0 2px 8px rgba(16,24,40,.06);
+    }
+    *{box-sizing:border-box} html,body{margin:0;padding:0} img{max-width:100%;display:block}
+    body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Inter,Arial,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+
+    /* Header minimal (identique) */
+    header{background:linear-gradient(135deg,var(--blue) 2%,var(--blue-2) 98%);color:#fff;box-shadow:0 6px 14px rgba(0,0,0,.10)}
+    .topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 12px}
+    .ico{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;user-select:none}
+    .brand{font-weight:800;letter-spacing:.3px;font-size:18px;text-align:center;flex:1}
+    .back{ text-decoration:none; color:#fff; }
+
+    /* HERO */
+    .hero{
+      position:relative;
+      background:url('https://images.unsplash.com/photo-1629339837617-7069ce9e7f6b?q=80&w=1025&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat;
+      min-height:36vh;
+      display:flex; align-items:center; justify-content:center;
+      text-align:center; color:#fff; padding:24px 16px;
+    }
+    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.55))}
+    .hero-inner{position:relative;z-index:1;max-width:720px}
+    .hero h1{margin:0 0 8px;font-size:24px;font-weight:900;letter-spacing:.2px}
+    .hero p{margin:0;font-size:14px;opacity:.95}
+
+    /* Section titre */
+    .section{padding:14px}
+    .section h2{margin:6px 2px 12px;font-size:18px;font-weight:800;color:var(--blue);text-align:center}
+
+    /* Grid 2x2 */
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 14px 24px}
+    .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+    .card-media{background:#eef2f7;position:relative}
+    .card-media::before{content:"";display:block;padding-top:66%} /* ~3:2 */
+    .card-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .card-body{padding:12px}
+    .card-title{margin:0 0 6px;font-size:15px;font-weight:800;line-height:1.25}
+    .card-desc{margin:0 0 10px;font-size:13px;color:var(--muted);line-height:1.45}
+    .row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .price{font-weight:900;font-size:14px;background:#fff3e0;color:#9a5b00;padding:6px 10px;border-radius:10px;border:1px solid #ffd89a}
+    .btn{display:inline-block;min-height:40px;line-height:40px;padding:0 12px;border-radius:10px;font-weight:800;text-decoration:none;background:linear-gradient(to bottom,#ffc94d,var(--orange));border:1px solid #e69500;color:#fff;box-shadow:0 2px 5px rgba(0,0,0,.10),inset 0 1px 0 rgba(255,255,255,.35);text-align:center;white-space:nowrap}
+
+    /* Empiler prix + bouton sur écrans étroits (évite les cartes coupées) */
+    @media (max-width: 420px){
+      .row{flex-wrap:wrap;gap:8px}
+      .price{order:1}
+      .btn{order:2;width:100%}
+    }
+
+    /* Desktop : 4 par ligne */
+    @media(min-width:768px){
+      .grid{grid-template-columns:repeat(4,1fr)}
+      .hero{min-height:42vh}
+      .hero h1{font-size:28px}
+      .hero p{font-size:15px}
+    }
+
+    footer{padding:18px 14px 28px;text-align:center;color:#6b7280;font-size:12px}
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="topbar">
+      <a class="ico back" href="index.html" aria-label="Retour">⟵</a>
+      <div class="brand">Le coin du kinésiologue</div>
+      <div class="ico" aria-hidden="true" style="opacity:.3;">🔍</div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" role="img" aria-label="Gadgets et accessoires originaux et high-tech">
+    <div class="hero-inner">
+      <h1>Gadgets & accessoires insolites</h1>
+      <p>Arsenal d'outils pour progresser et s'amuser</p>
+    </div>
+  </section>
+
+  <!-- Titre section -->
+  <section class="section">
+    <h2>Notre sélection (16 idées)</h2>
+  </section>
+
+  <!-- GRID 2×2 (16 cartes mock-up) -->
+  <main class="grid" id="grid"></main>
+
+  <footer>
+    En tant que partenaire Amazon, je peux percevoir une commission sur les achats éligibles.
+  </footer>
+
+  <script>
+    // 16 produits mock-up (modifie titre/desc/prix/img/url)
+    const PRODUCTS = [
+      { title:"Montre d’entraînement (smartband)",
+        desc:"Suivi FC, sommeil, pas — ultra légère.",
+        price:"78,99 $",
+        img:"https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?q=80&w=1200&auto=format&fit=crop",
+        url:"#"
+      },
+      { title:"Écouteurs sans fil sport",
+        desc:"Résistants à la sueur, boîtier compact.",
+        price:"59,90 $",
+        img:"https://images.unsplash.com/photo-1585386959984-a41552231658?q=80&w=1200&auto=format&fit=crop",
+        url:"#"
+      },
+      { title:"Pistolet de massage mini",
+        desc:"Format poche, parfait après séance.",
+        price:"69,90 $",
+        img:"https://images.unsplash.com/photo-1601933470928-c1fc00a7abca?q=80&w=1200&auto=format&fit=crop",
+        url:"#"
+      },
+      { title:"Corde à sauter connectée (LED)",
+        desc:"Compteur + effets lumineux stylés.",
+        price:"29,90 $",
+        img:"https://images.unsplash.com/photo-1547235001-d7034060d8fa?q=80&w=1200&auto=format&fit=crop",
+        url:"#"
+      },
+      { title:"Bague bien-être connectée",
+        desc:"Indice de récupération & sommeil.",
+        price:"99,00 $",
+        img:"https://images.unsplash.com/photo-1599643477877-530eb83abc8e?q=80&w=1200&auto=format&fit=crop",
+        url:"#"
+      },
+      { title:"Capteur de posture Bluetooth",
+        desc:"Alerte douce quand tu t’affaisses.",
+        price:"39,90 $",
+        img:"https://images.unsplash.com/photo-1541535891889-3b55b9a724ce?q=80&w=1200&auto=format&fit=crop",
+        url:"#"
+      },
+      { title:"Balance intelligente",
+        desc:"Poids, IMC, tendances sur app.",
+        price:"34,90 $",
+        img:"https://images.unsplash.com/photo-1581175294643-391228d3fd0f?q=80&w=1200&auto=format&fit=crop",
+        url:"#"
+      },
+      { title:"Tracker d’objets (porte-clés BT)",
+        desc:"Ne perds plus tes clés/sac.",
+        price:"24,90 $",
+        img:"https://images.unsplash.com/photo-1565538810643-b5bdb714032a?q=80&w=1200&auto=format&fit=crop",
+        url:"#"
+      },
+      { title:"Lunettes audio open-ear",
+        desc:"Musique + appels, oreilles libres.",
+        price:"89,00 $",
+        img:"https://images.unsplash.com/photo-1546435770-a3e426bf472b?q=80&w=1200&auto=format&fit=crop",
+        url:"#"
+      },
+      { title:"Bande LED ambiante RGB",
+        desc:"Vibe gaming + confort visuel.",
+        price:"19,90 $",
+        img:"https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=1200&auto=format&fit=crop",
+        url:"#"
+      },
+      { title:"Support vélo (smartphone)",
+        desc:"GPS stable, route ou home-trainer.",
+        price:"16,90 $",
+        img:"https://images.unsplash.com/photo-1541625602330-2277a4c46182?q=80&w=1200&auto=format&fit=crop",
+        url:"#"
+      },
+      { title:"Gourde intelligente (rappel)",
+        desc:"Hydrate-toi à intervalle régulier.",
+        price:"29,00 $",
+        img:"https://images.unsplash.com/photo-1503602642458-232111445657?q=80&w=1200&auto=format&fit=crop",
+        url:"#"
+      },
+      { title:"Mini ventilateur USB silencieux",
+        desc:"Bureau, gym, déplacement.",
+        price:"14,90 $",
+        img:"https://images.unsplash.com/photo-1601856754390-3f4d3a8edaa7?q=80&w=1200&auto=format&fit=crop",
+        url:"#"
+      },
+      { title:"Lampe lumière du jour – mini",
+        desc:"Coup de boost concentré.",
+        price:"39,00 $",
+        img:"https://images.unsplash.com/photo-1534961418484-1f4ddc6c7780?q=80&w=1200&auto=format&fit=crop",
+        url:"#"
+      },
+      { title:"Bandes LED réfléchissantes running",
+        desc:"Visibilité nocturne + sécurité.",
+        price:"12,90 $",
+        img:"https://images.unsplash.com/photo-1523097377036-4fbbb2b2d877?q=80&w=1200&auto=format&fit=crop",
+        url:"#"
+      },
+      { title:"Tapis souris + chargeur sans fil",
+        desc:"2-en-1 clean pour le bureau.",
+        price:"22,90 $",
+        img:"https://images.unsplash.com/photo-1516239322128-02c314c1dba0?q=80&w=1200&auto=format&fit=crop",
+        url:"#"
+      }
+    ];
+
+    function cardHTML(p){
+      return `
+        <article class="card">
+          <a class="card-media" href="${p.url}" aria-label="Voir le produit" target="_blank" rel="noopener">
+            <img loading="lazy" decoding="async" src="${p.img}" alt="${p.title}">
+          </a>
+          <div class="card-body">
+            <h3 class="card-title">${p.title}</h3>
+            <p class="card-desc">${p.desc}</p>
+            <div class="row">
+              <span class="price">${p.price}</span>
+              <a class="btn" href="${p.url}" target="_blank" rel="noopener">Voir l’offre →</a>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    // Rendu initial des 16 cartes
+    const grid = document.getElementById('grid');
+    PRODUCTS.forEach(p => grid.insertAdjacentHTML('beforeend', cardHTML(p)));
+  </script>
+</body>
+</html>
