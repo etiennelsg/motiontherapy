@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Résultats de recherche</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body{font-family:sans-serif;padding:20px;background:#f7f8fb}
+    .card{background:#fff;border-radius:12px;padding:14px;margin:12px 0;box-shadow:0 2px 6px rgba(0,0,0,.1)}
+    .card-title{font-size:18px;font-weight:700;margin:0 0 6px}
+    .card-desc{font-size:14px;color:#555;margin:0 0 10px}
+    .btn{display:inline-block;padding:8px 14px;background:#ffa41c;color:#fff;border-radius:8px;text-decoration:none}
+  </style>
+</head>
+<body>
+  <h1>Résultats de recherche</h1>
+  <div id="results"></div>
+
+  <script>
+    // --- Données PRODUITS (copiées de index.html) ---
+    const PRODUCTS = [
+      { title:"HUAWEI Band 10", desc:"Suivi intelligent, fréquence cardiaque", price:"78,99 $", img:"https://...", url:"https://..." },
+      { title:"Tapis de yoga", desc:"Stable et confortable", price:"26,99 $", img:"https://...", url:"https://..." },
+      { title:"Bandes de résistance", desc:"Activation dos/épaules", price:"15,99 $", img:"https://...", url:"https://..." },
+      // 👉 mets ici tous les autres produits comme dans index.html
+    ];
+
+    // --- Récupère le mot recherché dans l’URL ---
+    const params = new URLSearchParams(window.location.search);
+    const q = (params.get("q") || "").toLowerCase();
+
+    const results = document.getElementById("results");
+
+    // --- Filtrer les produits ---
+    const matches = PRODUCTS.filter(p =>
+      p.title.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q)
+    );
+
+    if (matches.length) {
+      matches.forEach(p=>{
+        results.innerHTML += `
+          <div class="card">
+            <h2 class="card-title">${p.title}</h2>
+            <p class="card-desc">${p.desc}</p>
+            <strong>${p.price}</strong><br>
+            <a class="btn" href="${p.url}" target="_blank">Voir sur Amazon</a>
+          </div>
+        `;
+      });
+    } else {
+      results.innerHTML = `<p>Aucun produit trouvé pour "<strong>${q}</strong>".</p>`;
+    }
+  </script>
+</body>
+</html>
