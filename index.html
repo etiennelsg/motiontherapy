@@ -367,16 +367,17 @@ header{background:linear-gradient(135deg,var(--blue) 2%,var(--blue-2) 98%);color
     loadMore.addEventListener('click', renderNext);
   });
 
-  // --- FILTRE RECHERCHE ---
-  searchInput?.addEventListener('input', e=>{
-    const q = e.target.value.trim().toLowerCase();
-    document.querySelectorAll('.card').forEach(card=>{
-      const title = card.querySelector('.card-title')?.textContent.toLowerCase() || '';
-      const desc  = card.querySelector('.card-desc')?.textContent.toLowerCase() || '';
-      card.style.display = (title.includes(q) || desc.includes(q)) ? '' : 'none';
-    });
-  });
-</script>
+ // --- RECHERCHE AVEC REDIRECTION ---
+searchInput?.addEventListener('keydown', e=>{
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    const q = searchInput.value.trim();
+    if (q) {
+      window.location.href = `recherche.html?q=${encodeURIComponent(q)}`;
+    }
+  }
+});
+
 
 
 
