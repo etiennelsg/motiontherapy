@@ -27,13 +27,14 @@
       min-height:36vh;
       display:flex; align-items:center; justify-content:center;
       text-align:center; color:#fff; padding:24px 16px;
-    }
     .hero::after{
   content:"";
   position:absolute;
   inset:0;
-  background:rgba(0,0,0,0.10); /* voile uniforme léger à 10% */
+  background:none; /* plus aucun assombrissement */
+  pointer-events:none;
 }
+
 
     .hero-inner{position:relative;z-index:1;max-width:720px}
     .hero h1{margin:0 0 8px;font-size:24px;font-weight:900;letter-spacing:.2px}
