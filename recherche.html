@@ -5,51 +5,96 @@
   <title>Résultats de recherche</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    body{font-family:sans-serif;padding:20px;background:#f7f8fb}
-    .card{background:#fff;border-radius:12px;padding:14px;margin:12px 0;box-shadow:0 2px 6px rgba(0,0,0,.1)}
-    .card-title{font-size:18px;font-weight:700;margin:0 0 6px}
+    body{font-family:sans-serif;background:#f7f8fb;margin:0;padding:20px;color:#1f2330}
+    h1{font-size:22px;margin-bottom:20px;color:#003366}
+    .feed{display:grid;gap:16px}
+    .card{background:#fff;border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,.1);overflow:hidden}
+    .card img{width:100%;height:180px;object-fit:cover}
+    .card-body{padding:12px}
+    .card-title{margin:0 0 8px;font-weight:700}
     .card-desc{font-size:14px;color:#555;margin:0 0 10px}
-    .btn{display:inline-block;padding:8px 14px;background:#ffa41c;color:#fff;border-radius:8px;text-decoration:none}
+    .price{font-weight:700;color:#9a5b00;margin-right:8px}
+    .btn{display:inline-block;padding:8px 14px;background:#ffa41c;color:#fff;font-weight:700;text-decoration:none;border-radius:8px}
   </style>
 </head>
 <body>
+
   <h1>Résultats de recherche</h1>
-  <div id="results"></div>
+  <div class="feed" id="results"></div>
 
-  <script>
-    // --- Données PRODUITS (copiées de index.html) ---
-    const PRODUCTS = [
-      { title:"HUAWEI Band 10", desc:"Suivi intelligent, fréquence cardiaque", price:"78,99 $", img:"https://...", url:"https://..." },
-      { title:"Tapis de yoga", desc:"Stable et confortable", price:"26,99 $", img:"https://...", url:"https://..." },
-      { title:"Bandes de résistance", desc:"Activation dos/épaules", price:"15,99 $", img:"https://...", url:"https://..." },
-      // 👉 mets ici tous les autres produits comme dans index.html
-    ];
+<script>
+  // --- MEME LISTE DE PRODUITS QUE SUR INDEX ---
+  const PRODUCTS = [
+    {
+      title: "HUAWEI Band 10 (montre d’entraînement)",
+      desc: "Suivi intelligent, fréquence cardiaque, sommeil, ultra-léger.",
+      price: "78,99 $",
+      img: "https://heute-at-prod-images.imgix.net/2024/04/20/5521ea13-e39e-459a-9318-7f52eaf37d8e.jpeg?auto=format%2Ccompress&w=1616", 
+      url: "https://www.amazon.ca/gp/aw/d/B0DZ8WP5WY?tag=motiontherapy-20"
+    },
+    {
+      title: "Tapis de yoga — extra épais",
+      desc: "Stable et confortable pour étirements, mobilité et renforcement.",
+      price: "26,99 $",
+      img: "https://images.unsplash.com/photo-1720788074321-47666b7a4fe1?q=80&w=1073&auto=format&fit=crop",
+      url: "https://www.amazon.ca/gp/aw/d/B01LP0V4JY?tag=motiontherapy-20"
+    },
+    {
+      title: "Bandes de résistance (lot de 5)",
+      desc: "Activation dos/épaules, mobilité rapide.",
+      price: "15,99 $",
+      img: "https://plus.unsplash.com/premium_photo-1666736569069-79c1789adf52?w=356&dpr=2&h=540&auto=format&fit=crop",
+      url: "https://www.amazon.ca/Gritin-Skin-Friendly-Levels-Free-Included/dp/B07L9WLKZQ?tag=motiontherapy-20"
+    },
+    {
+      title: "Haltères ajustables",
+      desc: "Un set pour tout faire, gain de place.",
+      price: "229,99 $",
+      img: "https://source.roboflow.com/yorqEdckSJN82I1x2xdOGxMIHXm1/AXJhgrYVJdb42UrnP2om/original.jpg",
+      url: "https://www.amazon.ca/EnterSports-Space-saving-Levels/dp/B0CRBG9798?tag=motiontherapy-20"
+    },
+    {
+      title: "Corde à sauter",
+      desc: "Cardio express, réglable et silencieuse.",
+      price: "12,74 $",
+      img: "https://plus.unsplash.com/premium_photo-1666283137093-594a957f3945?q=80&w=2070&auto=format&fit=crop",
+      url: "https://www.amazon.ca/Blukar-Skipping-Tangle-Free/dp/B08CRVG7BB?tag=motiontherapy-20"
+    },
+    {
+      title: "Barre de traction pour porte",
+      desc: "Dos/biceps sans perçage.",
+      price: "35,48 $",
+      img: "https://live.staticflickr.com/2585/3662981055_1088319c90_b.jpg",
+      url: "https://www.amazon.ca/Sunny-Health-Fitness-Doorway-Traction/dp/B0016BNDXI?tag=motiontherapy-20"
+    }
+  ];
 
-    // --- Récupère le mot recherché dans l’URL ---
-    const params = new URLSearchParams(window.location.search);
-    const q = (params.get("q") || "").toLowerCase();
+  // --- RECUPÈRE LE MOT DE RECHERCHE DANS L’URL ---
+  const params = new URLSearchParams(window.location.search);
+  const q = params.get('q')?.toLowerCase() || '';
 
-    const results = document.getElementById("results");
+  const results = PRODUCTS.filter(p =>
+    p.title.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q)
+  );
 
-    // --- Filtrer les produits ---
-    const matches = PRODUCTS.filter(p =>
-      p.title.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q)
-    );
-
-    if (matches.length) {
-      matches.forEach(p=>{
-        results.innerHTML += `
-          <div class="card">
-            <h2 class="card-title">${p.title}</h2>
+  const container = document.getElementById('results');
+  if(results.length){
+    results.forEach(p=>{
+      container.innerHTML += `
+        <div class="card">
+          <img src="${p.img}" alt="${p.title}">
+          <div class="card-body">
+            <h3 class="card-title">${p.title}</h3>
             <p class="card-desc">${p.desc}</p>
-            <strong>${p.price}</strong><br>
+            <span class="price">${p.price}</span>
             <a class="btn" href="${p.url}" target="_blank">Voir sur Amazon</a>
           </div>
-        `;
-      });
-    } else {
-      results.innerHTML = `<p>Aucun produit trouvé pour "<strong>${q}</strong>".</p>`;
-    }
-  </script>
+        </div>`;
+    });
+  }else{
+    container.innerHTML = "<p>Aucun produit trouvé.</p>";
+  }
+</script>
+
 </body>
 </html>
