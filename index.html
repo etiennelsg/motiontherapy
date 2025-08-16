@@ -97,9 +97,33 @@ header{background:linear-gradient(135deg,var(--blue) 2%,var(--blue-2) 98%);color
     /* Feed produits 1 colonne */
     .feed{padding:10px 14px 24px}
     .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-bottom:14px}
-    .card-media{background:#eef2f7;position:relative}
-    .card-media::before{content:"";display:block;padding-top:52%} /* ~3:2 */
-    .card-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    /* CARTES INDIVIDUELLES – CSS robuste iPhone */
+.card-media{
+  background:#eef2f7;
+  position:relative;
+  display:block;            /* ← important sur iPhone */
+}
+
+/* Fallback ratio 3:2 via padding, pour vieux Safari */
+.card-media::before{
+  content:"";
+  display:block;
+  padding-top:52%;
+}
+
+/* Si aspect-ratio existe (iOS 15+), on l’utilise */
+@supports (aspect-ratio: 3 / 2){
+  .card-media{ aspect-ratio: 3 / 2; }
+  .card-media::before{ content:none; display:none; }
+}
+
+.card-media img{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover;
+  display:block;            /* ← évite certains glitches Safari */
+}
+
     .card-body{padding:12px}
     .card-title{margin:0 0 8px;font-size:16px;font-weight:800;line-height:1.25}
     .card-desc{margin:0 0 12px;font-size:13px;color:var(--muted);line-height:1.45}
