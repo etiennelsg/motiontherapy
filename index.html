@@ -331,14 +331,10 @@ document.querySelectorAll('#drawer a').forEach(a => a.addEventListener('click', 
 const IS_IOS = /iP(hone|ad|od)/.test(navigator.userAgent);
 
 function cardHTML(p){
-  // Sur iOS: évite lazy/decoding async (bugs d’affichage parfois)
-  const loadingAttr  = IS_IO S ? '' : 'loading="lazy"';
-  const decodingAttr = IS_IOS ? '' : 'decoding="async"';
-
   return `
     <article class="card">
       <a class="card-media" href="${p.url}" aria-label="Voir le produit" target="_blank" rel="noopener">
-        <img ${loadingAttr} ${decodingAttr} referrerpolicy="no-referrer"
+        <img referrerpolicy="no-referrer"
              src="${p.img}" alt="${p.title}"
              onerror="this.onerror=null; this.src='https://picsum.photos/seed/fallback/1200/800';">
       </a>
@@ -353,6 +349,7 @@ function cardHTML(p){
     </article>
   `;
 }
+
 
 
 
