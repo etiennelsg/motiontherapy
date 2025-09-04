@@ -346,7 +346,7 @@ function cardHTML(p){
         <h3 class="card-title">${p.title}</h3>
         <p class="card-desc">${p.desc}</p>
         <div class="row">
-          <span class="price">${p.price}</span>
+          ${p.price ? `<span class="price">${p.price}</span>` : ''}
           <a class="btn" href="${p.url}" target="_blank" rel="noopener">Voir sur Amazon</a>
         </div>
       </div>
