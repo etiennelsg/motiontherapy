@@ -6,6 +6,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
 
+    .prime-marquee {
+  width: 100%;
+  overflow: hidden;
+  background: #f0f6ff;      /* bleu clair */
+  border-bottom: 1px solid #ccddee;
+}
+
+.prime-text {
+  display: inline-block;
+  white-space: nowrap;
+  padding: 8px 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #003366;
+  animation: scroll-left 12s linear infinite;
+}
+
+@keyframes scroll-left {
+  0%   { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+
     .card-title {
   margin: 8px 0;
   font-size: 16px;
@@ -163,6 +186,10 @@ header{background:linear-gradient(135deg,var(--blue) 2%,var(--blue-2) 98%);color
   </style>
 </head>
 <body>
+  <div class="prime-marquee">
+  <div class="prime-text">📦 Livraison rapide et gratuite avec <strong>Amazon Prime</strong></div>
+</div>
+
 
   <!-- Header -->
   <header>
