@@ -243,93 +243,87 @@ document.querySelectorAll('#drawer a').forEach(a => a.addEventListener('click', 
 
   // --- Données mock-up EDITABLES ---
   // Remplace titre/desc/prix/img/url et c’est tout.
-  const PRODUCTS = [
-   
-
-    {
-  title: "HUAWEI Band 10 (montre d’entraînement)",
-  desc: "Suivi intelligent, fréquence cardiaque, sommeil, ultra-léger.",
-  img: "https://heute-at-prod-images.imgix.net/2024/04/20/5521ea13-e39e-459a-9318-7f52eaf37d8e.jpeg?auto=format%2Ccompress&w=1616", 
-  url: "https://www.amazon.ca/gp/aw/d/B0DZ8WP5WY?tag=motiontherapy-20&linkCode=ll1&linkId=1e93e38884b015c188454cac22515b20&language=en_CA&ref_=as_li_ss_tl"
-},
-
+ const PRODUCTS = [
 
   {
-  title: "Tapis de yoga — extra épais",
-  desc: "Stable et confortable pour étirements, mobilité et renforcement.",
-  img: "https://images.unsplash.com/photo-1720788074321-47666b7a4fe1?q=80&w=1073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  url: "https://www.amazon.ca/gp/aw/d/B01LP0V4JY?tag=motiontherapy-20&linkCode=ll1&linkId=0d9fe75aab0b71be61e24a0d8f48290d&language=en_CA&ref_=as_li_ss_tl"
-},
+    title: "HUAWEI Band 10 (montre d’entraînement)",
+    desc: "Suivi intelligent, fréquence cardiaque, sommeil, ultra-léger. Comme kinésiologue, je le recommande pour mieux comprendre l’impact de l’activité physique et du repos sur le corps. Cela aide à ajuster l’intensité des entraînements et à progresser de façon plus équilibrée.",
+    img: "https://heute-at-prod-images.imgix.net/2024/04/20/5521ea13-e39e-459a-9318-7f52eaf37d8e.jpeg?auto=format%2Ccompress&w=1616", 
+    url: "https://www.amazon.ca/gp/aw/d/B0DZ8WP5WY?tag=motiontherapy-20&linkCode=ll1&linkId=1e93e38884b015c188454cac22515b20&language=en_CA&ref_=as_li_ss_tl"
+  },
 
+  {
+    title: "Tapis de yoga — extra épais",
+    desc: "Stable et confortable pour étirements, mobilité et renforcement. Un tapis plus épais réduit la pression sur les genoux et poignets, ce qui diminue le risque d’inconfort. Il encourage la régularité dans les exercices au sol et rend les séances plus agréables.",
+    img: "https://images.unsplash.com/photo-1720788074321-47666b7a4fe1?q=80&w=1073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    url: "https://www.amazon.ca/gp/aw/d/B01LP0V4JY?tag=motiontherapy-20&linkCode=ll1&linkId=0d9fe75aab0b71be61e24a0d8f48290d&language=en_CA&ref_=as_li_ss_tl"
+  },
 
-   /* 3) Bandes de résistance (Document 38) */
-    {
-      title: "Bandes de résistance (lot de 5)",
-      desc: "Activation dos/épaules, mobilité rapide.",
-      img: "https://plus.unsplash.com/premium_photo-1666736569069-79c1789adf52?w=356&dpr=2&h=540&auto=format&fit=crop&q=60&ixid=M3wxMjA3fDB8MXxzZWFyY2h8NXx8cmVzaXN0YW5jZSUyMGJhbmRzfGZyfDB8fHx8MTc1NTI5MzM3MHww&ixlib=rb-4.1.0",
-      url: "https://www.amazon.ca/Gritin-Skin-Friendly-Levels-Free-Included-Ideal-Green-Blue-Yellow-Pink-Black/dp/B07L9WLKZQ?linkCode=ll1&tag=motiontherapy-20&language=en_CA&ref_=as_li_ss_tl"
-    },
+  {
+    title: "Bandes de résistance (lot de 5)",
+    desc: "Activation dos/épaules, mobilité rapide. Ces bandes sont utiles pour échauffer les muscles et travailler la posture sans charge lourde. Elles permettent aussi de progresser progressivement, ce qui est excellent pour renforcer les articulations et prévenir les blessures.",
+    img: "https://plus.unsplash.com/premium_photo-1666736569069-79c1789adf52?w=356&dpr=2&h=540&auto=format&fit=crop&q=60&ixid=M3wxMjA3fDB8MXxzZWFyY2h8NXx8cmVzaXN0YW5jZSUyMGJhbmRzfGZyfDB8fHx8MTc1NTI5MzM3MHww&ixlib=rb-4.1.0",
+    url: "https://www.amazon.ca/Gritin-Skin-Friendly-Levels-Free-Included-Ideal-Green-Blue-Yellow-Pink-Black/dp/B07L9WLKZQ?linkCode=ll1&tag=motiontherapy-20&language=en_CA&ref_=as_li_ss_tl"
+  },
 
-    /* 4) Haltères ajustables (Document 38) */
-    {
-      title: "Haltères ajustables",
-      desc: "Un set pour tout faire, gain de place.",
-      img: "https://source.roboflow.com/yorqEdckSJN82I1x2xdOGxMIHXm1/AXJhgrYVJdb42UrnP2om/original.jpg",
-      url: "https://www.amazon.ca/EnterSports-Space-saving-Levels-2-12-4-5-26-5lbs-StrengthTraining/dp/B0CRBG9798?linkCode=ll1&tag=motiontherapy-20&language=en_CA&ref_=as_li_ss_tl"
-    },
+  {
+    title: "Haltères ajustables",
+    desc: "Un set pour tout faire, gain de place. Les haltères ajustables permettent d’augmenter la charge de manière progressive, ce qui est essentiel pour développer la force. Ils favorisent un entraînement complet et efficace à domicile, sans encombrer l’espace.",
+    img: "https://source.roboflow.com/yorqEdckSJN82I1x2xdOGxMIHXm1/AXJhgrYVJdb42UrnP2om/original.jpg",
+    url: "https://www.amazon.ca/EnterSports-Space-saving-Levels-2-12-4-5-26-5lbs-StrengthTraining/dp/B0CRBG9798?linkCode=ll1&tag=motiontherapy-20&language=en_CA&ref_=as_li_ss_tl"
+  },
 
-    /* 5) Corde à sauter (Document 38) */
-    {
-      title: "Corde à sauter",
-      desc: "Cardio express, réglable et silencieuse.",
-      img: "https://plus.unsplash.com/premium_photo-1666283137093-594a957f3945?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      url: "https://www.amazon.ca/Blukar-Skipping-Tangle-Free-Adjustable-Exercises/dp/B08CRVG7BB?linkCode=ll1&tag=motiontherapy-20&language=en_CA&ref_=as_li_ss_tl"
-    },
+  {
+    title: "Corde à sauter",
+    desc: "Cardio express, réglable et silencieuse. Sauter à la corde stimule le cœur, la coordination et la densité osseuse. C’est une méthode simple et efficace pour améliorer la condition physique en quelques minutes par jour.",
+    img: "https://plus.unsplash.com/premium_photo-1666283137093-594a957f3945?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    url: "https://www.amazon.ca/Blukar-Skipping-Tangle-Free-Adjustable-Exercises/dp/B08CRVG7BB?linkCode=ll1&tag=motiontherapy-20&language=en_CA&ref_=as_li_ss_tl"
+  },
 
-    /* 6) Barre de traction pour porte (Document 38) */
-    {
-      title: "Barre de traction pour porte",
-      desc: "Dos/biceps sans perçage.",
-      img: "https://live.staticflickr.com/2585/3662981055_1088319c90_b.jpg",
-      url: "https://www.amazon.ca/Sunny-Health-Fitness-Doorway-Traction/dp/B0016BNDXI?linkCode=ll1&tag=motiontherapy-20&language=en_CA&ref_=as_li_ss_tl"
-    },
+  {
+    title: "Barre de traction pour porte",
+    desc: "Dos/biceps sans perçage. Les tractions sollicitent fortement le dos et les bras, améliorant la posture et la force fonctionnelle. C’est un excellent outil pour progresser à son rythme à la maison.",
+    img: "https://live.staticflickr.com/2585/3662981055_1088319c90_b.jpg",
+    url: "https://www.amazon.ca/Sunny-Health-Fitness-Doorway-Traction/dp/B0016BNDXI?linkCode=ll1&tag=motiontherapy-20&language=en_CA&ref_=as_li_ss_tl"
+  },
 
-    /* 7) Poids pour chevilles/poignets (Document 38) */
-    {
-      title: "Poids pour chevilles et poignets",
-      desc: "Renfo bas du corps & fessiers.",
-      img: "https://live.staticflickr.com/8441/7834464306_42a53d0c62_c.jpg",
-      url: "https://www.amazon.ca/Barbell-20-Pounds-Adjustable-Ankle-Weights/dp/B0088ZVLAM?linkCode=ll1&tag=motiontherapy-20&language=en_CA&ref_=as_li_ss_tl"
-    },
+  {
+    title: "Poids pour chevilles et poignets",
+    desc: "Renfo bas du corps & fessiers. Ces charges légères augmentent la sollicitation musculaire sans surcharger les articulations. Elles sont idéales pour la tonification, la rééducation et le travail de précision.",
+    img: "https://live.staticflickr.com/8441/7834464306_42a53d0c62_c.jpg",
+    url: "https://www.amazon.ca/Barbell-20-Pounds-Adjustable-Ankle-Weights/dp/B0088ZVLAM?linkCode=ll1&tag=motiontherapy-20&language=en_CA&ref_=as_li_ss_tl"
+  },
 
-     {
-  title: "Ab Roller",
-  desc: "Gainage profond, format mini.",
-  img: "https://images.pexels.com/photos/3076515/pexels-photo-3076515.jpeg",
-  url: "https://www.amazon.ca/Readaeer-Abdominal-Exercise-Fitness-Equipment/dp/B07HRFXXWC?linkCode=ll1&tag=motiontherapy-20&language=en_CA&ref_=as_li_ss_tl"
-},
+  {
+    title: "Ab Roller",
+    desc: "Gainage profond, format mini. L’ab roller active intensément la sangle abdominale et renforce le contrôle du tronc. Bien utilisé, il améliore la stabilité du dos et réduit le risque de blessures.",
+    img: "https://images.pexels.com/photos/3076515/pexels-photo-3076515.jpeg",
+    url: "https://www.amazon.ca/Readaeer-Abdominal-Exercise-Fitness-Equipment/dp/B07HRFXXWC?linkCode=ll1&tag=motiontherapy-20&language=en_CA&ref_=as_li_ss_tl"
+  },
 
-{
-  title: "Rouleau de massage (foam roller)",
-  desc: "Récupération musculaire, densité moyenne.",
-  img: "https://live.staticflickr.com/8182/7940806100_ea3c55710f_z.jpg",
-  url: "https://www.amazon.ca/Amazon-Basics-Exercise-Recovery-Centimeters/dp/B00XM2MXK8?th=1&psc=1&linkCode=ll1&tag=motiontherapy-20&language=en_CA&ref_=as_li_ss_tl"
-},
+  {
+    title: "Rouleau de massage (foam roller)",
+    desc: "Récupération musculaire, densité moyenne. Le foam roller aide à détendre les muscles et à améliorer la circulation sanguine. Il favorise la récupération après l’effort et prépare le corps à une meilleure mobilité.",
+    img: "https://live.staticflickr.com/8182/7940806100_ea3c55710f_z.jpg",
+    url: "https://www.amazon.ca/Amazon-Basics-Exercise-Recovery-Centimeters/dp/B00XM2MXK8?th=1&psc=1&linkCode=ll1&tag=motiontherapy-20&language=en_CA&ref_=as_li_ss_tl"
+  },
 
-    {
-  title: "Banc d’entraînement pliable",
-  desc: "Pliant, multi-positions, compact.",
-  img: "https://cdn.canvasrebel.com/wp-content/uploads/2024/08/c-1723230168759-1723230167567_kevin_atkinson_sweat60finalgallery-75.png",
-  url: "https://www.amazon.ca/PASYOU-Adjustable-Multi-Purpose-Foldable-Exercise/dp/B07S7NRZL4?th=1&linkCode=ll1&tag=motiontherapy-20&language=en_CA&ref_=as_li_ss_tl"
-},
+  {
+    title: "Banc d’entraînement pliable",
+    desc: "Pliant, multi-positions, compact. Un banc réglable permet de varier les exercices et d’améliorer la sécurité lors de mouvements plus lourds. C’est un bon choix pour structurer des séances complètes à domicile.",
+    img: "https://cdn.canvasrebel.com/wp-content/uploads/2024/08/c-1723230168759-1723230167567_kevin_atkinson_sweat60finalgallery-75.png",
+    url: "https://www.amazon.ca/PASYOU-Adjustable-Multi-Purpose-Foldable-Exercise/dp/B07S7NRZL4?th=1&linkCode=ll1&tag=motiontherapy-20&language=en_CA&ref_=as_li_ss_tl"
+  },
 
-   {
-  title: "Kettlebell vinyle",
-  desc: "Renforcement, cardio, gainage.",
-  img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlahJe-wOTp5xA4t4l7HROJ3EQVXoHPZE1Lw&s",
-  url: "https://www.amazon.ca/Yes4All-Vinyl-Coated-Kettlebell-Weights/dp/B0093CMYSM?crid=1F5TN3TBRMJ22&dib=eyJ2IjoiMSJ9.3SkKASu_XEp3rHJtrTH0FV4QPv0NjNiNq9SecaRbk0bfGjdgnCrkjWopx7ITGDeaseKY9fg3k1SdCQi3zRPwoSLMAhyT8QM0YhacOCtenGDCyJklz0NP01Y_0Ifu_0J-1mMsBozWnEl_cDuWbdmjmEhUx00P1744m_JjHoN1M4ZpgoPejNxuek9nb4tBqcXWibrPSiR51z53y7EvUm9GL6j-zuFIlP5fQUKDwe73EUvgGb92Nz_dEKBcCutoxT38unwjgvGkiq-w5_flpgF8ubCZA7il9Vwq5Rnq6H28NWE.COUDNqpWxo3YH_FVoQTnGy6rhPfIoyppa5OreSrM0Mc&dib_tag=se&keywords=kettlebell&qid=1755303855&sprefix=kettlebell%2Caps%2C241&sr=8-2&th=1&linkCode=ll1&tag=motiontherapy-20&linkId=c71a0fa68fdc266425229a073b04ce28&language=en_CA&ref_=as_li_ss_tl"
-}
-  ];
+  {
+    title: "Kettlebell vinyle",
+    desc: "Renforcement, cardio, gainage. La kettlebell permet de développer la puissance des hanches et le contrôle du tronc. C’est un outil polyvalent pour améliorer force, endurance et coordination.",
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlahJe-wOTp5xA4t4l7HROJ3EQVXoHPZE1Lw&s",
+    url: "https://www.amazon.ca/Yes4All-Vinyl-Coated-Kettlebell-Weights/dp/B0093CMYSM?crid=1F5TN3TBRMJ22&dib=eyJ2IjoiMSJ9.3SkKASu_XEp3rHJtrTH0FV4QPv0NjNiNq9SecaRbk0bfGjdgnCrkjWopx7ITGDeaseKY9fg3k1SdCQi3zRPwoSLMAhyT8QM0YhacOCtenGDCyJklz0NP01Y_0Ifu_0J-1mMsBozWnEl_cDuWbdmjmEhUx00P1744m_JjHoN1M4ZpgoPejNxuek9nb4tBqcXWibrPSiR51z53y7EvUm9GL6j-zuFIlP5fQUKDwe73EUvgGb92Nz_dEKBcCutoxT38unwjgvGkiq-w5_flpgF8ubCZA7il9Vwq5Rnq6H28NWE.COUDNqpWxo3YH_FVoQTnGy6rhPfIoyppa5OreSrM0Mc&dib_tag=se&keywords=kettlebell&qid=1755303855&sprefix=kettlebell%2Caps%2C241&sr=8-2&th=1&linkCode=ll1&tag=motiontherapy-20&linkId=c71a0fa68fdc266425229a073b04ce28&language=en_CA&ref_=as_li_ss_tl"
+  }
+
+];
+
 
   // --- Rendu du feed (bouton en bas + boucle infinie) ---
   const feed = document.getElementById('feed');
