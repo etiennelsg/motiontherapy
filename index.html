@@ -338,13 +338,15 @@ const IS_IOS = /iP(hone|ad|od)/.test(navigator.userAgent);
 function cardHTML(p){
   return `
     <article class="card">
+      <div class="card-body">
+        <h3 class="card-title">${p.title}</h3>
+      </div>
       <a class="card-media" href="${p.url}" aria-label="Voir le produit" target="_blank" rel="noopener">
         <img
              src="${p.img}" alt="${p.title}"
              onerror="this.onerror=null; this.src='https://picsum.photos/seed/fallback/1200/800';">
       </a>
       <div class="card-body">
-        <h3 class="card-title">${p.title}</h3>
         <p class="card-desc">${p.desc}</p>
         <div class="btn-wrap">
           <a class="btn" href="${p.url}" target="_blank" rel="noopener">Voir sur Amazon</a>
@@ -353,6 +355,7 @@ function cardHTML(p){
     </article>
   `;
 }
+
 
 
 
