@@ -130,10 +130,11 @@ header {
 .tagline {
   display: block;
   margin-top: 2px;
-  font-weight: 700;   /* avant 600 → maintenant plus gras */
-  font-size: 14px;    /* avant 12px → légèrement plus grand */
+  font-weight: 700 !important;  /* force le gras */
+  font-size: 14px !important;   /* force plus grand */
   color: rgba(255,255,255,.95);
 }
+
 
 
 /* >>> Ajuste le media query pour ne PLUS réduire à 16px sur mobile <<< */
